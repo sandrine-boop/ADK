@@ -617,11 +617,12 @@
     .section-head p {
       font-size: 1.08rem;
       line-height: 1.7;
+      text-align: left;
     }
 
     /* ============ PHILOSOPHIE ============ */
     .philosophie {
-      background: linear-gradient(180deg, var(--ivory) 0%, var(--cream) 100%);
+      background: var(--ivory);
     }
 
     .philo-grid {
@@ -638,6 +639,10 @@
     }
 
     .philo-solo .philo-content h2 br { display: none; }
+
+    .philo-solo p {
+      text-align: left;
+    }
 
     .philo-solo .philo-quote {
       text-align: left;
@@ -670,7 +675,7 @@
 
     /* ============ INCONSCIENT ============ */
     .inconscient {
-      background: var(--cream);
+      background: var(--mocha);
       overflow: hidden;
     }
 
@@ -681,10 +686,21 @@
       margin-top: 20px;
     }
 
+    .inconscient .section-head h2,
+    .inconscient .section-head h2 em {
+      color: var(--ivory);
+    }
+    .inconscient .section-head p {
+      color: rgba(250, 246, 241, 0.75);
+    }
+    .inconscient .eyebrow {
+      color: var(--champagne);
+    }
+
     .feature-card {
-      background: var(--ivory);
+      background: rgba(250, 246, 241, 0.06);
       border-radius: var(--radius);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(250, 246, 241, 0.1);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
@@ -694,7 +710,8 @@
 
     .feature-card:hover {
       transform: translateY(-6px);
-      box-shadow: var(--shadow-soft);
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.4);
+      background: rgba(250, 246, 241, 0.1);
     }
 
     .feature-img {
@@ -738,15 +755,18 @@
       font-style: italic;
       letter-spacing: 0.05em;
       flex-shrink: 0;
+      opacity: 0.85;
     }
 
     .feature-card h3 {
       font-size: 1.35rem;
       margin: 0;
+      color: var(--ivory);
     }
 
     .feature-card p {
       font-size: 0.95rem;
+      color: rgba(250, 246, 241, 0.72);
       margin: 0;
     }
 
