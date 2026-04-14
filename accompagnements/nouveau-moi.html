@@ -720,6 +720,7 @@
 
     /* ── DROPDOWN ── */
     .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
     .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
     .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
     .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
