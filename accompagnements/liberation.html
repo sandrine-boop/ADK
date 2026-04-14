@@ -622,24 +622,79 @@
 
     /* ── FOOTER ── */
     footer {
-      padding: 50px 0 40px;
+      padding: 60px 0 0;
       background: #1f1814;
       color: rgba(250, 246, 241, 0.55);
       font-size: 0.85rem;
     }
     .footer-inner {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      gap: 60px;
+      align-items: flex-start;
       flex-wrap: wrap;
       width: min(calc(100% - 40px), 1240px);
       margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
     }
+    .footer-brand { flex: 1; min-width: 180px; }
     .footer-inner .brand { color: var(--ivory); }
     .footer-inner .brand span { color: var(--champagne); }
-    .footer-links { display: flex; gap: 30px; }
-    .footer-links a:hover { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--plum);
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 720px) {
       section { padding: 60px 24px; }
@@ -864,19 +919,35 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="brand">
-        Au-delà des kilos
-        <span>Hypnose · Perte de poids & TCA</span>
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
       </div>
-      <nav class="footer-links">
-        <a href="/">Accueil</a>
-        <a href="/accompagnements/">Accompagnements</a>
-        <a href="/blog/">Lectures</a>
-        <a href="/#reservation">Contact</a>
-      </nav>
-      <div>© 2026 Au-delà des kilos</div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Au-delà des kilos
     </div>
   </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
 
   <script>
     function toggleMobileMenu() {
@@ -891,6 +962,14 @@
       document.querySelector('.hamburger').classList.remove('open');
       document.body.style.overflow = '';
     }
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Back to top
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 
 </body>
