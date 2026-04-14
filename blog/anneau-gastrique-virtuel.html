@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'anneau gastrique virtuel : perdre du poids sans passer par la chirurgie — Au-delà des kilos</title>
+  <meta name="description" content="Et si votre cerveau pouvait croire — et ressentir — ce que votre corps n'a pas vécu ? Découvrez l'anneau gastrique virtuel par l'hypnose." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #FAF6F1;
+      --cream: #F2EBE0;
+      --sand: #E8DDCB;
+      --champagne: #D4B896;
+      --caramel: #B8906F;
+      --plum: #7A4A5A;
+      --mocha: #2C2420;
+      --muted: rgba(44, 36, 32, 0.65);
+      --border: rgba(44, 36, 32, 0.08);
+      --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.75;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* NAV */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.82);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.15);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 26px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .nav-cta:hover { background: transparent; color: var(--mocha); }
+
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--mocha);
+      border-radius: 2px;
+      transition: all 0.3s var(--spring);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 150;
+      background: rgba(250, 246, 241, 0.97);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--spring);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--mocha);
+      text-decoration: none;
+      transition: color 0.3s var(--spring);
+    }
+    .mobile-menu a:hover { color: var(--caramel); }
+    .mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--plum); border-color: var(--plum); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a { color: var(--mocha); transition: color 0.3s; text-decoration: none; }
+    .nav-links a:hover { color: var(--caramel); }
+    .nav-home { display: flex; align-items: center; }
+    .nav-home svg { display: block; }
+
+    @media (max-width: 720px) {
+      .nav-cta, .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ARTICLE */
+    .article-hero {
+      padding: 160px 0 60px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+      width: min(calc(100% - 40px), 780px);
+    }
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--caramel);
+      text-decoration: none;
+      margin-bottom: 30px;
+      transition: color 0.3s var(--spring);
+    }
+    .article-back:hover { color: var(--plum); }
+    .article-tag {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .article-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0 0 20px;
+    }
+    .article-hero .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .article-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--champagne);
+      margin: 50px auto;
+    }
+
+    .article-body {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+    .article-body h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin: 50px 0 20px;
+      line-height: 1.2;
+    }
+    .article-body p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mocha);
+      margin: 0 0 22px;
+    }
+    .article-body em { color: var(--muted); }
+    .article-body hr {
+      border: none;
+      height: 1px;
+      background: var(--border);
+      margin: 45px 0;
+    }
+    .article-body ul {
+      margin: 0 0 28px;
+      padding-left: 0;
+      list-style: none;
+    }
+    .article-body ul li {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--mocha);
+      padding: 6px 0 6px 28px;
+      position: relative;
+    }
+    .article-body ul li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--caramel);
+      font-weight: 300;
+    }
+    .article-body blockquote {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--plum);
+      padding: 24px 30px;
+      margin: 36px 0;
+      border-left: 2px solid var(--caramel);
+      background: rgba(212, 184, 150, 0.08);
+      border-radius: 0 16px 16px 0;
+    }
+
+    /* CTA */
+    .article-cta {
+      text-align: center;
+      padding: 60px 40px;
+      background: var(--cream);
+      border-radius: 24px;
+      max-width: 700px;
+      margin: 40px auto 80px;
+    }
+    .article-cta h3 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin: 0 0 14px;
+    }
+    .article-cta p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 50ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      text-decoration: none;
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+      border-color: var(--plum);
+      transform: translateY(-2px);
+    }
+    .btn-primary::after {
+      content: "\2192";
+      margin-left: 10px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col-links a { transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .back-to-top:hover { background: var(--plum); transform: translateY(-2px); }
+
+    @media (max-width: 720px) {
+      .article-hero { padding: 130px 0 40px; }
+      .article-hero h1 { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+      .article-body h2 { font-size: 1.5rem; }
+    }
+
+    /* ── DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose &middot; Poids & Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="/#reservation">Réserver mon appel offert</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+  </nav>
+
+  <main>
+    <div class="article-hero">
+      <a class="article-back" href="/blog/">&larr; Lectures</a>
+      <span class="article-tag">Hypnose & perte de poids</span>
+      <h1>L'anneau gastrique virtuel : perdre du poids sans passer par la chirurgie</h1>
+      <p class="lead">Et si votre cerveau pouvait croire — et ressentir — ce que votre corps n'a pas vécu ?</p>
+    </div>
+
+    <div class="article-divider"></div>
+
+    <article class="article-body">
+
+      <p>Quand son médecin lui a parlé d'anneau gastrique, Lucie a d'abord hoché la tête poliment. Puis elle est rentrée chez elle et elle a pleuré. L'idée d'une opération, d'une anesthésie générale, d'une cicatrice, d'un corps modifié de l'intérieur — tout ça la terrifiait. Mais après quinze ans de lutte contre son poids, elle ne savait plus quoi essayer d'autre.</p>
+
+      <p>C'est en cherchant des alternatives qu'elle est tombée sur une expression qu'elle ne connaissait pas : <em>anneau gastrique virtuel</em>. Elle a lu, relu, hésité. Puis elle a pris rendez-vous.</p>
+
+      <p>Six mois plus tard, elle avait perdu dix-huit kilos. Sans bloc opératoire. Sans cicatrice. Sans changer radicalement son alimentation. Simplement parce que son cerveau, lui, croyait que quelque chose avait changé.</p>
+
+      <hr />
+
+      <h2>Qu'est-ce que l'anneau gastrique virtuel ?</h2>
+
+      <p>L'anneau gastrique chirurgical est une opération bariatrique : un anneau en silicone est posé autour de la partie supérieure de l'estomac pour en réduire la contenance. Le patient se sent rassasié plus vite, mange moins, perd du poids.</p>
+
+      <p>L'anneau gastrique virtuel repose sur le même principe — mais sans aucun acte chirurgical. C'est une technique d'hypnothérapie avancée qui consiste à faire vivre au cerveau, en état hypnotique profond, l'expérience complète d'une telle opération : la préparation, l'intervention, la récupération, et surtout les nouvelles sensations qui en découlent.</p>
+
+      <p>Le résultat ? Le cerveau intègre ces sensations comme réelles. Et le corps suit.</p>
+
+      <p>Cela peut sembler difficile à croire. Pourtant, les neurosciences nous enseignent depuis des décennies que le cerveau ne fait pas toujours la différence entre une expérience vécue et une expérience intensément imaginée. C'est le même mécanisme qui fait transpirer un sportif quand il visualise sa course, ou qui fait saliver à la simple pensée d'un carré de chocolat. L'hypnose exploite cette plasticité cérébrale de façon ciblée et structurée.</p>
+
+      <hr />
+
+      <h2>Comment se déroule le protocole ?</h2>
+
+      <p>L'anneau gastrique virtuel n'est pas une séance d'hypnose ordinaire. C'est un protocole en plusieurs étapes, pensé pour reproduire fidèlement le parcours d'un patient bariatrique — sur le plan psychologique et sensoriel.</p>
+
+      <p>Tout commence par un bilan approfondi : votre relation à la nourriture, vos habitudes, vos déclencheurs émotionnels, vos antécédents. Sandrine doit comprendre votre histoire avant de vous guider dans cette expérience.</p>
+
+      <p>Vient ensuite la séance centrale, plus longue qu'une séance classique. En état hypnotique profond, vous traversez mentalement chaque étape de l'intervention : la préparation, l'anesthésie imaginaire, la pose symbolique de l'anneau, le réveil, les premières sensations de satiété rapide. Tout est suggéré avec précision, pour que votre cerveau construise une expérience aussi complète que possible.</p>
+
+      <p>Des séances de suivi viennent ensuite ancrer et renforcer ces nouvelles sensations : apprendre à manger lentement, reconnaître la satiété, gérer les situations à risque. Sandrine travaille aussi, en parallèle, sur les dimensions émotionnelles — parce qu'aucune technique ne suffit seule si la relation à la nourriture n'est pas également travaillée en profondeur.</p>
+
+      <hr />
+
+      <h2>Ce que dit la recherche</h2>
+
+      <p>L'anneau gastrique virtuel a fait l'objet de plusieurs études cliniques prometteuses. Une recherche menée au Royaume-Uni a suivi des patients sur douze mois après un protocole d'hypno-anneau. Les résultats ont montré une perte de poids moyenne significative, des changements durables dans les comportements alimentaires, et — fait notable — une amélioration de l'image corporelle et de l'estime de soi.</p>
+
+      <p>Ce dernier point est crucial. La chirurgie bariatrique, aussi efficace soit-elle sur le plan physique, ne traite pas toujours le rapport psychologique au corps et à la nourriture. Certains patients reprennent du poids quelques années après l'opération, parce que les habitudes émotionnelles et comportementales n'ont pas changé. L'anneau gastrique virtuel, lui, travaille précisément là : dans la relation intime entre l'esprit, les émotions et la façon de manger.</p>
+
+      <hr />
+
+      <h2>Pour qui est-ce fait ?</h2>
+
+      <p>L'anneau gastrique virtuel est particulièrement indiqué pour les personnes qui :</p>
+
+      <ul>
+        <li>ont un excès de poids important et envisagent la chirurgie bariatrique, mais souhaitent explorer une alternative moins invasive</li>
+        <li>ont déjà subi une opération bariatrique mais peinent à maintenir leurs résultats dans la durée</li>
+        <li>mangent de façon compulsive ou rapide, sans vraiment ressentir la satiété</li>
+        <li>ont l'impression de n'avoir aucun contrôle sur les quantités qu'elles consomment</li>
+      </ul>
+
+      <p>Il ne convient pas à toutes les situations. Certains profils médicaux nécessitent un suivi chirurgical réel, et cette technique ne remplace pas un avis médical. C'est pourquoi un bilan sérieux, en amont, est toujours indispensable.</p>
+
+      <hr />
+
+      <h2>Ce que Lucie a vraiment changé</h2>
+
+      <p>Lucie mange toujours ce qu'elle aime. Elle n'a pas banni le fromage ni renoncé aux dîners entre amis. Ce qui a changé, c'est qu'elle s'arrête. Naturellement, sans effort, comme si quelque chose à l'intérieur lui disait : <em>c'est suffisant</em>.</p>
+
+      <p>Elle décrit souvent cette sensation comme une main douce posée sur son épaule. Pas une contrainte. Une présence bienveillante qui lui rappelle qu'elle n'a plus besoin d'aller au-delà.</p>
+
+      <p>Ce n'est pas la chirurgie qui lui a donné ça. C'est la confiance retrouvée dans les signaux de son propre corps.</p>
+
+      <hr />
+
+      <h2>Et si votre corps savait déjà comment s'arrêter ?</h2>
+
+      <p>Nous naissons tous avec un système naturel de régulation de la faim. Ce sont des années d'habitudes, de stress, d'émotions non digérées qui l'ont brouillé. L'anneau gastrique virtuel ne crée rien d'artificiel — il aide à retrouver ce qui était là depuis le début.</p>
+
+      <p>Vous n'avez pas à choisir entre souffrir et opérer.</p>
+
+    </article>
+
+    <div class="article-cta">
+      <h3>Explorons ensemble si ce protocole est fait pour vous</h3>
+      <p>Un appel de 20 minutes, gratuit et sans engagement, pour parler de votre situation et choisir la bonne direction.</p>
+      <a class="btn-primary" href="/#reservation">Réserver mon appel offert</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Au-delà des kilos
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
