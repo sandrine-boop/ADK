@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Au-delà des kilos — Hypnothérapie en visio pour la perte de poids & les TCA</title>
+  <title>Au-delà des kilos — Hypnose pour perdre du poids & les TCA en visio</title>
   <meta name="description" content="Au-delà des kilos : hypnothérapie en visio dédiée aux femmes. Libérez-vous des compulsions, apaisez votre rapport à la nourriture et retrouvez votre poids de forme grâce au pouvoir de l'inconscient." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,12 +21,15 @@
       --mocha: #2C2420;
       --muted: rgba(44, 36, 32, 0.65);
       --border: rgba(44, 36, 32, 0.08);
-      --shadow-soft: 0 30px 80px -20px rgba(44, 36, 32, 0.18);
-      --shadow-card: 0 20px 50px -15px rgba(44, 36, 32, 0.12);
+      --shadow-soft: 0 20px 40px -15px rgba(44, 36, 32, 0.05), 0 40px 80px -30px rgba(44, 36, 32, 0.08);
+      --shadow-card: 0 16px 32px -12px rgba(44, 36, 32, 0.04), 0 24px 60px -20px rgba(44, 36, 32, 0.06);
+      --shadow-lift: 0 24px 48px -16px rgba(44, 36, 32, 0.06), 0 48px 100px -40px rgba(44, 36, 32, 0.1);
       --radius: 24px;
       --max: 1240px;
       --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-      --sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --spring-slow: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     * { box-sizing: border-box; }
@@ -120,7 +123,7 @@
       -webkit-backdrop-filter: blur(20px);
       background: rgba(250, 246, 241, 0.82);
       border-bottom: 1px solid var(--border);
-      transition: background 0.3s ease;
+      transition: background 0.3s var(--spring);
     }
 
     .topbar-inner {
@@ -161,7 +164,7 @@
     .nav-links a {
       color: var(--mocha);
       position: relative;
-      transition: color 0.2s;
+      transition: color 0.3s var(--spring);
     }
     .nav-links a:hover { color: var(--caramel); }
 
@@ -175,13 +178,17 @@
       font-weight: 500;
       font-size: 0.85rem;
       letter-spacing: 0.04em;
-      transition: all 0.25s ease;
+      transition: all 0.3s var(--spring);
       border: 1px solid var(--mocha);
     }
 
     .nav-cta:hover {
       background: transparent;
       color: var(--mocha);
+    }
+
+    .nav-cta:active {
+      transform: scale(0.97);
     }
 
     /* ============ HERO ============ */
@@ -352,7 +359,7 @@
       font-weight: 500;
       font-size: 0.92rem;
       letter-spacing: 0.04em;
-      transition: all 0.3s ease;
+      transition: all 0.3s var(--spring);
       cursor: pointer;
       border: 1px solid transparent;
     }
@@ -365,7 +372,11 @@
     .btn-primary:hover {
       background: var(--plum);
       transform: translateY(-2px);
-      box-shadow: 0 25px 55px -15px rgba(122, 74, 90, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(122, 74, 90, 0.2);
+    }
+    .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+      transition-duration: 0.1s;
     }
 
     .btn-secondary {
@@ -377,11 +388,15 @@
       border-color: var(--mocha);
       background: rgba(255, 255, 255, 0.5);
     }
+    .btn-secondary:active {
+      transform: scale(0.98);
+      transition-duration: 0.1s;
+    }
 
     .btn-arrow::after {
       content: "→";
       margin-left: 10px;
-      transition: transform 0.25s;
+      transition: transform 0.3s var(--spring);
     }
     .btn-arrow:hover::after { transform: translateX(4px); }
 
@@ -397,7 +412,11 @@
       background: var(--ivory);
       border-color: var(--ivory);
       transform: translateY(-3px);
-      box-shadow: 0 25px 60px -15px rgba(250, 246, 241, 0.35);
+      box-shadow: 0 20px 40px -15px rgba(250, 246, 241, 0.2);
+    }
+    .hero .btn-primary:active {
+      transform: translateY(0) scale(0.98);
+      transition-duration: 0.1s;
     }
 
     .hero .btn-secondary {
@@ -437,8 +456,10 @@
       background: rgba(250, 246, 241, 0.05);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      transition: transform 0.35s ease;
+      transition: transform 0.4s var(--spring);
       isolation: isolate;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
     /* Base border (toujours visible, subtile) */
@@ -485,7 +506,7 @@
       pointer-events: none;
       z-index: 3;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s var(--spring);
     }
 
     /* Halo interne subtil (tâche lumineuse à l'intérieur de la carte) */
@@ -500,7 +521,7 @@
       );
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s var(--spring);
       z-index: 1;
     }
 
@@ -681,7 +702,7 @@
 
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.15fr 0.85fr 1fr;
       gap: 30px;
       margin-top: 20px;
     }
@@ -700,8 +721,9 @@
     .feature-card {
       background: rgba(250, 246, 241, 0.06);
       border-radius: var(--radius);
-      border: 1px solid rgba(250, 246, 241, 0.1);
-      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      transition: all 0.4s var(--spring);
       position: relative;
       overflow: hidden;
       display: flex;
@@ -710,7 +732,7 @@
 
     .feature-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.4);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.3);
       background: rgba(250, 246, 241, 0.1);
     }
 
@@ -725,7 +747,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.7s ease;
+      transition: transform 0.7s var(--spring-slow);
     }
 
     .feature-card:hover .feature-img img {
@@ -777,7 +799,7 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.2fr 0.8fr 1fr;
       gap: 28px;
     }
 
@@ -787,19 +809,19 @@
       overflow: hidden;
       aspect-ratio: 3/4;
       box-shadow: var(--shadow-card);
-      transition: all 0.4s ease;
+      transition: all 0.4s var(--spring);
     }
 
     .gallery-item:hover {
       transform: translateY(-8px);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--shadow-lift);
     }
 
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.6s var(--spring-slow);
     }
 
     .gallery-item:hover img {
@@ -850,11 +872,11 @@
       display: flex;
       gap: 24px;
       align-items: flex-start;
-      transition: all 0.3s;
+      transition: all 0.4s var(--spring);
     }
 
     .pq-card:hover {
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--shadow-lift);
       transform: translateY(-4px);
     }
 
@@ -902,7 +924,7 @@
 
     .offers-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 0.95fr 1.1fr 0.95fr;
       gap: 26px;
       align-items: stretch;
     }
@@ -915,7 +937,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: all 0.4s ease;
+      transition: all 0.4s var(--spring);
       overflow: hidden;
     }
 
@@ -928,12 +950,12 @@
       height: 4px;
       background: linear-gradient(90deg, var(--champagne), var(--caramel));
       opacity: 0;
-      transition: opacity 0.3s;
+      transition: opacity 0.3s var(--spring);
     }
 
     .offer:hover {
       transform: translateY(-10px);
-      box-shadow: var(--shadow-soft);
+      box-shadow: var(--shadow-lift);
     }
     .offer:hover::before { opacity: 1; }
 
@@ -942,7 +964,7 @@
       color: var(--ivory);
       border-color: var(--mocha);
       transform: scale(1.03);
-      box-shadow: 0 40px 90px -25px rgba(44, 36, 32, 0.35);
+      box-shadow: 0 24px 48px -16px rgba(44, 36, 32, 0.12), 0 48px 100px -40px rgba(44, 36, 32, 0.18);
     }
 
     .offer.featured::before {
@@ -1152,7 +1174,7 @@
 
     .testi-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.1fr 0.9fr 1fr;
       gap: 28px;
     }
 
@@ -1161,9 +1183,15 @@
       border-radius: var(--radius);
       padding: 40px 36px;
       border: 1px solid var(--border);
+      box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.7);
       position: relative;
       display: flex;
       flex-direction: column;
+      transition: all 0.4s var(--spring);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift), inset 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
     .testi-card::before {
@@ -1244,7 +1272,7 @@
       font-size: 1.35rem;
       font-weight: 500;
       color: var(--mocha);
-      transition: color 0.2s;
+      transition: color 0.3s var(--spring);
     }
     summary::-webkit-details-marker { display: none; }
     summary:hover { color: var(--caramel); }
@@ -1254,7 +1282,7 @@
       font-size: 1.8rem;
       font-weight: 300;
       color: var(--caramel);
-      transition: transform 0.3s;
+      transition: transform 0.3s var(--spring);
       margin-left: 16px;
     }
 
@@ -1428,15 +1456,61 @@
       .philo-quote { font-size: 1.2rem; padding: 20px 22px; }
     }
 
-    /* ============ SCROLL REVEAL ============ */
+    /* ============ SCROLL REVEAL (staggered) ============ */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
+      transition: opacity 0.8s var(--spring-slow), transform 0.8s var(--spring-slow);
+      transition-delay: calc(var(--stagger, 0) * 100ms);
     }
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ============ MARQUEE ============ */
+    .marquee-band {
+      overflow: hidden;
+      background: var(--mocha);
+      padding: 18px 0;
+      position: relative;
+    }
+    .marquee-band.light {
+      background: var(--cream);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 0 40px;
+      white-space: nowrap;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250, 246, 241, 0.6);
+      letter-spacing: 0.02em;
+    }
+    .marquee-band.light .marquee-item {
+      color: var(--muted);
+    }
+    .marquee-item::before {
+      content: "✦";
+      font-style: normal;
+      color: var(--champagne);
+      font-size: 0.7rem;
+      opacity: 0.7;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
   </style>
 </head>
@@ -1464,13 +1538,13 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1500336624523-d727130c3328?auto=format&fit=crop&w=2400&q=90" alt="Femme sereine dans un intérieur chaleureux et élégant" />
+        <img src="AP ADK/hero.jpg" alt="Femme souriante et détendue au bord de la mer au coucher de soleil" />
       </div>
       <div class="hero-glow"></div>
       <div class="hero-glow bottom"></div>
 
       <div class="hero-inner">
-        <span class="eyebrow">Hypnothérapie pour perdre du poids</span>
+        <span class="eyebrow">Hypnose pour perdre du poids</span>
         <h1>
           <span class="static">Aller au-delà</span>
           <span class="rotator" aria-live="polite">
@@ -1483,7 +1557,7 @@
         </h1>
         <span class="hero-divider"></span>
         <p class="hero-lead">
-          Une méthode douce et puissante pour libérer votre inconscient de ses automatismes alimentaires, retrouver votre poids de forme et apaiser durablement votre rapport à la nourriture. Sans régime, sans privation, sans lutte.
+          L'hypnose pour perdre du poids est une méthode douce et puissante pour libérer votre inconscient de ses automatismes alimentaires, retrouver votre poids de forme et apaiser durablement votre rapport à la nourriture. Sans régime, sans privation, sans lutte.
         </p>
         <div class="hero-actions">
           <a class="btn-primary btn-arrow" href="#reservation">Réserver ma consultation</a>
@@ -1514,6 +1588,28 @@
       <div class="hero-scroll">Découvrir</div>
     </section>
 
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee-band">
+      <div class="marquee-track">
+        <span class="marquee-item">Sans régime</span>
+        <span class="marquee-item">Sans privation</span>
+        <span class="marquee-item">Sans lutte</span>
+        <span class="marquee-item">100% en visio</span>
+        <span class="marquee-item">Hypnothérapie douce</span>
+        <span class="marquee-item">Perte de poids durable</span>
+        <span class="marquee-item">Libérer l'inconscient</span>
+        <span class="marquee-item">Apaiser les compulsions</span>
+        <span class="marquee-item">Sans régime</span>
+        <span class="marquee-item">Sans privation</span>
+        <span class="marquee-item">Sans lutte</span>
+        <span class="marquee-item">100% en visio</span>
+        <span class="marquee-item">Hypnothérapie douce</span>
+        <span class="marquee-item">Perte de poids durable</span>
+        <span class="marquee-item">Libérer l'inconscient</span>
+        <span class="marquee-item">Apaiser les compulsions</span>
+      </div>
+    </div>
+
     <!-- ============ MANIFESTE ============ -->
     <section class="philosophie" id="philosophie">
       <div class="container philo-solo">
@@ -1542,7 +1638,7 @@
         <div class="features-grid">
           <div class="feature-card reveal">
             <div class="feature-img">
-              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85" alt="Femme dégustant une assiette équilibrée" />
+              <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=85" alt="Assiette saine et équilibrée" />
             </div>
             <div class="feature-body">
               <div class="feature-heading">
@@ -1554,7 +1650,7 @@
           </div>
           <div class="feature-card reveal">
             <div class="feature-img">
-              <img src="https://images.unsplash.com/photo-1464195244916-405fa0a82545?auto=format&fit=crop&w=900&q=85" alt="Assortiment de gâteaux et pâtisseries" />
+              <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=900&q=85" alt="Macarons et douceurs sucrées" />
             </div>
             <div class="feature-body">
               <div class="feature-heading">
@@ -1566,7 +1662,7 @@
           </div>
           <div class="feature-card reveal">
             <div class="feature-img">
-              <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=900&q=85" alt="Femme zen en posture de méditation" />
+              <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=85" alt="Femme en méditation, sérénité" />
             </div>
             <div class="feature-body">
               <div class="feature-heading">
@@ -1591,7 +1687,7 @@
 
         <div class="gallery-grid">
           <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=85" alt="Silhouette féminine élégante" />
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=85" alt="Femme faisant du yoga, retrouver son corps" />
             <div class="gallery-overlay">
               <div class="gallery-caption">
                 <strong>Retrouver son corps</strong>
@@ -1600,7 +1696,7 @@
             </div>
           </div>
           <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=85" alt="Femme rayonnante chez elle" />
+            <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=800&q=85" alt="Femme bras ouverts en pleine nature, liberté" />
             <div class="gallery-overlay">
               <div class="gallery-caption">
                 <strong>Retrouver sa liberté</strong>
@@ -1609,7 +1705,7 @@
             </div>
           </div>
           <div class="gallery-item reveal">
-            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=85" alt="Femme souriante dans son salon" />
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=85" alt="Femme souriante et apaisée" />
             <div class="gallery-overlay">
               <div class="gallery-caption">
                 <strong>Retrouver sa vie</strong>
@@ -1620,6 +1716,28 @@
         </div>
       </div>
     </section>
+
+    <!-- ============ MARQUEE LIGHT ============ -->
+    <div class="marquee-band light">
+      <div class="marquee-track" style="animation-direction: reverse;">
+        <span class="marquee-item">Retrouver son corps</span>
+        <span class="marquee-item">Retrouver sa liberté</span>
+        <span class="marquee-item">Retrouver sa vie</span>
+        <span class="marquee-item">Confiance</span>
+        <span class="marquee-item">Légèreté</span>
+        <span class="marquee-item">Sérénité</span>
+        <span class="marquee-item">Estime de soi</span>
+        <span class="marquee-item">Apaisement</span>
+        <span class="marquee-item">Retrouver son corps</span>
+        <span class="marquee-item">Retrouver sa liberté</span>
+        <span class="marquee-item">Retrouver sa vie</span>
+        <span class="marquee-item">Confiance</span>
+        <span class="marquee-item">Légèreté</span>
+        <span class="marquee-item">Sérénité</span>
+        <span class="marquee-item">Estime de soi</span>
+        <span class="marquee-item">Apaisement</span>
+      </div>
+    </div>
 
     <!-- ============ POUR QUI ============ -->
     <section class="pour-qui">
@@ -1916,7 +2034,14 @@
   </footer>
 
   <script>
-    // Scroll reveal
+    // Scroll reveal with stagger indexes
+    // Assign stagger index to sibling .reveal elements inside grid containers
+    document.querySelectorAll('.features-grid, .gallery-grid, .pq-grid, .offers-grid, .process-grid, .testi-grid, .hero-stats').forEach(grid => {
+      [...grid.querySelectorAll(':scope > .reveal, :scope > article.reveal, :scope > div.reveal')].forEach((el, i) => {
+        el.style.setProperty('--stagger', i);
+      });
+    });
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
