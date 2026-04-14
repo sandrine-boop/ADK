@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libération — Au-delà des kilos</title>
+  <meta name="description" content="Programme Libération : 3 séances d'hypnose pour se libérer des compulsions alimentaires, de l'addiction au sucre et des grignotages émotionnels. 100% en visio." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #FAF6F1;
+      --cream: #F2EBE0;
+      --sand: #E8DDCB;
+      --champagne: #D4B896;
+      --caramel: #B8906F;
+      --plum: #7A4A5A;
+      --mocha: #2C2420;
+      --muted: rgba(44, 36, 32, 0.62);
+      --border: rgba(44, 36, 32, 0.08);
+      --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.92);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.12);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--mocha);
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a { color: var(--mocha); transition: color 0.3s var(--spring); }
+    .nav-links a:hover { color: var(--caramel); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 26px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .nav-cta:hover { background: transparent; color: var(--mocha); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px; height: 28px;
+      cursor: pointer;
+      background: none; border: none; padding: 0;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 2px;
+      background: var(--mocha); border-radius: 2px;
+      transition: all 0.3s var(--spring); transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 150;
+      background: rgba(250, 246, 241, 0.97);
+      backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--spring);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--mocha);
+      transition: color 0.3s var(--spring);
+    }
+    .mobile-menu a:hover { color: var(--caramel); }
+    .mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--plum); border-color: var(--plum); }
+
+    @media (max-width: 720px) {
+      .nav-cta, .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ── HERO (split layout) ── */
+    .hero {
+      padding: 120px 40px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .hero-content {}
+    .hero-label {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin: 0 0 22px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--caramel);
+      font-weight: 300;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin: 0 0 36px;
+      line-height: 1.65;
+    }
+    .hero-image {
+      position: relative;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 540px;
+      object-fit: cover;
+      border-radius: 24px;
+      display: block;
+      box-shadow: 0 30px 80px -20px rgba(44, 36, 32, 0.25);
+    }
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      inset: -8px -8px 8px 8px;
+      border: 1.5px solid var(--caramel);
+      border-radius: 28px;
+      opacity: 0.35;
+      z-index: -1;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 120px 24px 60px;
+        text-align: center;
+      }
+      .hero-image { display: none; }
+    }
+
+    /* ── BOUTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 34px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+      border-color: var(--plum);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(122, 74, 90, 0.4);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 34px;
+      background: transparent;
+      color: var(--mocha);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid rgba(44, 36, 32, 0.25);
+    }
+    .btn-ghost:hover {
+      border-color: var(--mocha);
+      background: rgba(44, 36, 32, 0.04);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 800px; margin: 0 auto; }
+    .section-inner.wide { max-width: 1000px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: 18px;
+    }
+
+    /* ── C'EST VOUS SI ── */
+    .recognition { background: var(--cream); }
+    .recognition h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 40px;
+    }
+    .recognition h2 em { font-style: italic; color: var(--caramel); }
+
+    .recognition-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .recognition-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 28px;
+      background: var(--ivory);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--caramel);
+      box-shadow: 0 6px 24px -8px rgba(44, 36, 32, 0.1);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--mocha);
+    }
+    .recognition-list li .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--caramel);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      color: var(--ivory);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    /* ── CE QUI SE PASSE ── */
+    .explanation h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 28px;
+    }
+    .explanation h2 em { font-style: italic; color: var(--caramel); }
+    .explanation p {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+    .explanation p:last-child { margin-bottom: 0; }
+    .explanation strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── CE QU'ON FAIT ── */
+    .method {
+      background: var(--mocha);
+      color: var(--ivory);
+    }
+    .method .eyebrow { color: var(--champagne); }
+    .method h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 28px;
+      color: var(--ivory);
+    }
+    .method h2 em { font-style: italic; color: var(--champagne); }
+    .method p {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: rgba(250, 246, 241, 0.72);
+      margin: 0 0 20px;
+    }
+    .method p:last-child { margin-bottom: 0; }
+    .method .highlight {
+      margin-top: 36px;
+      padding: 28px 32px;
+      border: 1px solid rgba(212, 184, 150, 0.25);
+      border-left: 3px solid var(--champagne);
+      border-radius: 0 12px 12px 0;
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--champagne);
+      font-style: italic;
+    }
+
+    /* ── SÉANCES ── */
+    .sessions h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 48px;
+      text-align: center;
+    }
+    .sessions h2 em { font-style: italic; color: var(--caramel); }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .session-card {
+      padding: 28px 28px 32px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--caramel);
+      border-radius: 0 0 20px 20px;
+      background: var(--cream);
+      box-shadow: 0 8px 32px -12px rgba(44, 36, 32, 0.13);
+      transition: transform 0.3s var(--spring), box-shadow 0.3s var(--spring);
+    }
+    .session-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -16px rgba(44, 36, 32, 0.18);
+    }
+    .session-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .session-number {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--caramel);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .session-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin: 0;
+      color: var(--mocha);
+      line-height: 1.25;
+    }
+    .session-card p {
+      font-size: 0.93rem;
+      line-height: 1.68;
+      color: var(--muted);
+      margin: 0;
+    }
+    .sessions-note {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 0.93rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @media (max-width: 720px) {
+      .sessions-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* ── POUR VOUS SI ── */
+    .for-you { background: var(--cream); }
+    .for-you h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 36px;
+    }
+    .for-you h2 em { font-style: italic; color: var(--caramel); }
+
+    .for-you-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .for-you-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .for-you-list li .check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--caramel);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      color: var(--ivory);
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    /* ── DÉTAILS & PRIX ── */
+    .details { padding: 80px 24px; }
+    .details-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .details h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 48px;
+    }
+    .details h2 em { font-style: italic; color: var(--caramel); }
+
+    .details-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--caramel);
+      border-radius: 0 0 24px 24px;
+      box-shadow: 0 16px 60px -20px rgba(44, 36, 32, 0.14);
+      overflow: hidden;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+    .details-list {
+      list-style: none;
+      margin: 0; padding: 36px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .details-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.97rem;
+      line-height: 1.55;
+    }
+    .details-list li .check {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background: var(--caramel);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3px;
+      color: var(--ivory);
+      font-size: 0.6rem;
+      font-weight: 700;
+    }
+
+    /* Bloc prix */
+    .price-card {
+      background: var(--mocha);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .price-left {}
+    .price-amount {
+      font-family: var(--serif);
+      font-size: 3.4rem;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--ivory);
+    }
+    .price-note {
+      font-size: 0.83rem;
+      color: rgba(250, 246, 241, 0.55);
+      margin-top: 6px;
+    }
+    .price-badge {
+      display: inline-block;
+      background: rgba(212, 184, 150, 0.15);
+      border: 1px solid rgba(212, 184, 150, 0.3);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--champagne);
+      letter-spacing: 0.04em;
+    }
+
+    @media (max-width: 600px) {
+      .details-list { padding: 28px 24px; }
+      .price-card { padding: 24px; }
+      .price-amount { font-size: 2.6rem; }
+    }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .cta-stack .btn-primary,
+    .cta-stack .btn-ghost {
+      width: 100%;
+      max-width: 480px;
+      justify-content: center;
+    }
+    .cta-reassurance {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 50px 0 40px;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .footer-inner .brand { color: var(--ivory); }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-links { display: flex; gap: 30px; }
+    .footer-links a:hover { color: var(--champagne); }
+
+    @media (max-width: 720px) {
+      section { padding: 60px 24px; }
+    }
+
+    /* ── DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Poids & Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="/#reservation">Prendre rendez-vous</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Prendre rendez-vous</a>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-content">
+        <span class="hero-label">Programme Libération</span>
+        <h1><em>Et si vous pouviez rentrer chez vous sans penser au placard ?</em></h1>
+        <p class="hero-sub">Pas par volonté. Pas par discipline. Parce que l'envie n'est tout simplement plus là.</p>
+        <a class="btn-primary" href="#reserver">Réserver mon appel découverte gratuit →</a>
+      </div>
+      <div class="hero-image">
+        <img src="../AP%20ADK/apaiser-les-compulsions.jpg" alt="Apaiser les compulsions alimentaires" />
+      </div>
+    </div>
+
+    <!-- C'EST VOUS SI -->
+    <section class="recognition">
+      <div class="section-inner">
+        <span class="eyebrow">C'est vous si…</span>
+        <h2>Vous vous reconnaissez dans<br><em>l'une de ces situations</em></h2>
+        <ul class="recognition-list">
+          <li>
+            <span class="check">✓</span>
+            Une journée difficile, et c'est la tablette de chocolat qui absorbe le stress avant même que vous ayez eu le temps de vous en rendre compte.
+          </li>
+          <li>
+            <span class="check">✓</span>
+            Le sucre, le chocolat, les biscuits — vous savez que vous ne devriez pas, vous le faites quand même. Ce n'est pas une question de goût. C'est une attraction qui ressemble à une dépendance. La première bouchée est délicieuse, mais vous cherchez à la retrouver sur toutes les autres, et vous ne la retrouvez jamais. Alors vous continuez, jusqu'au bout du paquet. Et parfois ça vous fait honte.
+          </li>
+          <li>
+            <span class="check">✓</span>
+            En rentrant du travail, quelque chose vous attire vers le placard. Pas la faim : autre chose. Une habitude, un réflexe, un besoin que vous n'arrivez pas à nommer.
+          </li>
+          <li>
+            <span class="check">✓</span>
+            Ce n'est jamais quand vous êtes occupée que ça arrive. C'est quand vous vous posez. Quand le silence laisse de la place à quelque chose d'inconfortable.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CE QUI SE PASSE VRAIMENT -->
+    <section class="explanation">
+      <div class="section-inner">
+        <span class="eyebrow">Ce qui se passe vraiment</span>
+        <h2><em>Ce n'est pas un manque de volonté.</em><br>C'est un automatisme.</h2>
+        <p>Ces comportements ne surgissent pas par hasard. Ils sont nés du stress, de la charge mentale, de l'anxiété ou de l'ennui. Votre inconscient a appris qu'une certaine nourriture apaisait une certaine émotion, et il a enregistré ce réflexe comme une solution fiable.</p>
+        <p>Le problème, c'est que la volonté consciente ne peut pas lutter contre un automatisme inconscient. C'est pour ça que vous recommencez, même quand vous ne le voulez pas. <strong>Même quand vous savez.</strong></p>
+        <p>C'est précisément là qu'intervient l'accompagnement Libération.</p>
+      </div>
+    </section>
+
+    <!-- CE QU'ON FAIT ENSEMBLE -->
+    <section class="method">
+      <div class="section-inner">
+        <span class="eyebrow">Ce qu'on fait ensemble</span>
+        <h2><em>On ne supprime pas.<br>On libère.</em></h2>
+        <p>Ensemble, nous allons identifier les déclencheurs émotionnels précis qui activent vos compulsions : stress, anxiété, charge mentale, ennui. Puis, grâce à un travail de transformation en profondeur, nous allons reprogrammer ces automatismes à la source, là où ils vivent : dans votre inconscient.</p>
+        <p>Chaque séance est entièrement personnalisée selon ce qui émerge en vous, votre histoire, votre rythme. Il n'y a pas de protocole figé, parce que vous n'êtes pas un cas standard.</p>
+        <p>Le changement qui s'installe est naturel et durable.</p>
+        <div class="highlight">
+          "Dès la première semaine, elle ne pensait plus du tout au placard en rentrant chez elle — et elle ne s'en était même pas aperçue, parce que ne plus chercher à manger sans faim était simplement devenu son nouvel état naturel."
+        </div>
+      </div>
+    </section>
+
+    <!-- SÉANCES -->
+    <section class="sessions">
+      <div class="section-inner wide">
+        <span class="eyebrow" style="display:block;text-align:center;">Votre accompagnement</span>
+        <h2>Séance par <em>séance</em></h2>
+        <div class="sessions-grid">
+          <div class="session-card">
+            <div class="session-header">
+              <span class="session-number">1</span>
+              <h3>Exploration et transformation</h3>
+            </div>
+            <p>Nous prenons le temps de comprendre ensemble votre histoire, vos déclencheurs, ce qui se joue vraiment derrière vos compulsions. Dès cette première séance, un travail de transformation en profondeur commence. Vous ne repartez pas les mains vides.</p>
+          </div>
+          <div class="session-card">
+            <div class="session-header">
+              <span class="session-number">2</span>
+              <h3>Reprogrammation</h3>
+            </div>
+            <p>Nous ciblons les automatismes identifiés et installons de nouveaux réflexes, plus apaisés, plus justes. Vous repartez avec votre audio de renforcement personnalisé à écouter entre les séances.</p>
+          </div>
+          <div class="session-card">
+            <div class="session-header">
+              <span class="session-number">3</span>
+              <h3>Ancrage et consolidation</h3>
+            </div>
+            <p>Nous ancrons durablement les changements amorcés. Le nouveau rapport à la nourriture devient un réflexe naturel, pas un effort quotidien.</p>
+          </div>
+        </div>
+        <p class="sessions-note">Entre chaque séance, vous n'êtes pas seule — je reste disponible par message.</p>
+      </div>
+    </section>
+
+    <!-- POUR VOUS SI -->
+    <section class="for-you">
+      <div class="section-inner">
+        <span class="eyebrow">Ce programme est fait pour vous si…</span>
+        <h2>Vous êtes prête à <em>comprendre</em><br>ce qui se passe vraiment</h2>
+        <ul class="for-you-list">
+          <li><span class="check">✓</span> Vous ressentez que la nourriture répond à autre chose qu'à la faim</li>
+          <li><span class="check">✓</span> Vous êtes fatiguée de vous battre contre vous-même à chaque craquage</li>
+          <li><span class="check">✓</span> Vous voulez comprendre ce qui se passe vraiment en vous, pas juste "manger moins"</li>
+          <li><span class="check">✓</span> Vous cherchez un accompagnement humain, personnalisé, sans jugement</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DÉTAILS & CTA -->
+    <section class="details" id="reserver">
+      <div class="details-inner">
+        <h2>Votre programme <em>Libération</em></h2>
+        <div class="details-card">
+          <ul class="details-list">
+            <li><span class="check">✓</span> 3 séances de transformation personnalisées (1h)</li>
+            <li><span class="check">✓</span> 100% en visio, depuis chez vous</li>
+            <li><span class="check">✓</span> 1 audio de renforcement personnalisé</li>
+            <li><span class="check">✓</span> Travail spécifique sur l'addiction au sucre et au chocolat</li>
+            <li><span class="check">✓</span> Support par message entre les séances</li>
+          </ul>
+          <div class="price-card">
+            <div class="price-left">
+              <div class="price-amount">347€</div>
+              <div class="price-note">Paiement en 2 ou 3 fois disponible</div>
+            </div>
+            <span class="price-badge">Programme Libération</span>
+          </div>
+        </div>
+        <div class="cta-stack">
+          <a class="btn-primary" href="/#reservation">Réserver mon appel découverte gratuit →</a>
+          <a class="btn-ghost" href="/#reservation">Vous savez déjà ? Réserver et payer directement →</a>
+        </div>
+        <p class="cta-reassurance">L'appel découverte est gratuit, sans engagement et dure environ 20 minutes.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="brand">
+        Au-delà des kilos
+        <span>Hypnose · Perte de poids & TCA</span>
+      </div>
+      <nav class="footer-links">
+        <a href="/">Accueil</a>
+        <a href="/accompagnements/">Accompagnements</a>
+        <a href="/blog/">Lectures</a>
+        <a href="/#reservation">Contact</a>
+      </nav>
+      <div>© 2026 Au-delà des kilos</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>

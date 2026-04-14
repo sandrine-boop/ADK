@@ -305,6 +305,45 @@
       .journal-hero { padding: 130px 0 50px; }
       .nav-links { display: none; }
     }
+
+    /* ── DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
   </style>
 </head>
 <body>
@@ -316,6 +355,14 @@
         <span>Hypnose · Poids & Compulsions</span>
       </a>
       <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
         <a href="/blog/">Lectures</a>
       </nav>
       <a class="nav-cta" href="/#reservation">Prendre rendez-vous</a>
@@ -327,6 +374,9 @@
 
   <nav class="mobile-menu" id="mobileMenu">
     <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
     <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
     <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Prendre rendez-vous</a>
   </nav>

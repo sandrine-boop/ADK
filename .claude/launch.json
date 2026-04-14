@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Au-delà des kilos",
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": ["-run", "-e", "httpd", "/tmp/au-dela-des-kilos", "-p", "8080"],
+      "port": 8080
+    }
+  ]
+}

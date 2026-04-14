@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Au-delà des kilos — Hypnose pour perdre du poids & les TCA en visio</title>
-  <meta name="description" content="Au-delà des kilos : hypnose en visio dédiée aux femmes. Libérez-vous des compulsions, apaisez votre rapport à la nourriture et retrouvez votre poids de forme grâce au pouvoir de l'inconscient." />
+  <meta name="description" content="Au-delà des kilos : hypnose epour la perte de poids et la gestion des compulsions alimentaires. Libérez-vous des compulsions, apaisez votre rapport à la nourriture et retrouvez votre poids de forme grâce au pouvoir de l'inconscient." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -276,10 +276,50 @@
     }
 
     @media (max-width: 720px) {
-      .nav-cta { display: none; }
+      .nav-cta, .nav-links { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
     }
+
+    /* ── DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+    .topbar.on-hero .nav-dropdown-menu { background: var(--ivory); }
 
     /* Hamburger color on hero */
     .topbar.on-hero .hamburger span { background: var(--ivory); }
@@ -1259,9 +1299,9 @@
       content: "";
       position: absolute;
       left: 0;
-      top: 18px;
-      width: 14px;
-      height: 1px;
+      top: 16px;
+      width: 6px;
+      height: 6px;
       background: var(--caramel);
     }
 
@@ -1606,6 +1646,20 @@
     }
 
     @media (max-width: 720px) {
+      /* Nav toujours opaque sur mobile pour masquer le contenu qui défile */
+      .topbar, .topbar.on-hero {
+        background: rgba(250, 246, 241, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-bottom-color: var(--border) !important;
+      }
+      .topbar.on-hero .brand { color: var(--mocha) !important; }
+      .topbar.on-hero .brand span { color: var(--caramel) !important; }
+      .topbar.on-hero .hamburger span { background: var(--mocha) !important; }
+
+      /* Image hero : cadrage pour montrer la femme */
+      .hero-bg img { object-position: 75% 40%; }
+
       section { padding: 80px 0; }
       .hero {
         padding: 140px 0 100px;
@@ -1621,8 +1675,18 @@
       .process-grid {
         grid-template-columns: 1fr;
       }
-      .hero-stats { gap: 32px; padding-top: 32px; margin-top: 50px; }
-      .hero-stat strong { font-size: 2.2rem; }
+      .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding-top: 24px;
+        margin-top: 40px;
+      }
+      .hero-stats .hero-stat:last-child {
+        grid-column: 1 / -1;
+      }
+      .hero-stat { padding: 18px 16px; }
+      .hero-stat strong { font-size: 2rem; }
+      .hero-stat p { font-size: 0.8rem; line-height: 1.45; }
       .hero .btn-primary,
       .hero .btn-secondary { min-height: 56px; width: 100%; }
       .hero-scroll { display: none; }
@@ -1769,6 +1833,14 @@
         <span>Hypnose · Poids & Compulsions</span>
       </div>
       <nav class="nav-links">
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
         <a href="/blog/">Lectures</a>
       </nav>
       <a class="nav-cta" href="#reservation">Prendre rendez-vous</a>
@@ -1779,6 +1851,10 @@
   </header>
 
   <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
     <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
     <a href="#reservation" onclick="closeMobileMenu()" class="mobile-cta">Prendre rendez-vous</a>
   </nav>
@@ -1788,7 +1864,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
       <div class="hero-bg">
-        <img src="AP ADK/hero.jpg" alt="Femme souriante et détendue au bord de la mer au coucher de soleil" />
+        <img src="AP ADK/se_liberer_du_poids.jpg" alt="Femme qui regarde au-delà" />
       </div>
       <div class="hero-glow"></div>
       <div class="hero-glow bottom"></div>
@@ -1866,7 +1942,7 @@
         <div class="philo-content reveal">
           <span class="eyebrow centered">Manifeste</span>
           <h2>Et si le problème n'était pas&nbsp;<em>vous</em>&nbsp;?</h2>
-          <p>Les régimes échouent parce qu'ils parlent à la mauvaise partie de vous. Votre volonté se bat, s'épuise, puis abandonne — et ce n'est pas une question de discipline. C'est une question de logiciel intérieur.</p>
+          <p>Les régimes échouent parce qu'ils parlent à la mauvaise partie de vous. Votre volonté se bat, s'épuise, puis abandonne... Et ce n'est pas une question de discipline. C'est une question de logiciel intérieur.</p>
           <p>L'hypnose ne s'adresse pas au mental qui calcule, compte et culpabilise. Elle s'adresse à votre inconscient, là où se nichent les véritables automatismes : les envies incontrôlables, les compulsions du soir, le réflexe de se remplir pour apaiser une émotion.</p>
           <div class="philo-quote">
             « Tant que l'inconscient n'est pas réaligné, aucune volonté consciente ne peut tenir dans la durée. C'est précisément là que l'hypnose agit. »
@@ -1932,7 +2008,7 @@
         <div class="section-head reveal">
           <span class="eyebrow centered">Des femmes, des vies, des transformations</span>
           <h2>Retrouver la femme<br>que vous <em>êtes</em>.</h2>
-          <p>L'hypnose ne transforme pas que votre silhouette. Elle vous rend la légèreté, l'estime, la liberté d'être pleinement vous — dans votre corps, dans votre vie, dans votre quotidien.</p>
+          <p>L'hypnose ne transforme pas que votre silhouette. Elle vous rend la légèreté, l'estime, la liberté d'être pleinement vous : dans votre corps, dans votre vie, dans votre quotidien.</p>
         </div>
 
         <div class="gallery-grid">
@@ -2064,7 +2140,7 @@
         <div class="section-head reveal">
           <span class="eyebrow centered">Accompagnements</span>
           <h2>Trois accompagnements<br>pensés pour <em>vous</em>.</h2>
-          <p>Chaque accompagnement est entièrement personnalisé. Pas de protocole figé — chaque séance s'adapte à votre histoire, votre rythme et ce qui émerge en vous. Vous savez exactement ce que vous réservez, pourquoi, et comment nous allons travailler ensemble, en visio, depuis chez vous.</p>
+          <p>Chaque accompagnement est entièrement personnalisé. Pas de protocole figé. Chaque séance s'adapte à votre histoire, votre rythme et ce qui émerge en vous. Vous savez exactement ce que vous réservez, pourquoi, et comment nous allons travailler ensemble, en visio, depuis chez vous.</p>
         </div>
 
         <div class="offers-grid">
@@ -2072,8 +2148,9 @@
           <!-- Offre 1 : Libération -->
           <article class="offer reveal">
             <div class="offer-kicker">Compulsions & grignotages</div>
-            <h3>Libération</h3>
-            <div class="offer-price">397€</div>
+            <h3>Libération<em>Addiction au sucre · Compulsions · Grignotages</em></h3>
+            <p class="offer-tagline">Pour celles qui veulent briser l'emprise du sucre et des crises alimentaires, et retrouver un rapport apaisé à la nourriture.</p>
+            <div class="offer-price">347€</div>
             <div class="offer-divider"></div>
             <ul class="offer-list">
               <li>3 séances de transformation personnalisées (1h)</li>
@@ -2081,43 +2158,45 @@
               <li>Reprogrammation de vos réflexes alimentaires inconscients</li>
               <li>1 audio de renforcement personnalisé à écouter entre les séances</li>
               <li>Support par message entre chaque rendez-vous</li>
-              <li>Paiement en 2 fois disponible</li>
+              <li>Paiement en 2 ou 3 fois disponible</li>
             </ul>
-            <a class="btn-primary btn-arrow" href="#reservation">Je réserve</a>
+            <a class="btn-primary btn-arrow" href="/accompagnements/liberation.html">Découvrir</a>
           </article>
 
           <!-- Offre 2 : Silhouette Révélée -->
           <article class="offer featured reveal">
             <div class="featured-badge">Le plus choisi</div>
             <div class="offer-kicker">Perte de poids</div>
-            <h3>Silhouette Révélée</h3>
+            <h3>Silhouette Révélée<em>Perte de poids jusqu'à 10 kilos</em></h3>
+            <p class="offer-tagline">Pour retrouver votre poids de forme en douceur, sans régime ni privation, en réalignant votre inconscient sur votre vraie nature.</p>
             <div class="offer-price">447€</div>
             <div class="offer-divider"></div>
             <ul class="offer-list">
-              <li>3 séances de transformation personnalisées (1h)</li>
+              <li>4 séances de transformation personnalisées (1h)</li>
               <li>Réalignement de votre inconscient sur votre poids de forme naturel</li>
               <li>Libération de la charge mentale autour des repas</li>
               <li>1 audio de renforcement personnalisé</li>
               <li>Support par message entre chaque rendez-vous</li>
-              <li>Paiement en 2 fois disponible</li>
+              <li>Paiement en 2 ou 3 fois disponible</li>
             </ul>
-            <a class="btn-primary btn-arrow" href="#reservation">Je choisis</a>
+            <a class="btn-primary btn-arrow" href="/accompagnements/silhouette-revelee.html">Découvrir</a>
           </article>
 
           <!-- Offre 3 : Nouveau Moi -->
           <article class="offer reveal">
             <div class="offer-kicker">Anneau gastrique virtuel</div>
-            <h3>Nouveau Moi</h3>
-            <div class="offer-price">597€</div>
+            <h3>Nouveau Moi<em>Perte de poids supérieure à 10 kilos</em></h3>
+            <p class="offer-tagline">L'accompagnement le plus complet pour enclencher un vrai changement et transformer durablement votre rapport à la nourriture.</p>
+            <div class="offer-price">647€</div>
             <div class="offer-divider"></div>
             <ul class="offer-list">
-              <li>1 séance de transformation profonde avec pose de l'anneau gastrique virtuel (1h30)</li>
-              <li>2 séances de consolidation et d'ancrage personnalisées (1h)</li>
+              <li>1 séance de transformation profonde avec pose de l'anneau gastrique virtuel (2h)</li>
+              <li>3 séances de consolidation et d'ancrage personnalisées (1h)</li>
               <li>2 audios de renforcement personnalisés</li>
               <li>Support par message sur toute la durée de l'accompagnement</li>
-              <li>Paiement en 2 fois disponible</li>
+              <li>Paiement en 2 ou 3 fois possible</li>
             </ul>
-            <a class="btn-primary btn-arrow" href="#reservation">Je démarre</a>
+            <a class="btn-primary btn-arrow" href="/accompagnements/nouveau-moi.html">Découvrir</a>
           </article>
 
         </div>
