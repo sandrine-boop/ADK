@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choisir mon accompagnement — Au-delà des kilos</title>
+  <meta name="description" content="Sélectionnez votre formule de paiement et commencez votre transformation dès aujourd'hui." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Variables CSS identiques au reste du site ── */
+    :root {
+      --ivory:     #FAF6F1;
+      --cream:     #F2EBE0;
+      --sand:      #E8DDCB;
+      --champagne: #D4B896;
+      --caramel:   #B8906F;
+      --plum:      #7A4A5A;
+      --mocha:     #2C2420;
+      --muted:     rgba(44, 36, 32, 0.65);
+      --border:    rgba(44, 36, 32, 0.08);
+      --serif:     "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans:      "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring:    cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.75;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* ── TOPBAR / NAV ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.82);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.15);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 26px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .nav-cta:hover { background: transparent; color: var(--mocha); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--mocha);
+      border-radius: 2px;
+      transition: all 0.3s var(--spring);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 150;
+      background: rgba(250, 246, 241, 0.97);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--spring);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--mocha);
+      text-decoration: none;
+      transition: color 0.3s var(--spring);
+    }
+    .mobile-menu a:hover { color: var(--caramel); }
+    .mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--plum); border-color: var(--plum); }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a { color: var(--mocha); transition: color 0.3s; text-decoration: none; }
+    .nav-links a:hover { color: var(--caramel); }
+    .nav-home { display: flex; align-items: center; }
+    .nav-home svg { display: block; }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+
+    @media (max-width: 720px) {
+      .nav-cta, .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ── PAGE PRINCIPALE ── */
+    .checkout-wrapper {
+      min-height: 100vh;
+      padding: 120px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* En-tête produit */
+    .checkout-header {
+      text-align: center;
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+    .checkout-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 12px;
+    }
+    .checkout-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--caramel);
+      margin: 0 0 10px;
+      line-height: 1.1;
+    }
+    .checkout-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Séparateur */
+    .checkout-divider {
+      width: 50px;
+      height: 1px;
+      background: var(--champagne);
+      margin: 0 auto 40px;
+    }
+
+    /* Instruction */
+    .checkout-instruction {
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* ── GRILLE DE PLANS ── */
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+
+    /* Carte de plan */
+    .plan-card {
+      background: #fff;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 26px;
+      cursor: pointer;
+      transition: border-color 0.25s var(--spring), box-shadow 0.25s var(--spring), background 0.25s var(--spring), transform 0.25s var(--spring);
+      position: relative;
+      user-select: none;
+    }
+    .plan-card:hover {
+      border-color: var(--champagne);
+      box-shadow: 0 8px 30px -12px rgba(184, 144, 111, 0.25);
+      transform: translateY(-2px);
+    }
+    .plan-card.selected {
+      border-color: var(--caramel);
+      border-width: 2.5px;
+      background: #fdf8f4;
+      box-shadow: 0 12px 40px -15px rgba(184, 144, 111, 0.35);
+    }
+
+    /* Badge plan */
+    .plan-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--cream);
+      color: var(--caramel);
+      margin-bottom: 20px;
+    }
+    .plan-card.selected .plan-badge {
+      background: var(--caramel);
+      color: #fff;
+    }
+
+    /* Montant principal */
+    .plan-amount {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--mocha);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .plan-amount sup {
+      font-size: 1.2rem;
+      font-weight: 400;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+    .plan-per {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Ligne total */
+    .plan-total {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--mocha);
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .plan-total-label { color: var(--muted); font-weight: 400; }
+
+    /* Frais */
+    .plan-fees {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 6px;
+      min-height: 1.2em;
+    }
+    .plan-fees.has-fees { color: var(--caramel); }
+
+    /* Checkmark sélection */
+    .plan-check {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s var(--spring);
+    }
+    .plan-card.selected .plan-check {
+      background: var(--caramel);
+      border-color: var(--caramel);
+    }
+    .plan-check::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 10px;
+      border-right: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      transform: rotate(40deg) translate(-1px, -1px);
+      transition: border-color 0.2s;
+    }
+    .plan-card.selected .plan-check::after {
+      border-color: #fff;
+    }
+
+    /* ── ZONE D'ACTION ── */
+    .checkout-action {
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Bouton CTA */
+    .btn-checkout {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 58px;
+      padding: 0 36px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--spring);
+    }
+    .btn-checkout:hover:not(:disabled) {
+      background: var(--plum);
+      transform: translateY(-2px);
+    }
+    .btn-checkout:active:not(:disabled) {
+      transform: translateY(0) scale(0.98);
+    }
+    .btn-checkout:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .btn-checkout.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    /* Spinner de chargement */
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(250, 246, 241, 0.35);
+      border-top-color: var(--ivory);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .btn-checkout.loading .spinner { display: block; }
+    .btn-checkout.loading .btn-text { opacity: 0.7; }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Badge sécurité */
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    /* Message de réassurance */
+    .reassurance-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Message d'erreur */
+    .error-message {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 20px;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: 12px;
+      color: #b91c1c;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .error-message.visible { display: block; }
+
+    /* Message produit invalide */
+    .invalid-product {
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 480px;
+    }
+    .invalid-product h2 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+    .invalid-product p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .btn-back:hover { background: var(--plum); border-color: var(--plum); }
+
+    @media (max-width: 720px) {
+      .checkout-wrapper { padding: 100px 16px 60px; }
+      .plans-grid { grid-template-columns: 1fr; gap: 14px; }
+      .plan-card { padding: 26px 22px; }
+      .plan-amount { font-size: 2.2rem; }
+    }
+    @media (max-width: 960px) and (min-width: 721px) {
+      .plans-grid { grid-template-columns: 1fr 1fr; max-width: 620px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { transition: color 0.2s; text-decoration: none; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .back-to-top:hover { background: var(--plum); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose &middot; Poids & Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="/#reservation">Réserver mon appel offert</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── MENU MOBILE ── -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+  </nav>
+
+  <!-- ── CONTENU PRINCIPAL ── -->
+  <main class="checkout-wrapper">
+
+    <!-- Zone affichée si le produit est valide -->
+    <div id="checkoutContent" style="display:none; flex-direction:column; align-items:center; width:100%;">
+
+      <!-- En-tête produit -->
+      <div class="checkout-header">
+        <span class="checkout-tag">Votre accompagnement</span>
+        <h1 class="checkout-title" id="productName"></h1>
+        <p class="checkout-subtitle" id="productSubtitle"></p>
+      </div>
+
+      <div class="checkout-divider"></div>
+
+      <p class="checkout-instruction">Choisissez votre formule de paiement</p>
+
+      <!-- Grille des plans -->
+      <div class="plans-grid" id="plansGrid"></div>
+
+      <!-- Zone d'action -->
+      <div class="checkout-action">
+        <button class="btn-checkout" id="btnCheckout" disabled onclick="proceedToCheckout()">
+          <div class="spinner"></div>
+          <span class="btn-text">Procéder au paiement sécurisé &rarr;</span>
+        </button>
+
+        <div class="security-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Paiement 100&nbsp;% sécurisé par Stripe
+        </div>
+
+        <p class="reassurance-text">
+          Vous serez redirigé vers Stripe. Vos données bancaires ne transitent jamais par nos serveurs.
+        </p>
+
+        <!-- Message d'erreur -->
+        <div class="error-message" id="errorMessage" role="alert"></div>
+      </div>
+
+    </div>
+
+    <!-- Zone affichée si le produit est invalide ou manquant -->
+    <div class="invalid-product" id="invalidProduct" style="display:none;">
+      <h2>Accompagnement introuvable</h2>
+      <p>Le lien que vous avez suivi semble invalide. Revenez à la page des accompagnements pour choisir votre programme.</p>
+      <a href="/accompagnements/" class="btn-back">&larr; Voir les accompagnements</a>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Au-delà des kilos
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    // ── Données produits ──
+    const PRODUCTS = {
+      liberation: {
+        name:     'Accompagnement Libération',
+        subtitle: '6 semaines · Compulsions & addiction au sucre',
+        plans: {
+          '1x': { label: 'Paiement unique',      installment: 347, total: 347, count: 1, fees: 0 },
+          '2x': { label: 'Paiement en 2 fois',   installment: 187, total: 374, count: 2, fees: 27 },
+          '3x': { label: 'Paiement en 3 fois',   installment: 127, total: 381, count: 3, fees: 34 },
+        }
+      },
+      silhouette: {
+        name:     'Accompagnement Silhouette Révélée',
+        subtitle: '3 mois · Perte de poids jusqu\'à 10 kg',
+        plans: {
+          '1x': { label: 'Paiement unique',      installment: 447, total: 447, count: 1, fees: 0 },
+          '2x': { label: 'Paiement en 2 fois',   installment: 241, total: 482, count: 2, fees: 35 },
+          '3x': { label: 'Paiement en 3 fois',   installment: 163, total: 489, count: 3, fees: 42 },
+        }
+      },
+      nouveau_moi: {
+        name:     'Accompagnement Nouveau Moi',
+        subtitle: '4 mois · Perte de poids supérieure à 10 kg',
+        plans: {
+          '1x': { label: 'Paiement unique',      installment: 547, total: 547, count: 1, fees: 0 },
+          '2x': { label: 'Paiement en 2 fois',   installment: 295, total: 590, count: 2, fees: 43 },
+          '3x': { label: 'Paiement en 3 fois',   installment: 199, total: 597, count: 3, fees: 50 },
+        }
+      }
+    };
+
+    // ── Etat de la page ──
+    let selectedPlan = null;
+    let currentProduct = null;
+
+    // ── Formatage monétaire ──
+    function formatPrice(euros) {
+      return euros.toLocaleString('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    // ── Initialisation ──
+    function init() {
+      const params  = new URLSearchParams(window.location.search);
+      const product = params.get('product');
+
+      if (!product || !PRODUCTS[product]) {
+        // Produit invalide : afficher le message d'erreur
+        document.getElementById('invalidProduct').style.display = 'block';
+        return;
+      }
+
+      currentProduct = product;
+      const data = PRODUCTS[product];
+
+      // Remplir l'en-tête
+      document.getElementById('productName').textContent     = data.name;
+      document.getElementById('productSubtitle').textContent = data.subtitle;
+      document.title = `${data.name} — Au-delà des kilos`;
+
+      // Générer les cards
+      const grid = document.getElementById('plansGrid');
+      Object.entries(data.plans).forEach(([planKey, plan]) => {
+        const card = createPlanCard(planKey, plan);
+        grid.appendChild(card);
+      });
+
+      // Afficher le contenu
+      document.getElementById('checkoutContent').style.display = 'flex';
+    }
+
+    // ── Création d'une card de plan ──
+    function createPlanCard(planKey, plan) {
+      const card = document.createElement('div');
+      card.className = 'plan-card';
+      card.dataset.plan = planKey;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-pressed', 'false');
+
+      // Texte "par mois" ou "paiement unique"
+      const perText = plan.count > 1
+        ? `× ${plan.count} mois`
+        : 'paiement unique';
+
+      // Frais supplémentaires
+      const feesHtml = plan.fees > 0
+        ? `<p class="plan-fees has-fees">+ ${plan.fees} € de frais d'échelonnement</p>`
+        : `<p class="plan-fees">Aucun frais supplémentaire</p>`;
+
+      card.innerHTML = `
+        <div class="plan-check" aria-hidden="true"></div>
+        <span class="plan-badge">${plan.label}</span>
+        <div class="plan-amount"><sup>€</sup>${formatPrice(plan.installment)}</div>
+        <p class="plan-per">${perText}</p>
+        <div class="plan-total">
+          <span class="plan-total-label">Total payé</span>
+          <strong>€ ${formatPrice(plan.total)}</strong>
+        </div>
+        ${feesHtml}
+      `;
+
+      // Sélection au clic ou au clavier
+      card.addEventListener('click', () => selectPlan(planKey));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectPlan(planKey);
+        }
+      });
+
+      return card;
+    }
+
+    // ── Sélection d'un plan ──
+    function selectPlan(planKey) {
+      selectedPlan = planKey;
+
+      // Mettre à jour les cards
+      document.querySelectorAll('.plan-card').forEach(card => {
+        const isSelected = card.dataset.plan === planKey;
+        card.classList.toggle('selected', isSelected);
+        card.setAttribute('aria-pressed', String(isSelected));
+      });
+
+      // Activer le bouton CTA
+      document.getElementById('btnCheckout').disabled = false;
+
+      // Cacher les éventuels messages d'erreur
+      hideError();
+    }
+
+    // ── Redirection vers Stripe ──
+    async function proceedToCheckout() {
+      if (!selectedPlan || !currentProduct) return;
+
+      const btn = document.getElementById('btnCheckout');
+      hideError();
+
+      // Passer en état "loading"
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      try {
+        const response = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product: currentProduct, plan: selectedPlan }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.url) {
+          const message = data.error || 'Une erreur est survenue. Veuillez réessayer dans quelques instants.';
+          showError(message);
+          return;
+        }
+
+        // Redirection vers la page Stripe Checkout
+        window.location.href = data.url;
+
+      } catch (err) {
+        console.error('[checkout] Erreur réseau :', err);
+        showError('Impossible de contacter le serveur de paiement. Vérifiez votre connexion et réessayez.');
+      } finally {
+        // Retirer le loading seulement si on n'est pas en train de rediriger
+        if (document.getElementById('btnCheckout')) {
+          btn.classList.remove('loading');
+          btn.disabled = false;
+        }
+      }
+    }
+
+    // ── Gestion des messages d'erreur ──
+    function showError(message) {
+      const el = document.getElementById('errorMessage');
+      el.textContent = message;
+      el.classList.add('visible');
+    }
+    function hideError() {
+      document.getElementById('errorMessage').classList.remove('visible');
+    }
+
+    // ── Navigation mobile ──
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Utilitaires ──
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── Lancement ──
+    init();
+  </script>
+</body>
+</html>

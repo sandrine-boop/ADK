@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paiement annulé — Au-delà des kilos</title>
+  <meta name="description" content="Votre paiement a été annulé. Revenez quand vous êtes prête." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Variables CSS identiques au reste du site ── */
+    :root {
+      --ivory:     #FAF6F1;
+      --cream:     #F2EBE0;
+      --sand:      #E8DDCB;
+      --champagne: #D4B896;
+      --caramel:   #B8906F;
+      --plum:      #7A4A5A;
+      --mocha:     #2C2420;
+      --muted:     rgba(44, 36, 32, 0.65);
+      --border:    rgba(44, 36, 32, 0.08);
+      --serif:     "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans:      "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring:    cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.75;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.82);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.15);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 26px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .nav-cta:hover { background: transparent; color: var(--mocha); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--mocha);
+      border-radius: 2px;
+      transition: all 0.3s var(--spring);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Menu mobile */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 150;
+      background: rgba(250, 246, 241, 0.97);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--spring);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--mocha);
+      text-decoration: none;
+      transition: color 0.3s var(--spring);
+    }
+    .mobile-menu a:hover { color: var(--caramel); }
+    .mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--plum); border-color: var(--plum); }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a { color: var(--mocha); transition: color 0.3s; text-decoration: none; }
+    .nav-links a:hover { color: var(--caramel); }
+    .nav-home { display: flex; align-items: center; }
+    .nav-home svg { display: block; }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 210px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+
+    @media (max-width: 720px) {
+      .nav-cta, .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ── PAGE D'ANNULATION ── */
+    .cancel-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+    }
+
+    .cancel-card {
+      max-width: 560px;
+      width: 100%;
+      background: #fff;
+      border-radius: 28px;
+      padding: 60px 50px;
+      text-align: center;
+      box-shadow: 0 20px 60px -20px rgba(44, 36, 32, 0.10);
+      border: 1px solid var(--border);
+      animation: fadeUp 0.6s var(--spring) both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Icône neutre */
+    .cancel-icon {
+      width: 68px;
+      height: 68px;
+      background: var(--cream);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+    .cancel-icon svg {
+      width: 32px;
+      height: 32px;
+      color: var(--champagne);
+    }
+
+    /* Titre */
+    .cancel-title {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 400;
+      color: var(--mocha);
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+
+    /* Texte principal */
+    .cancel-text {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 36px;
+    }
+
+    /* Séparateur */
+    .cancel-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--champagne);
+      margin: 0 auto 36px;
+    }
+
+    /* Message de réassurance */
+    .cancel-note {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 20px 22px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      text-align: left;
+    }
+    .cancel-note strong {
+      color: var(--mocha);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* Boutons d'action */
+    .cancel-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+    }
+
+    /* Bouton principal : réessayer */
+    .btn-retry {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 320px;
+      min-height: 54px;
+      padding: 0 32px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      text-decoration: none;
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+      cursor: pointer;
+    }
+    .btn-retry:hover {
+      background: var(--caramel);
+      border-color: var(--caramel);
+      transform: translateY(-2px);
+    }
+
+    /* Bouton secondaire : retour accueil */
+    .btn-home-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 320px;
+      min-height: 48px;
+      padding: 0 28px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: var(--muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.3s var(--spring);
+    }
+    .btn-home-outline:hover {
+      border-color: var(--champagne);
+      color: var(--mocha);
+    }
+
+    @media (max-width: 600px) {
+      .cancel-card { padding: 40px 24px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { transition: color 0.2s; text-decoration: none; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .back-to-top:hover { background: var(--plum); transform: translateY(-2px); }
+  </style>
+</head>
+<body>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose &middot; Poids & Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </a>
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="/#reservation">Réserver mon appel offert</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── MENU MOBILE ── -->
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+  </nav>
+
+  <!-- ── PAGE D'ANNULATION ── -->
+  <main class="cancel-wrapper">
+    <div class="cancel-card">
+
+      <!-- Icône neutre et bienveillante -->
+      <div class="cancel-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M8 15s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/>
+          <line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+      </div>
+
+      <!-- Titre bienveillant -->
+      <h1 class="cancel-title">Pas de pression,<br>revenez quand vous êtes prête</h1>
+
+      <!-- Message sans culpabilité -->
+      <p class="cancel-text">
+        Votre paiement n'a pas été finalisé — et c'est tout à fait normal. Prendre ce genre de décision mérite réflexion. Votre accompagnement sera là quand vous vous sentirez prête.
+      </p>
+
+      <div class="cancel-divider"></div>
+
+      <!-- Bloc de réassurance -->
+      <div class="cancel-note">
+        <strong>Aucun montant n'a été prélevé</strong>
+        Aucune transaction n'a eu lieu. Votre carte bancaire n'a pas été débitée. Vous pouvez reprendre le processus à tout moment, sans aucune contrainte.
+      </div>
+
+      <!-- Boutons d'action -->
+      <div class="cancel-actions">
+        <!-- Réessayer : retour en arrière dans l'historique -->
+        <button class="btn-retry" onclick="goBack()">
+          &larr; Réessayer le paiement
+        </button>
+        <!-- Retour à l'accueil -->
+        <a href="/" class="btn-home-outline">
+          Retour à l'accueil
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> Au-delà des kilos
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    // ── Retour arrière ──
+    // Tente de revenir à la page précédente (checkout.html avec le produit pré-sélectionné).
+    // Si l'historique est vide (accès direct), redirige vers la page des accompagnements.
+    function goBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = '/accompagnements/';
+      }
+    }
+
+    // ── Navigation mobile ──
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ── Utilitaires ──
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
