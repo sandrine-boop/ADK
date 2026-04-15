@@ -172,8 +172,10 @@
       font-weight: 500;
       letter-spacing: 0.04em;
     }
-    .nav-links a { color: var(--mocha); transition: color 0.3s; }
+    .nav-links a { color: var(--mocha); transition: color 0.3s; text-decoration: none; }
     .nav-links a:hover { color: var(--caramel); }
+    .nav-home { display: flex; align-items: center; }
+    .nav-home svg { display: block; }
 
     @media (max-width: 720px) {
       .nav-cta, .nav-links { display: none; }
@@ -327,27 +329,81 @@
       margin-left: 10px;
     }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      padding: 50px 0 40px;
+      padding: 60px 0 0;
       background: #1f1814;
       color: rgba(250, 246, 241, 0.55);
       font-size: 0.85rem;
     }
     .footer-inner {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
+      gap: 60px;
+      align-items: flex-start;
       flex-wrap: wrap;
       width: min(calc(100% - 40px), 1240px);
       margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
     }
+    .footer-brand { flex: 1; min-width: 180px; }
     .footer-inner .brand { color: var(--ivory); }
     .footer-inner .brand span { color: var(--champagne); }
-    .footer-links { display: flex; gap: 30px; }
-    .footer-links a { text-decoration: none; color: inherit; }
-    .footer-links a:hover { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 44px;
+      height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      background: var(--plum);
+      transform: translateY(-2px);
+    }
 
     @media (max-width: 720px) {
       .article-hero { padding: 130px 0 40px; }
@@ -357,6 +413,7 @@
 
     /* ── DROPDOWN ── */
     .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
     .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
     .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
     .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
@@ -404,6 +461,7 @@
         <span>Hypnose &middot; Poids & Compulsions</span>
       </a>
       <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
         <div class="nav-dropdown">
           <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
           <div class="nav-dropdown-menu">
@@ -414,7 +472,7 @@
         </div>
         <a href="/blog/">Lectures</a>
       </nav>
-      <a class="nav-cta" href="/#reservation">Prendre rendez-vous</a>
+      <a class="nav-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" target="_blank" rel="noopener">Réserver mon appel offert</a>
       <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -427,7 +485,7 @@
     <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
     <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
     <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
-    <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Prendre rendez-vous</a>
+    <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" target="_blank" rel="noopener" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
   </nav>
 
   <main>
@@ -513,25 +571,41 @@
     <div class="article-cta">
       <h3>Prête à écrire votre propre histoire ?</h3>
       <p>Vous n'avez pas besoin de vous battre encore une fois contre une liste d'aliments interdits. Vous méritez une approche qui vous comprend.</p>
-      <a class="btn-primary" href="/#reservation">Réserver ma consultation</a>
+      <a class="btn-primary" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" target="_blank" rel="noopener">Réserver mon appel offert</a>
     </div>
   </main>
 
   <footer>
     <div class="footer-inner">
-      <div class="brand">
-        Au-delà des kilos
-        <span>Hypnose &middot; Perte de poids & TCA</span>
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
       </div>
-      <nav class="footer-links">
-        <a href="/#philosophie">Approche</a>
-        <a href="/#offres">Programmes</a>
-        <a href="/#faq">FAQ</a>
-        <a href="/#reservation">Contact</a>
-      </nav>
-      <div>&copy; 2026 Au-delà des kilos</div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Au-delà des kilos
     </div>
   </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
 
   <script>
     function toggleMobileMenu() {
@@ -546,6 +620,14 @@
       document.querySelector('.hamburger').classList.remove('open');
       document.body.style.overflow = '';
     }
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Back to top
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 </body>
 </html>
