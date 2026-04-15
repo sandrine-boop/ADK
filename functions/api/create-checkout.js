@@ -19,9 +19,9 @@ const PRIX = {
     '3x': { montant: 16300, mode: 'subscription' },
   },
   nouveau_moi: {
-    '1x': { montant: 54700, mode: 'payment' },
-    '2x': { montant: 29500, mode: 'subscription' },
-    '3x': { montant: 19900, mode: 'subscription' },
+    '1x': { montant: 64700, mode: 'payment' },
+    '2x': { montant: 34900, mode: 'subscription' },
+    '3x': { montant: 23300, mode: 'subscription' },
   },
 };
 
