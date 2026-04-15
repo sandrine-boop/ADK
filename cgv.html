@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/AP%20ADK/favicon.png">
+  <link rel="apple-touch-icon" href="/AP%20ADK/favicon.png">
+  <title>Conditions Générales de Vente — Au-delà des kilos</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory:     #FAF6F1;
+      --cream:     #F2EBE0;
+      --sand:      #E8DDCB;
+      --champagne: #D4B896;
+      --caramel:   #B8906F;
+      --plum:      #7A4A5A;
+      --mocha:     #2C2420;
+      --muted:     rgba(44, 36, 32, 0.65);
+      --border:    rgba(44, 36, 32, 0.08);
+      --serif:     "Cormorant Garamond", Georgia, serif;
+      --sans:      "Outfit", ui-sans-serif, system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    a { color: var(--plum); text-decoration: underline; }
+    a:hover { color: var(--caramel); }
+
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--ivory);
+    }
+    .header-inner {
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .brand span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--champagne);
+      margin-top: 2px;
+    }
+    .back-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-link:hover { color: var(--plum); }
+
+    .legal-content {
+      width: min(calc(100% - 40px), 780px);
+      margin: 0 auto;
+      padding: 60px 0 80px;
+    }
+    .legal-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--mocha);
+      margin-bottom: 8px;
+    }
+    .legal-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-content h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--plum);
+      margin: 36px 0 12px;
+    }
+    .legal-content p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .legal-content ul {
+      margin: 0 0 14px 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .legal-content ul li { margin-bottom: 6px; }
+    .legal-content strong { color: var(--mocha); font-weight: 600; }
+
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); text-decoration: none; }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Perte de poids &amp; TCA</span>
+      </a>
+      <a class="back-link" href="/">← Accueil</a>
+    </div>
+  </header>
+
+  <main class="legal-content">
+    <h1>Conditions Générales de Vente</h1>
+    <p class="legal-meta">audeladeskilos.com — Mise à jour le 15/04/2026</p>
+
+    <h2>1. Identification du prestataire</h2>
+    <p>Au-delà des kilos — Entreprise Individuelle<br>
+    <strong>Exploitante :</strong> Sandrine Bartoli<br>
+    <strong>Adresse :</strong> 29 avenue de la Croix Blanche, 33670 Créon, France<br>
+    <strong>Email :</strong> <a href="mailto:sandrine@audeladeskilos.com">sandrine@audeladeskilos.com</a><br>
+    <strong>SIRET :</strong> 99284939800019</p>
+
+    <h2>2. Objet et champ d'application</h2>
+    <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre Sandrine Bartoli, hypnothérapeute exerçant sous l'enseigne Au-delà des kilos, et toute personne physique (ci-après « la Cliente ») souhaitant bénéficier de ses prestations d'accompagnement en hypnothérapie.</p>
+    <p>Toute commande implique l'acceptation sans réserve des présentes CGV.</p>
+
+    <h2>3. Prestations proposées</h2>
+    <p>Les accompagnements proposés sont exclusivement réalisés en visioconférence :</p>
+    <ul>
+      <li>Accompagnement Libération (6 semaines) — 347 € en paiement unique, 2 × 187 € ou 3 × 127 €</li>
+      <li>Accompagnement Silhouette Révélée (3 mois) — 447 € en paiement unique, 2 × 241 € ou 3 × 163 €</li>
+      <li>Accompagnement Nouveau Moi (4 mois) — 647 € en paiement unique, 2 × 349 € ou 3 × 233 €</li>
+    </ul>
+    <p>Les tarifs sont exprimés en euros TTC. Sandrine Bartoli n'est pas assujettie à la TVA (article 293 B du CGI).</p>
+
+    <h2>4. Commande et paiement</h2>
+    <p>La commande est effectuée via le site audeladeskilos.com. Le paiement est sécurisé par la plateforme Stripe. Les moyens de paiement acceptés sont la carte bancaire et les solutions de paiement proposées lors du checkout.</p>
+    <p>En cas de paiement fractionné (2× ou 3×), les échéances sont prélevées automatiquement à 30 jours d'intervalle. Le montant total diffère du tarif en paiement unique en raison des frais de fractionnement.</p>
+    <p>La commande est définitive à réception de la confirmation de paiement par Stripe.</p>
+
+    <h2>5. Droit de rétractation</h2>
+    <p>Conformément à l'article L221-18 du Code de la consommation, la Cliente bénéficie d'un délai de rétractation de 14 jours à compter de la conclusion du contrat.</p>
+    <p>Toutefois, conformément à l'article L221-28 du Code de la consommation, la Cliente qui souhaite que la prestation commence avant l'expiration du délai de rétractation doit en faire la demande expresse. En cochant la case prévue à cet effet lors du paiement, la Cliente reconnaît expressément renoncer à son droit de rétractation dès lors que la prestation aura commencé.</p>
+
+    <h2>6. Annulation et report de séance</h2>
+    <p>Toute demande de report de séance doit être adressée par email à <a href="mailto:sandrine@audeladeskilos.com">sandrine@audeladeskilos.com</a> au minimum 48 heures avant l'heure prévue de la séance.</p>
+    <p>Toute séance annulée moins de 48 heures avant son début est due et non remboursable. Un report pourra être envisagé à titre exceptionnel et à la seule discrétion de la praticienne.</p>
+    <p>En cas de paiement fractionné, l'annulation d'une séance ne suspend pas les échéances de paiement. Le montant total de l'accompagnement reste dû dans son intégralité.</p>
+
+    <h2>7. Obligations et responsabilités</h2>
+    <p>Sandrine Bartoli s'engage à réaliser les séances avec soin, professionnalisme et bienveillance, dans le respect de la déontologie de l'hypnothérapie.</p>
+    <p>L'hypnothérapie est une pratique de développement personnel. Elle ne se substitue pas à un suivi médical ou psychologique. En cas de pathologie diagnostiquée, la Cliente est invitée à consulter un professionnel de santé.</p>
+    <p>La Cliente s'engage à être disponible et dans un environnement calme pour chaque séance, et à informer la praticienne de tout élément susceptible d'influer sur le déroulement de l'accompagnement.</p>
+
+    <h2>8. Confidentialité</h2>
+    <p>Sandrine Bartoli s'engage à respecter la confidentialité absolue des informations partagées par la Cliente dans le cadre des séances.</p>
+
+    <h2>9. Protection des données personnelles</h2>
+    <p>Les données personnelles collectées (nom, email, informations de paiement) sont utilisées exclusivement pour la gestion de la relation contractuelle. Elles ne sont jamais cédées à des tiers. Conformément au RGPD, la Cliente dispose d'un droit d'accès, de rectification et de suppression de ses données en contactant : <a href="mailto:sandrine@audeladeskilos.com">sandrine@audeladeskilos.com</a></p>
+
+    <h2>10. Droit applicable et litiges</h2>
+    <p>Les présentes CGV sont soumises au droit français. En cas de litige, une solution amiable sera recherchée en priorité. À défaut, les tribunaux compétents du ressort de Bordeaux seront saisis.</p>
+    <p>Conformément à l'article L612-1 du Code de la consommation, la Cliente peut recourir gratuitement à un médiateur de la consommation en cas de litige non résolu.</p>
+
+    <p style="margin-top: 40px; font-size: 0.82rem; color: var(--muted); font-style: italic;">CGV en vigueur à compter du 15/04/2026</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids &amp; TCA</span>
+        </a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Légal</div>
+        <nav class="footer-col-links">
+          <a href="/mentions-legales.html">Mentions légales</a>
+          <a href="/cgv.html">CGV</a>
+          <a href="/politique-confidentialite.html">Confidentialité</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <script>document.write(new Date().getFullYear())</script> Au-delà des kilos
+    </div>
+  </footer>
+
+</body>
+</html>

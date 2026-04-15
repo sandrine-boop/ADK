@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/AP%20ADK/favicon.png">
+  <link rel="apple-touch-icon" href="/AP%20ADK/favicon.png">
+  <title>Mentions légales — Au-delà des kilos</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory:     #FAF6F1;
+      --cream:     #F2EBE0;
+      --sand:      #E8DDCB;
+      --champagne: #D4B896;
+      --caramel:   #B8906F;
+      --plum:      #7A4A5A;
+      --mocha:     #2C2420;
+      --muted:     rgba(44, 36, 32, 0.65);
+      --border:    rgba(44, 36, 32, 0.08);
+      --serif:     "Cormorant Garamond", Georgia, serif;
+      --sans:      "Outfit", ui-sans-serif, system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+    a { color: var(--plum); text-decoration: underline; }
+    a:hover { color: var(--caramel); }
+
+    /* ── HEADER ── */
+    .site-header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--ivory);
+    }
+    .header-inner {
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mocha);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .brand span {
+      display: block;
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--champagne);
+      margin-top: 2px;
+    }
+    .back-link {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-link:hover { color: var(--plum); }
+
+    /* ── CONTENU ── */
+    .legal-content {
+      width: min(calc(100% - 40px), 780px);
+      margin: 0 auto;
+      padding: 60px 0 80px;
+    }
+    .legal-content h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--mocha);
+      margin-bottom: 8px;
+    }
+    .legal-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-content h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--plum);
+      margin: 36px 0 12px;
+    }
+    .legal-content p {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .legal-content strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); text-decoration: none; }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Perte de poids &amp; TCA</span>
+      </a>
+      <a class="back-link" href="/">← Accueil</a>
+    </div>
+  </header>
+
+  <main class="legal-content">
+    <h1>Mentions légales</h1>
+    <p class="legal-meta">audeladeskilos.com — Mise à jour le 15/04/2026</p>
+
+    <h2>1. Éditeur du site</h2>
+    <p><strong>Raison sociale :</strong> Au-delà des kilos</p>
+    <p><strong>Forme juridique :</strong> Entreprise Individuelle (EI)</p>
+    <p><strong>Exploitante :</strong> Bartoli Sandrine</p>
+    <p><strong>Adresse :</strong> 29 avenue de la Croix Blanche, 33670 Créon, France</p>
+    <p><strong>Email :</strong> <a href="mailto:sandrine@audeladeskilos.com">sandrine@audeladeskilos.com</a></p>
+    <p><strong>SIRET :</strong> 99284939800019</p>
+    <p>Non soumis à la TVA</p>
+
+    <h2>2. Directrice de la publication</h2>
+    <p>Sandrine Bartoli, en qualité d'exploitante de l'entreprise individuelle Au-delà des kilos.</p>
+
+    <h2>3. Hébergement</h2>
+    <p>Le site audeladeskilos.com est hébergé par :</p>
+    <p><strong>Cloudflare, Inc.</strong><br>101 Townsend St, San Francisco, CA 94107, États-Unis<br>Site web : <a href="https://www.cloudflare.com" target="_blank" rel="noopener">www.cloudflare.com</a></p>
+
+    <h2>4. Propriété intellectuelle</h2>
+    <p>L'ensemble des contenus présents sur le site audeladeskilos.com (textes, images, graphismes, logo, vidéos, sons) est la propriété exclusive de Sandrine Bartoli / Au-delà des kilos, sauf mentions contraires.</p>
+    <p>Toute reproduction, représentation, modification, publication ou adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite sans autorisation écrite préalable.</p>
+
+    <h2>5. Protection des données personnelles</h2>
+    <p>Les informations recueillies sur ce site font l'objet d'un traitement informatique destiné à la gestion de la relation client et à la fourniture des prestations d'hypnothérapie.</p>
+    <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles.</p>
+    <p>Pour exercer ces droits, contactez : <a href="mailto:sandrine@audeladeskilos.com">sandrine@audeladeskilos.com</a></p>
+
+    <h2>6. Cookies</h2>
+    <p>Le site audeladeskilos.com peut utiliser des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie publicitaire ou de traçage à des fins commerciales n'est utilisé sans votre consentement.</p>
+
+    <h2>7. Liens hypertextes</h2>
+    <p>Le site peut contenir des liens vers des sites tiers. Au-delà des kilos n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+
+    <h2>8. Droit applicable</h2>
+    <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids &amp; TCA</span>
+        </a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Légal</div>
+        <nav class="footer-col-links">
+          <a href="/mentions-legales.html">Mentions légales</a>
+          <a href="/cgv.html">CGV</a>
+          <a href="/politique-confidentialite.html">Confidentialité</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <script>document.write(new Date().getFullYear())</script> Au-delà des kilos
+    </div>
+  </footer>
+
+</body>
+</html>
