@@ -397,6 +397,32 @@
       transform: translateY(-2px);
     }
 
+    /* Bouton Cal.com */
+    .btn-cal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 28px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      background: var(--caramel);
+      color: var(--ivory);
+      text-decoration: none;
+      border: 1px solid var(--caramel);
+      transition: all 0.3s var(--spring);
+      margin-top: 4px;
+    }
+    .btn-cal:hover {
+      background: var(--plum);
+      border-color: var(--plum);
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 600px) {
       .success-card { padding: 40px 24px; }
     }
@@ -555,7 +581,7 @@
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
-          <p class="step-text"><strong>Nous vous contactons sous 24&nbsp;h</strong> pour planifier votre première séance et vous accueillir dans votre accompagnement.</p>
+          <p class="step-text" id="step2"><strong>Réservez votre première séance</strong> directement dans mon agenda — choisissez le créneau qui vous convient le mieux.</p>
         </div>
         <div class="step-item">
           <div class="step-num">3</div>
@@ -606,6 +632,15 @@
     // ── Lecture des paramètres URL ──
     const params    = new URLSearchParams(window.location.search);
     const sessionId = params.get('session_id');
+    const plan      = params.get('plan');
+    const product   = params.get('product');
+
+    // ── Liens Cal.com par produit ──
+    const CAL_LINKS = {
+      liberation:  'https://cal.eu/sandrine-bartoli-adk/liberation-seance-1',
+      silhouette:  'https://cal.eu/sandrine-bartoli-adk/silhouette-revelee-seance-1',
+      nouveau_moi: 'https://cal.eu/sandrine-bartoli-adk/nouveau-moi-seance-1',
+    };
 
     // Afficher le badge "Paiement confirmé" uniquement si session_id présent
     const badge = document.getElementById('paymentBadge');
@@ -613,14 +648,21 @@
       badge.classList.add('hidden');
     }
 
-    // Afficher le bloc "prochaines échéances" selon le plan (heuristique : non utilisé ici,
-    // l'information est disponible dans la session Stripe si on veut l'appeler depuis l'API).
-    // Pour rester statique, on affiche systématiquement ce bloc pour les abonnements.
-    // Si session_id présent, le bloc est affiché (on suppose abonnement possible).
-    // Masqué pour les paiements uniques si besoin via une variable d'URL optionnelle.
-    const plan = params.get('plan');
+    // Afficher le bloc "prochaines échéances" si paiement fractionné
     if (plan && (plan === '2x' || plan === '3x')) {
       document.getElementById('installmentsInfo').style.display = 'block';
+    }
+
+    // Injecter le bouton Cal.com dans l'étape 2
+    const calUrl = CAL_LINKS[product];
+    const step2  = document.getElementById('step2');
+    if (calUrl) {
+      step2.innerHTML = `
+        <strong>Réservez votre première séance</strong> directement dans mon agenda — choisissez le créneau qui vous convient le mieux.
+        <br><br>
+        <a href="${calUrl}" target="_blank" rel="noopener" class="btn-cal">
+          Choisir mon créneau →
+        </a>`;
     }
 
     // ── Navigation mobile ──
