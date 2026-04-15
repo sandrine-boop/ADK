@@ -510,6 +510,57 @@
     }
     .error-message.visible { display: block; }
 
+    /* Case à cocher rétractation */
+    .retractation-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .retractation-label input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .retractation-custom-check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      border: 1.5px solid var(--champagne);
+      border-radius: 5px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .retractation-label input:checked + .retractation-custom-check {
+      background: var(--plum);
+      border-color: var(--plum);
+    }
+    .retractation-label input:checked + .retractation-custom-check::after {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+    .retractation-label:hover .retractation-custom-check {
+      border-color: var(--plum);
+    }
+    .retractation-text {
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
     /* Message produit invalide */
     .invalid-product {
       text-align: center;
@@ -687,6 +738,14 @@
 
       <!-- Zone d'action -->
       <div class="checkout-action">
+
+        <!-- Case à cocher obligatoire -->
+        <label class="retractation-label" for="checkRetractation">
+          <input type="checkbox" id="checkRetractation" onchange="updateCheckoutButton()" />
+          <span class="retractation-custom-check" aria-hidden="true"></span>
+          <span class="retractation-text">Je reconnais avoir été informée de mon droit de rétractation de 14 jours et j'accepte expressément que la prestation commence avant l'expiration de ce délai, renonçant ainsi à mon droit de rétractation (art. L221-28 du Code de la consommation).</span>
+        </label>
+
         <button class="btn-checkout" id="btnCheckout" disabled onclick="proceedToCheckout()">
           <div class="spinner"></div>
           <span class="btn-text">Procéder au paiement sécurisé &rarr;</span>
@@ -875,11 +934,17 @@
         card.setAttribute('aria-pressed', String(isSelected));
       });
 
-      // Activer le bouton CTA
-      document.getElementById('btnCheckout').disabled = false;
+      // Activer le bouton seulement si la case est aussi cochée
+      updateCheckoutButton();
 
       // Cacher les éventuels messages d'erreur
       hideError();
+    }
+
+    // ── Activation du bouton (plan + case cochée) ──
+    function updateCheckoutButton() {
+      const checked = document.getElementById('checkRetractation').checked;
+      document.getElementById('btnCheckout').disabled = !(selectedPlan && checked);
     }
 
     // ── Ouverture du modal Stripe Embedded Checkout ──
