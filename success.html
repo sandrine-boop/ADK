@@ -630,12 +630,7 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
 
-  <!-- ── Cal.com Popup Embed ── -->
-  <script>
-  (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,[L,namespace,ar[2]])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
-  Cal("init",{origin:"https://cal.eu"});
-  Cal("ui",{theme:"light",styles:{branding:{brandColor:"#B8906F"}},hideEventTypeDetails:false,layout:"month_view"});
-  </script>
+  <script src="/cal-embed.js"></script>
 
   <script>
     // ── Lecture des paramètres URL ──
@@ -670,8 +665,7 @@
         <strong>Réservez votre première séance</strong> directement dans mon agenda — choisissez le créneau qui vous convient le mieux.
         <br><br>
         <a href="${calData.url}"
-           data-cal-link="${calData.slug}"
-           data-cal-origin="https://cal.eu"
+           data-cal-url="${calData.url}"
            class="btn-cal">
           Choisir mon créneau →
         </a>`;

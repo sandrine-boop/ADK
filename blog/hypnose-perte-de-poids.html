@@ -474,7 +474,7 @@
         </div>
         <a href="/blog/">Lectures</a>
       </nav>
-      <a class="nav-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-link="sandrine-bartoli-adk/appel-decouverte" data-cal-origin="https://cal.eu">Réserver mon appel offert</a>
+      <a class="nav-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">Réserver mon appel offert</a>
       <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
       </button>
@@ -487,7 +487,7 @@
     <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
     <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
     <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
-    <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-link="sandrine-bartoli-adk/appel-decouverte" data-cal-origin="https://cal.eu" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+    <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
   </nav>
 
   <main>
@@ -573,7 +573,7 @@
     <div class="article-cta">
       <h3>Prête à écrire votre propre histoire ?</h3>
       <p>Vous n'avez pas besoin de vous battre encore une fois contre une liste d'aliments interdits. Vous méritez une approche qui vous comprend.</p>
-      <a class="btn-primary" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-link="sandrine-bartoli-adk/appel-decouverte" data-cal-origin="https://cal.eu">Réserver mon appel offert</a>
+      <a class="btn-primary" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">Réserver mon appel offert</a>
     </div>
   </main>
 
@@ -632,11 +632,6 @@
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   </script>
 
-  <!-- ── Cal.com Popup Embed ── -->
-  <script>
-  (function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal;let ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){const api=function(){p(api,arguments)};const namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,[L,namespace,ar[2]])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
-  Cal("init",{origin:"https://cal.eu"});
-  Cal("ui",{theme:"light",styles:{branding:{brandColor:"#B8906F"}},hideEventTypeDetails:false,layout:"month_view"});
-  </script>
+  <script src="/cal-embed.js"></script>
 </body>
 </html>
