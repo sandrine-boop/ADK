@@ -728,6 +728,26 @@
     }
     .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
   </style>
+  <script>
+    window.axeptioSettings = {
+      clientId: "69dfcd0ace933f06ca9126ab",
+      cookiesVersion: "649b1a67-d7f2-4a5b-b816-d17d63198e9c",
+      googleConsentMode: {
+        default: {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          wait_for_update: 500
+        }
+      }
+    };
+    (function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; e.src = "//static.axept.io/sdk.js";
+      t.parentNode.insertBefore(e, t);
+    })(document, "script");
+  </script>
 </head>
 <body>
 
