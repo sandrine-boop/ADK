@@ -80,11 +80,11 @@ export async function onRequestPost({ request, env }) {
       httpClient: Stripe.createFetchHttpClient(),
     });
 
-    // ── Construction de la session Checkout ──
+    // ── Construction de la session Checkout (mode embedded) ──
     let sessionParams = {
       locale: 'fr',
-      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&product=${product}&plan=${plan}`,
-      cancel_url:  `${baseUrl}/cancel`,
+      ui_mode: 'embedded',
+      return_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&product=${product}&plan=${plan}`,
     };
 
     if (mode === 'payment') {
@@ -152,7 +152,7 @@ export async function onRequestPost({ request, env }) {
     // ── Création de la session ──
     const session = await stripe.checkout.sessions.create(sessionParams);
 
-    return new Response(JSON.stringify({ url: session.url }), {
+    return new Response(JSON.stringify({ clientSecret: session.client_secret }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
