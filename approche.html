@@ -145,15 +145,15 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     padding: 10px 20px;
-    background: var(--cream);
-    border: 1.5px solid var(--champagne);
+    background: var(--mocha);
+    border: 1.5px solid var(--mocha);
     border-radius: 100px;
-    color: var(--mocha);
+    color: var(--ivory);
     text-decoration: none;
     transition: background 0.2s, border-color 0.2s;
     white-space: nowrap;
   }
-  .nav-cta:hover { background: var(--sand); border-color: var(--caramel); }
+  .nav-cta:hover { background: var(--plum); border-color: var(--plum); color: var(--ivory); }
   .hamburger { display: none; }
 
   /* ── MOBILE MENU ── */
@@ -321,9 +321,8 @@
   /* ── SIGNATURE ── */
   .signature-bloc {
     text-align: center;
-    padding: 60px 24px;
-    border-top: 1px solid var(--border);
-    margin-top: 20px;
+    padding: 48px 24px 0;
+    margin-top: 0;
   }
   .signature-name {
     font-family: var(--serif);
@@ -447,7 +446,7 @@
       <nav class="nav-links">
         <a href="/" class="nav-home" aria-label="Accueil"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
         <div class="nav-dropdown">
-          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <a href="javascript:void(0)">Accompagnements <span class="nav-chevron">▾</span></a>
           <div class="nav-dropdown-menu">
             <a href="/accompagnements/liberation.html">Libération</a>
             <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
@@ -481,6 +480,15 @@
       <span class="eyebrow">Hypnothérapeute depuis 2016</span>
       <h1>Mon <em>approche</em></h1>
     </section>
+
+  <!-- PHOTO -->
+  <div style="text-align:center; padding: 56px 24px 0; background: var(--cream);">
+    <img
+      src="/AP%20ADK/mon%20approche.jpg"
+      alt="Sandrine Bartoli, hypnothérapeute"
+      style="width: min(340px, 90vw); height: min(400px, 60vw); object-fit: cover; object-position: top; border-radius: 200px 200px 24px 24px; box-shadow: 0 24px 60px -16px rgba(44,36,32,0.22);"
+    />
+  </div>
 
     <div class="approche-content">
 
@@ -516,7 +524,7 @@
       </div>
 
       <!-- BLOC 5 -->
-      <div class="bloc">
+      <div class="bloc" style="border-bottom:none;">
         <div class="bloc-num">04</div>
         <h2>Pourquoi la visio, et pourquoi <em>partout en France</em></h2>
         <p>Pendant des années, j'ai cru que le présentiel était indispensable. Je me suis trompée. La visio offre à mes clientes quelque chose que le cabinet ne peut pas donner&nbsp;: leur propre espace, leur propre confort, zéro stress extérieur. C'est dans cet état que l'inconscient s'ouvre le mieux.</p>
@@ -584,6 +592,22 @@
 
   <script src="/cal-embed.js" defer></script>
   <script>
+    // Dropdown touch support
+    document.querySelectorAll('.nav-dropdown > a').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        var menu = el.nextElementSibling;
+        var isOpen = menu.style.display === 'block';
+        document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = 'none'; });
+        menu.style.display = isOpen ? 'none' : 'block';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        document.querySelectorAll('.nav-dropdown-menu').forEach(function(m){ m.style.display = ''; });
+      }
+    });
+
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
       const btn  = document.querySelector('.hamburger');
