@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/AP%20ADK/favicon.png">
+  <link rel="apple-touch-icon" href="/AP%20ADK/favicon.png">
+  <title>Mon approche — Au-delà des kilos</title>
+  <meta name="description" content="Sandrine Bartoli, hypnothérapeute spécialisée poids et TCA depuis 2016. Découvrez son approche et sa méthode en 100 % visio." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    window.axeptioSettings = {
+      clientId: "69dfcd0ace933f06ca9126ab",
+      cookiesVersion: "649b1a67-d7f2-4a5b-b816-d17d63198e9c",
+      googleConsentMode: {
+        default: {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          wait_for_update: 500
+        }
+      }
+    };
+    (function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; e.src = "//static.axept.io/sdk.js";
+      t.parentNode.insertBefore(e, t);
+    })(document, "script");
+  </script>
+</head>
+<body>
+
+<style>
+  :root {
+    --ivory:     #FAF6F1;
+    --cream:     #F2EBE0;
+    --sand:      #E8DDCB;
+    --champagne: #D4B896;
+    --caramel:   #B8906F;
+    --plum:      #7A4A5A;
+    --mocha:     #2C2420;
+    --muted:     rgba(44, 36, 32, 0.65);
+    --border:    rgba(44, 36, 32, 0.08);
+    --serif:     "Cormorant Garamond", Georgia, serif;
+    --sans:      "Outfit", ui-sans-serif, system-ui, sans-serif;
+    --spring:    cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--ivory);
+    color: var(--mocha);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250, 246, 241, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    width: min(calc(100% - 40px), 1240px);
+    margin: 0 auto;
+    padding: 18px 0;
+  }
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mocha);
+    text-decoration: none;
+    line-height: 1.2;
+    margin-right: auto;
+  }
+  .brand span {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    color: var(--champagne);
+    margin-top: 2px;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--mocha);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--caramel); }
+  .nav-home svg { display: block; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+  .nav-chevron { font-size: 0.7rem; opacity: 0.6; }
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0 8px 32px -8px rgba(44, 36, 32, 0.15);
+    z-index: 90;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+  .nav-dropdown-menu a {
+    display: block;
+    padding: 9px 18px;
+    font-size: 0.85rem;
+    color: var(--mocha);
+    white-space: nowrap;
+  }
+  .nav-dropdown-menu a:hover { color: var(--caramel); }
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 10px 20px;
+    background: var(--cream);
+    border: 1.5px solid var(--champagne);
+    border-radius: 100px;
+    color: var(--mocha);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--sand); border-color: var(--caramel); }
+  .hamburger { display: none; }
+
+  /* ── MOBILE MENU ── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--ivory);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--mocha); text-decoration: none; }
+  .mobile-menu a:hover { color: var(--caramel); }
+  .mobile-menu .mobile-cta {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 14px 28px;
+    background: var(--plum);
+    color: #fff;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+  @media (max-width: 720px) {
+    .nav-links, .nav-cta { display: none; }
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--mocha);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  }
+
+  /* ── PAGE INTRO ── */
+  .page-intro {
+    background: var(--cream);
+    padding: 80px 24px 70px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-intro .eyebrow {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 20px;
+  }
+  .page-intro h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.6rem, 6vw, 4rem);
+    font-weight: 400;
+    color: var(--mocha);
+    line-height: 1.1;
+  }
+  .page-intro h1 em { font-style: italic; color: var(--caramel); }
+
+  /* ── CONTENT ── */
+  .approche-content {
+    width: min(calc(100% - 48px), 800px);
+    margin: 0 auto;
+    padding: 80px 0 100px;
+  }
+
+  .bloc {
+    margin-bottom: 72px;
+    padding-bottom: 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .bloc:last-of-type { border-bottom: none; }
+
+  .bloc-num {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 14px;
+  }
+  .bloc h2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+    font-weight: 400;
+    color: var(--mocha);
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+  .bloc h2 em { font-style: italic; color: var(--caramel); }
+  .bloc p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+  .bloc p:last-child { margin-bottom: 0; }
+  .bloc strong { color: var(--mocha); font-weight: 600; }
+
+  /* ── STAT EN ÉVIDENCE ── */
+  .stat-highlight {
+    display: inline-block;
+    background: var(--plum);
+    color: #fff;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin: 0 2px;
+  }
+
+  /* ── TÉMOIGNAGE ── */
+  .temoignage-bloc {
+    background: var(--cream);
+    border-left: 3px solid var(--caramel);
+    border-radius: 0 16px 16px 0;
+    padding: 40px 44px;
+    margin-bottom: 72px;
+  }
+  .temoignage-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    margin-bottom: 20px;
+  }
+  .temoignage-bloc blockquote {
+    font-family: var(--serif);
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--mocha);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .temoignage-bloc blockquote::before { content: '\201C'; }
+  .temoignage-bloc blockquote::after  { content: '\201D'; }
+  .temoignage-author {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .temoignage-author strong { color: var(--mocha); font-weight: 600; }
+
+  /* ── SIGNATURE ── */
+  .signature-bloc {
+    text-align: center;
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+  .signature-name {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    font-style: italic;
+    color: var(--caramel);
+    margin-bottom: 8px;
+  }
+  .signature-title {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── CTA ── */
+  .cta-bloc {
+    text-align: center;
+    padding: 72px 24px;
+    background: var(--mocha);
+  }
+  .cta-bloc p {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-style: italic;
+    color: rgba(250, 246, 241, 0.75);
+    margin-bottom: 32px;
+    line-height: 1.4;
+  }
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 18px 40px;
+    background: var(--champagne);
+    color: var(--mocha);
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-cta:hover { background: var(--sand); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 60px 0 0;
+    background: #1f1814;
+    color: rgba(250, 246, 241, 0.55);
+    font-size: 0.85rem;
+  }
+  .footer-inner {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: min(calc(100% - 40px), 1240px);
+    margin: 0 auto;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+  }
+  .footer-brand { flex: 1; min-width: 180px; }
+  .footer-inner .brand { color: var(--ivory); text-decoration: none; font-size: 1.05rem; }
+  .footer-inner .brand span { color: var(--champagne); }
+  .footer-col { min-width: 140px; }
+  .footer-col-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--champagne);
+    margin-bottom: 14px;
+  }
+  .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col-links a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .footer-col-links a:hover { color: var(--champagne); }
+  .footer-bottom {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: rgba(250, 246, 241, 0.35);
+  }
+
+  /* ── BACK TO TOP ── */
+  .back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--plum);
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 90;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+  .back-to-top:hover { transform: translateY(-2px); }
+
+  @media (max-width: 600px) {
+    .temoignage-bloc { padding: 28px 24px; border-radius: 0 12px 12px 0; }
+    .approche-content { padding: 56px 0 72px; }
+    .bloc { margin-bottom: 52px; padding-bottom: 52px; }
+  }
+</style>
+
+  <!-- ── TOPBAR ── -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Poids &amp; Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="/accompagnements/">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          </div>
+        </div>
+        <a href="/approche.html" class="active">Mon approche</a>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">Réserver mon appel offert</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/approche.html" onclick="closeMobileMenu()">Mon approche</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+  </nav>
+
+  <main>
+
+    <!-- INTRO -->
+    <section class="page-intro">
+      <span class="eyebrow">Hypnothérapeute depuis 2016</span>
+      <h1>Mon <em>approche</em></h1>
+    </section>
+
+    <div class="approche-content">
+
+      <!-- BLOC 1 -->
+      <div class="bloc">
+        <div class="bloc-num">01</div>
+        <h2>Depuis 2016, j'accompagne les femmes là où les régimes ne vont pas.</h2>
+        <p>Hypnothérapeute formée par Psynapse, j'ai exercé pendant plusieurs années dans deux cabinets à Bordeaux, avant de faire un choix délibéré : passer en 100&nbsp;% visio. Non pas par commodité, mais parce que les résultats le justifient.</p>
+        <p>Une cliente chez elle, dans son environnement, sans le stress du trajet ou du stationnement, entre en hypnose plus facilement, plus profondément. Et ça change tout.</p>
+      </div>
+
+      <!-- BLOC 2 -->
+      <div class="bloc">
+        <div class="bloc-num">02</div>
+        <h2>Une spécialisation née <em>du terrain</em></h2>
+        <p>Ce sont mes clientes qui m'ont spécialisée. Au fil des années, les demandes autour du poids et des troubles du comportement alimentaire sont devenues majoritaires. J'ai suivi cette direction en me formant en parallèle sur les neurosciences et l'apprentissage des comportements alimentaires, et j'ai construit un accompagnement qui s'est affiné, ajusté, amélioré grâce aux retours de chacune d'entre elles.</p>
+        <p><strong>Après plus de 600 femmes accompagnées, cette méthode a fait ses preuves.</strong></p>
+      </div>
+
+      <!-- BLOC 3 -->
+      <div class="bloc">
+        <div class="bloc-num">03</div>
+        <h2>L'anneau gastrique virtuel&nbsp;: <em>l'élément déclencheur</em></h2>
+        <p>Dans les accompagnements avec pose de l'anneau gastrique virtuel, mes clientes perdent en moyenne <span class="stat-highlight">15 kilos en 8 mois</span>, et <span class="stat-highlight">4 dès le premier mois</span>. Ce n'est pas un hasard.</p>
+        <p>Dès la première séance, quelque chose change dans leur comportement alimentaire. Elles le ressentent. Elles le voient sur la balance. Et ce résultat immédiat transforme leur engagement et leur motivation pour toute la suite du parcours.</p>
+      </div>
+
+      <!-- BLOC 4 — TÉMOIGNAGE -->
+      <div class="temoignage-bloc">
+        <div class="temoignage-label">Témoignage — Octobre 2023</div>
+        <blockquote>Laetitia est venue me consulter en situation d'obésité morbide, avec un objectif de vie derrière&nbsp;: perdre du poids pour pouvoir entamer un parcours de PMA. En trois mois, d'octobre 2023 à janvier 2024, elle a perdu 20 kilos. Son parcours de PMA s'est parfaitement déroulé et elle a aujourd'hui un beau bébé de 18 mois. Elle n'a pas repris ses 20 kilos.</blockquote>
+        <div class="temoignage-author"><strong>Laetitia</strong> · Cliente accompagnée en 2023</div>
+      </div>
+
+      <!-- BLOC 5 -->
+      <div class="bloc">
+        <div class="bloc-num">04</div>
+        <h2>Pourquoi la visio, et pourquoi <em>partout en France</em></h2>
+        <p>Pendant des années, j'ai cru que le présentiel était indispensable. Je me suis trompée. La visio offre à mes clientes quelque chose que le cabinet ne peut pas donner&nbsp;: leur propre espace, leur propre confort, zéro stress extérieur. C'est dans cet état que l'inconscient s'ouvre le mieux.</p>
+        <p>C'est aussi ce qui me permet aujourd'hui d'accompagner des femmes dans toute la France, parce que les blocages autour du poids ne s'arrêtent pas aux frontières de la Gironde.</p>
+      </div>
+
+      <!-- SIGNATURE -->
+      <div class="signature-bloc">
+        <div class="signature-name">Sandrine Bartoli</div>
+        <div class="signature-title">Hypnothérapeute, spécialisée poids et troubles du comportement alimentaire depuis 2016</div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-bloc">
+      <p>Vous souhaitez en savoir plus avant de vous lancer&nbsp;?</p>
+      <a class="btn-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">
+        Réserver mon appel offert →
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="/">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids &amp; TCA</span>
+        </a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/approche.html">Mon approche</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Légal</div>
+        <nav class="footer-col-links">
+          <a href="/mentions-legales.html">Mentions légales</a>
+          <a href="/cgv.html">CGV</a>
+          <a href="/politique-confidentialite.html">Confidentialité</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <script>document.write(new Date().getFullYear())</script> Au-delà des kilos
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script src="/cal-embed.js" defer></script>
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn  = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+</body>
+</html>
