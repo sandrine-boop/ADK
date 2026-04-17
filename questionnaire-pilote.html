@@ -936,7 +936,7 @@
 
       } catch (err) {
         const el = document.getElementById('globalError');
-        el.textContent = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
+        el.textContent = err.message || 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
         el.classList.add('visible');
         btn.classList.remove('loading');
         btn.disabled = false;

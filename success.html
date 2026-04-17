@@ -691,7 +691,9 @@
     // Injecter le bouton Cal.com dans l'étape 2
     const calData = CAL_LINKS[product];
     const step2   = document.getElementById('step2');
-    if (calData) {
+    if (product === 'groupe_pilote') {
+      step2.innerHTML = `<strong>Guettez votre boîte email</strong> — vous recevrez d'ici 48h toutes les informations pratiques pour rejoindre le groupe le <strong>14 mai 2026</strong> (lien visio, programme détaillé, accès à l'espace membre).`;
+    } else if (calData) {
       step2.innerHTML = `
         <strong>Réservez votre première séance</strong> directement dans mon agenda — choisissez le créneau qui vous convient le mieux.
         <br><br>
