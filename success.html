@@ -518,6 +518,14 @@
       t.parentNode.insertBefore(e, t);
     })(document, "script");
   </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBGXEHGR8V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BBGXEHGR8V');
+  </script>
 </head>
 <body>
 
@@ -669,6 +677,15 @@
     const sessionId = params.get('session_id');
     const plan      = params.get('plan');
     const product   = params.get('product');
+
+    // ── GA4 : événement achat ──
+    if (sessionId && product) {
+      gtag('event', 'purchase', {
+        transaction_id: sessionId,
+        item_category:  product,
+        item_variant:   plan || '1x',
+      });
+    }
 
     // ── Liens Cal.com par produit ──
     const CAL_LINKS = {
