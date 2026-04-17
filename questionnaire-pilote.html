@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/AP%20ADK/favicon.png">
+  <link rel="apple-touch-icon" href="/AP%20ADK/favicon.png">
+  <title>Questionnaire — Programme Groupe Pilote · Au-delà des kilos</title>
+  <meta name="description" content="Questionnaire de pré-inscription au Programme Groupe Pilote Printemps 2026." />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #FAF6F1;
+      --cream: #F2EBE0;
+      --sand: #E8DDCB;
+      --champagne: #D4B896;
+      --caramel: #B8906F;
+      --plum: #7A4A5A;
+      --mocha: #2C2420;
+      --muted: rgba(44, 36, 32, 0.62);
+      --border: rgba(44, 36, 32, 0.08);
+      --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.92);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.12);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--mocha);
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--caramel); }
+
+    /* ── ÉTAPES ── */
+    .steps-bar {
+      padding: 100px 24px 0;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .step.active { color: var(--mocha); }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .step.active .step-num {
+      background: var(--caramel);
+      border-color: var(--caramel);
+      color: var(--ivory);
+    }
+    .step.done .step-num {
+      background: var(--cream);
+      border-color: var(--champagne);
+      color: var(--caramel);
+    }
+    .step-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin: 0 12px;
+    }
+
+    /* ── INTRO ── */
+    .page-intro {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+    .intro-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 16px;
+    }
+    .page-intro h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 0 0 16px;
+    }
+    .page-intro h1 em { font-style: italic; color: var(--caramel); }
+    .page-intro p {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* ── FORMULAIRE ── */
+    .form-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .form-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 16px 60px -20px rgba(44, 36, 32, 0.1);
+      overflow: hidden;
+    }
+
+    .form-section {
+      padding: 36px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+
+    .form-section-title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--mocha);
+      margin: 0 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .form-section-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--champagne);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--caramel);
+      flex-shrink: 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-row.three { grid-template-columns: 1fr 1fr 1fr; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--mocha);
+    }
+    label .req {
+      color: var(--caramel);
+      margin-left: 2px;
+    }
+    label .opt {
+      font-weight: 400;
+      color: var(--muted);
+      font-size: 0.78rem;
+      margin-left: 4px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      font-family: var(--sans);
+      font-size: 0.93rem;
+      color: var(--mocha);
+      background: var(--cream);
+      border: 1.5px solid transparent;
+      border-radius: 12px;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      width: 100%;
+      line-height: 1.5;
+    }
+    input::placeholder, textarea::placeholder { color: rgba(44, 36, 32, 0.35); }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--caramel);
+      background: var(--ivory);
+    }
+    input.error, textarea.error, select.error {
+      border-color: #d97706;
+      background: #fffbf5;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .field-hint {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .field-error {
+      font-size: 0.78rem;
+      color: #b45309;
+      margin-top: 4px;
+      display: none;
+    }
+    .field-error.visible { display: block; }
+
+    /* ── RADIO MÉDICAL ── */
+    .radio-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .radio-option {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: var(--cream);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--mocha);
+    }
+    .radio-option input { display: none; }
+    .radio-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid var(--champagne);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .radio-option.selected {
+      border-color: var(--caramel);
+      background: var(--ivory);
+    }
+    .radio-option.selected .radio-dot {
+      border-color: var(--caramel);
+      background: var(--caramel);
+    }
+    .radio-option.selected .radio-dot::after {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ivory);
+    }
+    .radio-option.selected-no { border-color: var(--caramel); }
+    .radio-option.selected-yes { border-color: #d97706; background: #fffbf5; }
+    .radio-option.selected-yes .radio-dot { border-color: #d97706; background: #d97706; }
+
+    /* ── MESSAGE EXCLUSION ── */
+    .exclusion-msg {
+      display: none;
+      margin-top: 20px;
+      padding: 24px 28px;
+      background: #fffbf5;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #d97706;
+      border-radius: 0 12px 12px 0;
+    }
+    .exclusion-msg.visible { display: block; }
+    .exclusion-msg h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #92400e;
+      margin: 0 0 10px;
+    }
+    .exclusion-msg p {
+      font-size: 0.9rem;
+      color: #78350f;
+      line-height: 1.7;
+      margin: 0;
+    }
+    .exclusion-msg a { color: #92400e; text-decoration: underline; }
+
+    /* ── CHECKBOX DISPONIBILITÉ ── */
+    .dispo-section {
+      padding: 28px 40px;
+      background: var(--cream);
+    }
+    .dispo-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+    }
+    .dispo-label input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .dispo-check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 1px;
+      border: 2px solid var(--champagne);
+      border-radius: 6px;
+      background: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .dispo-label input:checked + .dispo-check {
+      background: var(--plum);
+      border-color: var(--plum);
+    }
+    .dispo-label input:checked + .dispo-check::after {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 10px;
+      border: 2px solid var(--ivory);
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translate(-1px, -1px);
+    }
+    .dispo-label:hover .dispo-check { border-color: var(--plum); }
+    .dispo-text {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--mocha);
+      font-weight: 400;
+    }
+    .dispo-text strong { font-weight: 600; }
+
+    /* ── RGPD ── */
+    .rgpd-note {
+      padding: 20px 40px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── ACTIONS ── */
+    .form-actions {
+      padding: 32px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      background: var(--ivory);
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 440px;
+      min-height: 58px;
+      padding: 0 36px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--spring);
+    }
+    .btn-submit:hover:not(:disabled) {
+      background: var(--plum);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(122, 74, 90, 0.4);
+    }
+    .btn-submit:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn-submit.loading { pointer-events: none; opacity: 0.7; }
+
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(250, 246, 241, 0.35);
+      border-top-color: var(--ivory);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .btn-submit.loading .spinner { display: block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .submit-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── MESSAGE D'ERREUR GLOBAL ── */
+    .global-error {
+      display: none;
+      margin: 0 40px 20px;
+      padding: 14px 20px;
+      background: #fef2f2;
+      border: 1px solid #fca5a5;
+      border-radius: 12px;
+      color: #b91c1c;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+    .global-error.visible { display: block; }
+
+    /* ── ÉCRAN SUCCÈS ── */
+    .success-screen {
+      display: none;
+      max-width: 580px;
+      margin: 120px auto 80px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .success-screen.visible { display: block; }
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 2px solid var(--champagne);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 1.8rem;
+    }
+    .success-screen h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      margin: 0 0 16px;
+    }
+    .success-screen h1 em { font-style: italic; color: var(--caramel); }
+    .success-screen p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 36px;
+    }
+    .btn-payment {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--spring);
+      text-decoration: none;
+    }
+    .btn-payment:hover {
+      background: var(--plum);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(122, 74, 90, 0.4);
+    }
+    .countdown-note {
+      margin-top: 16px;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      .form-section { padding: 28px 24px; }
+      .dispo-section { padding: 24px; }
+      .form-actions { padding: 28px 24px; }
+      .rgpd-note { padding: 16px 24px; }
+      .global-error { margin: 0 24px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-row.three { grid-template-columns: 1fr; }
+      .radio-group { flex-direction: column; }
+    }
+  </style>
+
+  <script>
+    window.axeptioSettings = {
+      clientId: "69dfcd0ace933f06ca9126ab",
+      cookiesVersion: "649b1a67-d7f2-4a5b-b816-d17d63198e9c",
+      googleConsentMode: {
+        default: {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          wait_for_update: 500
+        }
+      }
+    };
+    (function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; e.src = "//static.axept.io/sdk.js";
+      t.parentNode.insertBefore(e, t);
+    })(document, "script");
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Poids & Compulsions</span>
+      </a>
+      <a class="nav-back" href="/accompagnements/groupe-pilote.html">
+        ← Retour au programme
+      </a>
+    </div>
+  </header>
+
+  <!-- ══ FORMULAIRE ══ -->
+  <div id="formSection">
+
+    <div class="steps-bar">
+      <div class="steps">
+        <div class="step active">
+          <div class="step-num">1</div>
+          <span>Questionnaire</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <span>Paiement</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-intro">
+      <div class="intro-eyebrow">Programme Pilote · Printemps 2026</div>
+      <h1>Avant de réserver votre place,<br><em>quelques questions</em></h1>
+      <p>Ce questionnaire me permet de m'assurer que le programme est bien adapté à votre situation, et de préparer votre accueil. Il prend environ 5 minutes. Après envoi, vous serez redirigée vers le paiement sécurisé.</p>
+    </div>
+
+    <div class="form-wrap">
+      <form id="questionnaireForm" novalidate>
+        <div class="form-card">
+
+          <!-- SECTION 1 — Identité -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-num">1</span>
+              Vos coordonnées
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="prenom">Prénom <span class="req">*</span></label>
+                <input type="text" id="prenom" name="prenom" placeholder="Marie" autocomplete="given-name" required />
+                <span class="field-error" id="err-prenom">Veuillez indiquer votre prénom.</span>
+              </div>
+              <div class="form-group">
+                <label for="nom">Nom <span class="req">*</span></label>
+                <input type="text" id="nom" name="nom" placeholder="Dupont" autocomplete="family-name" required />
+                <span class="field-error" id="err-nom">Veuillez indiquer votre nom.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Adresse e-mail <span class="req">*</span></label>
+                <input type="email" id="email" name="email" placeholder="marie@exemple.fr" autocomplete="email" required />
+                <span class="field-error" id="err-email">Veuillez indiquer une adresse e-mail valide.</span>
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone <span class="opt">(facultatif)</span></label>
+                <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-row full">
+              <div class="form-group">
+                <label for="age">Votre âge <span class="req">*</span></label>
+                <input type="number" id="age" name="age" placeholder="52" min="18" max="99" required style="max-width: 140px;" />
+                <span class="field-error" id="err-age">Veuillez indiquer votre âge.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2 — Rapport à la nourriture -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-num">2</span>
+              Votre situation aujourd'hui
+            </div>
+
+            <div class="form-group">
+              <label for="rapport_nourriture">En quelques lignes, où en êtes-vous dans votre rapport à la nourriture et au poids ? <span class="req">*</span></label>
+              <textarea id="rapport_nourriture" name="rapport_nourriture" placeholder="Décrivez votre situation actuelle, vos difficultés, ce que vous ressentez…" required></textarea>
+              <span class="field-error" id="err-rapport">Merci de répondre à cette question.</span>
+            </div>
+          </div>
+
+          <!-- SECTION 3 — Déjà essayé -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-num">3</span>
+              Votre parcours
+            </div>
+
+            <div class="form-group">
+              <label for="deja_essaye">Qu'avez-vous déjà essayé ? <span class="req">*</span></label>
+              <textarea id="deja_essaye" name="deja_essaye" placeholder="Régimes, coaching, médicaments, applications, jeûne, hypnose…" required></textarea>
+              <span class="field-error" id="err-essaye">Merci de répondre à cette question.</span>
+            </div>
+          </div>
+
+          <!-- SECTION 4 — Motivation -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-num">4</span>
+              Votre motivation
+            </div>
+
+            <div class="form-group">
+              <label for="pourquoi">Pourquoi ce programme vous attire-t-il ? <span class="req">*</span></label>
+              <textarea id="pourquoi" name="pourquoi" placeholder="Qu'est-ce qui vous a donné envie de vous inscrire ? Qu'espérez-vous en tirer ?" required></textarea>
+              <span class="field-error" id="err-pourquoi">Merci de répondre à cette question.</span>
+            </div>
+          </div>
+
+          <!-- SECTION 5 — Suivi médical -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <span class="form-section-num">5</span>
+              Suivi médical
+            </div>
+
+            <div class="form-group">
+              <label>Êtes-vous actuellement suivie médicalement pour des troubles alimentaires (anorexie, boulimie) ? <span class="req">*</span></label>
+              <div class="radio-group">
+                <label class="radio-option" id="opt-non" onclick="selectMedical('non')">
+                  <input type="radio" name="suivi_medical" value="non" />
+                  <span class="radio-dot"></span>
+                  Non
+                </label>
+                <label class="radio-option" id="opt-oui" onclick="selectMedical('oui')">
+                  <input type="radio" name="suivi_medical" value="oui" />
+                  <span class="radio-dot"></span>
+                  Oui
+                </label>
+              </div>
+              <span class="field-error" id="err-medical">Merci de répondre à cette question.</span>
+            </div>
+
+            <div class="exclusion-msg" id="exclusionMsg">
+              <h3>Ce programme n'est pas adapté à votre situation</h3>
+              <p>L'hypnose en groupe n'est pas recommandée pour les personnes souffrant de troubles alimentaires sévères nécessitant un suivi médical. Ce n'est pas un manque de respect pour votre parcours — c'est une précaution pour votre sécurité.</p>
+              <p style="margin-top: 12px;">Si vous souhaitez en parler, je suis disponible : <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">réservez un appel offert de 20 minutes</a>. Nous pourrons voir ensemble ce qui pourrait vous convenir.</p>
+            </div>
+          </div>
+
+          <!-- SECTION 6 — Disponibilité -->
+          <div class="dispo-section" id="dispoSection">
+            <label class="dispo-label" for="disponibilite">
+              <input type="checkbox" id="disponibilite" name="disponibilite" onchange="updateSubmitState()" />
+              <span class="dispo-check" aria-hidden="true"></span>
+              <span class="dispo-text">
+                <strong>Je confirme ma disponibilité les 8 jeudis soirs, de 20h à 21h30, du 14 mai au 2 juillet 2026</strong>, sans exception autre qu'une urgence réelle. J'ai pris note qu'il n'y a pas de replay et que ma présence est indispensable à l'efficacité du programme.
+              </span>
+            </label>
+            <span class="field-error" id="err-dispo" style="margin-top: 10px; display: none;">Vous devez confirmer votre disponibilité pour accéder au programme.</span>
+          </div>
+
+          <!-- RGPD -->
+          <div class="rgpd-note">
+            Vos données sont collectées uniquement dans le cadre de votre candidature au Programme Groupe Pilote et ne seront pas transmises à des tiers. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Contact : <a href="mailto:sandrine@audeladeskilos.com" style="color: var(--caramel);">sandrine@audeladeskilos.com</a>
+          </div>
+
+          <!-- Message d'erreur global -->
+          <div class="global-error" id="globalError"></div>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="submit" class="btn-submit" id="btnSubmit" disabled>
+              <div class="spinner"></div>
+              <span class="btn-text">Envoyer et accéder au paiement →</span>
+            </button>
+            <p class="submit-note">Vous serez redirigée vers le paiement sécurisé Stripe après envoi.</p>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══ ÉCRAN SUCCÈS ══ -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h1>Merci, votre questionnaire<br>a été <em>bien reçu</em></h1>
+    <p>Vous allez maintenant être redirigée vers le paiement sécurisé pour réserver votre place. Redirection automatique dans <strong id="countdown">5</strong> secondes…</p>
+    <a class="btn-payment" href="/checkout.html?product=groupe_pilote" id="btnPayment">
+      Accéder au paiement maintenant →
+    </a>
+    <p class="countdown-note">Paiement 100&nbsp;% sécurisé par Stripe · 247€ ou paiement fractionné</p>
+  </div>
+
+  <script>
+    let medicalAnswer = null;
+
+    // ── Sélection radio médical ──
+    function selectMedical(val) {
+      medicalAnswer = val;
+      document.querySelectorAll('.radio-option').forEach(el => {
+        el.classList.remove('selected', 'selected-yes', 'selected-no');
+      });
+
+      if (val === 'oui') {
+        document.getElementById('opt-oui').classList.add('selected', 'selected-yes');
+        document.getElementById('exclusionMsg').classList.add('visible');
+        document.getElementById('dispoSection').style.opacity = '0.35';
+        document.getElementById('dispoSection').style.pointerEvents = 'none';
+      } else {
+        document.getElementById('opt-non').classList.add('selected', 'selected-no');
+        document.getElementById('exclusionMsg').classList.remove('visible');
+        document.getElementById('dispoSection').style.opacity = '1';
+        document.getElementById('dispoSection').style.pointerEvents = '';
+      }
+
+      document.getElementById('err-medical').classList.remove('visible');
+      updateSubmitState();
+    }
+
+    // ── Activation du bouton ──
+    function updateSubmitState() {
+      const dispo = document.getElementById('disponibilite').checked;
+      const btn = document.getElementById('btnSubmit');
+      btn.disabled = !(medicalAnswer === 'non' && dispo);
+    }
+
+    // ── Validation champ ──
+    function validateField(id, errId, checkFn) {
+      const el = document.getElementById(id);
+      const err = document.getElementById(errId);
+      const ok = checkFn(el.value.trim());
+      el.classList.toggle('error', !ok);
+      if (err) err.classList.toggle('visible', !ok);
+      return ok;
+    }
+
+    // ── Soumission ──
+    document.getElementById('questionnaireForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // Validation
+      let valid = true;
+      valid = validateField('prenom', 'err-prenom', v => v.length > 0) && valid;
+      valid = validateField('nom', 'err-nom', v => v.length > 0) && valid;
+      valid = validateField('email', 'err-email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) && valid;
+      valid = validateField('age', 'err-age', v => v.length > 0 && parseInt(v) >= 18) && valid;
+      valid = validateField('rapport_nourriture', 'err-rapport', v => v.length > 20) && valid;
+      valid = validateField('deja_essaye', 'err-essaye', v => v.length > 10) && valid;
+      valid = validateField('pourquoi', 'err-pourquoi', v => v.length > 10) && valid;
+
+      if (!medicalAnswer) {
+        document.getElementById('err-medical').classList.add('visible');
+        valid = false;
+      }
+
+      if (medicalAnswer === 'oui') {
+        document.getElementById('exclusionMsg').classList.add('visible');
+        return;
+      }
+
+      if (!document.getElementById('disponibilite').checked) {
+        document.getElementById('err-dispo').classList.add('visible');
+        document.getElementById('err-dispo').style.display = 'block';
+        valid = false;
+      }
+
+      if (!valid) {
+        // Scroll vers la première erreur
+        const firstErr = document.querySelector('.error, .field-error.visible');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Envoi
+      const btn = document.getElementById('btnSubmit');
+      btn.classList.add('loading');
+      btn.disabled = true;
+      document.getElementById('globalError').classList.remove('visible');
+
+      const payload = {
+        prenom:            document.getElementById('prenom').value.trim(),
+        nom:               document.getElementById('nom').value.trim(),
+        email:             document.getElementById('email').value.trim(),
+        telephone:         document.getElementById('telephone').value.trim(),
+        age:               document.getElementById('age').value.trim(),
+        rapport_nourriture:document.getElementById('rapport_nourriture').value.trim(),
+        deja_essaye:       document.getElementById('deja_essaye').value.trim(),
+        pourquoi:          document.getElementById('pourquoi').value.trim(),
+        suivi_medical:     medicalAnswer,
+        disponibilite:     true,
+      };
+
+      try {
+        const res = await fetch('/api/submit-questionnaire', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || 'Erreur serveur');
+        }
+
+        // Succès — afficher écran de transition
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('successScreen').classList.add('visible');
+
+        // Countdown + redirection automatique
+        let count = 5;
+        const timer = setInterval(() => {
+          count--;
+          document.getElementById('countdown').textContent = count;
+          if (count <= 0) {
+            clearInterval(timer);
+            window.location.href = '/checkout.html?product=groupe_pilote';
+          }
+        }, 1000);
+
+      } catch (err) {
+        const el = document.getElementById('globalError');
+        el.textContent = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou nous contacter directement.';
+        el.classList.add('visible');
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+  <script src="/cal-embed.js"></script>
+</body>
+</html>

@@ -23,6 +23,11 @@ const PRIX = {
     '2x': { montant: 34900, mode: 'subscription' },
     '3x': { montant: 23300, mode: 'subscription' },
   },
+  groupe_pilote: {
+    '1x': { montant: 24700, mode: 'payment' },
+    '2x': { montant: 13400, mode: 'subscription' },
+    '3x': { montant:  9000, mode: 'subscription' },
+  },
 };
 
 // ── Noms affichés dans Stripe Dashboard ──
@@ -30,6 +35,7 @@ const NOMS_PRODUITS = {
   liberation:   'Accompagnement Libération',
   silhouette:   'Accompagnement Silhouette Révélée',
   nouveau_moi:  'Accompagnement Nouveau Moi',
+  groupe_pilote: 'Programme Groupe Pilote — Printemps 2026',
 };
 
 // ── Headers CORS (accepte tous les origines en dev ; restreindre en prod si besoin) ──
@@ -62,7 +68,7 @@ export async function onRequestPost({ request, env }) {
 
     // Validation du produit
     if (!product || !PRIX[product]) {
-      return jsonError(400, `Produit invalide : "${product}". Valeurs acceptées : liberation, silhouette, nouveau_moi.`);
+      return jsonError(400, `Produit invalide : "${product}". Valeurs acceptées : liberation, silhouette, nouveau_moi, groupe_pilote.`);
     }
 
     // Validation du plan

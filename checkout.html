@@ -224,6 +224,9 @@
       transition: background 0.2s, color 0.2s;
     }
     .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+    .nav-dropdown-divider { height: 1px; background: var(--border); margin: 6px 8px; }
+    .nav-dropdown-badge { display: block; padding: 10px 16px; font-size: 0.85rem; border-radius: 10px; white-space: nowrap; color: var(--plum); font-weight: 500; letter-spacing: 0.02em; transition: background 0.2s, color 0.2s; }
+    .nav-dropdown-badge:hover { background: var(--cream) !important; }
 
     @media (max-width: 720px) {
       .nav-cta, .nav-links { display: none; }
@@ -715,6 +718,8 @@
             <a href="/accompagnements/liberation.html">Libération</a>
             <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
             <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/accompagnements/groupe-pilote.html" class="nav-dropdown-badge">✦ Groupe Pilote · Mai 2026</a>
           </div>
         </div>
         <a href="/approche.html">Mon approche</a>
@@ -733,6 +738,7 @@
     <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
     <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
     <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/accompagnements/groupe-pilote.html" onclick="closeMobileMenu()">Groupe Pilote · Mai 2026</a>
     <a href="/approche.html" onclick="closeMobileMenu()">Mon approche</a>
     <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
     <a href="/#reservation" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
@@ -812,6 +818,7 @@
           <a href="/accompagnements/liberation.html">Libération</a>
           <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
           <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          <a href="/accompagnements/groupe-pilote.html">Groupe Pilote · Mai 2026</a>
         </nav>
       </div>
       <div class="footer-col">
@@ -868,6 +875,15 @@
           '1x': { label: 'Paiement unique',      installment: 647, total: 647, count: 1, fees: 0 },
           '2x': { label: 'Paiement en 2 fois',   installment: 349, total: 698, count: 2, fees: 51 },
           '3x': { label: 'Paiement en 3 fois',   installment: 233, total: 699, count: 3, fees: 52 },
+        }
+      },
+      groupe_pilote: {
+        name:     'Programme Groupe Pilote',
+        subtitle: '8 semaines en visio · Démarrage 14 mai 2026',
+        plans: {
+          '1x': { label: 'Paiement unique',      installment: 247, total: 247, count: 1, fees: 0 },
+          '2x': { label: 'Paiement en 2 fois',   installment: 134, total: 268, count: 2, fees: 21 },
+          '3x': { label: 'Paiement en 3 fois',   installment:  90, total: 270, count: 3, fees: 23 },
         }
       }
     };

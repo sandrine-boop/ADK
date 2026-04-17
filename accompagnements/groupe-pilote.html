@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/AP%20ADK/favicon.png">
+  <link rel="apple-touch-icon" href="/AP%20ADK/favicon.png">
+  <title>Programme Pilote Printemps 2026 — Au-delà des kilos</title>
+  <meta name="description" content="8 semaines en groupe pour transformer votre rapport à la nourriture. Accompagnement en visio avec hypnose pour les femmes de 45 ans et plus. Démarrage le 14 mai 2026." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ivory: #FAF6F1;
+      --cream: #F2EBE0;
+      --sand: #E8DDCB;
+      --champagne: #D4B896;
+      --caramel: #B8906F;
+      --plum: #7A4A5A;
+      --mocha: #2C2420;
+      --muted: rgba(44, 36, 32, 0.62);
+      --border: rgba(44, 36, 32, 0.08);
+      --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans: "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --spring: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--ivory);
+      color: var(--mocha);
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 246, 241, 0.92);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 10px 40px -20px rgba(44, 36, 32, 0.12);
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--mocha);
+    }
+    .brand span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.32em;
+      color: var(--caramel);
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav-links a { color: var(--mocha); transition: color 0.3s var(--spring); }
+    .nav-links a:hover { color: var(--caramel); }
+    .nav-home { display: flex; align-items: center; }
+    .nav-home svg { display: block; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 26px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .nav-cta:hover { background: var(--plum); color: var(--ivory); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px; height: 28px;
+      cursor: pointer;
+      background: none; border: none; padding: 0;
+      z-index: 200;
+    }
+    .hamburger span {
+      display: block; width: 100%; height: 2px;
+      background: var(--mocha); border-radius: 2px;
+      transition: all 0.3s var(--spring); transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 150;
+      background: rgba(250, 246, 241, 0.97);
+      backdrop-filter: blur(30px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s var(--spring);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--mocha);
+      transition: color 0.3s var(--spring);
+    }
+    .mobile-menu a:hover { color: var(--caramel); }
+    .mobile-menu .mobile-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 34px;
+      border-radius: 999px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      background: var(--mocha);
+      color: var(--ivory);
+      border: 1px solid var(--mocha);
+      transition: all 0.3s var(--spring);
+    }
+    .mobile-menu .mobile-cta:hover { background: var(--plum); border-color: var(--plum); }
+
+    @media (max-width: 720px) {
+      .nav-cta, .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+    }
+
+    /* ── DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-chevron { font-size: 0.7rem; opacity: 0.55; transition: transform 0.22s; }
+    .nav-dropdown:hover .nav-chevron { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px -15px rgba(44, 36, 32, 0.18);
+      padding: 8px;
+      min-width: 220px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s var(--spring), transform 0.22s var(--spring);
+      z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--mocha);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--caramel); }
+    .nav-dropdown-menu .nav-dropdown-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 6px 8px;
+    }
+    .nav-dropdown-menu .nav-dropdown-badge {
+      display: block;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      color: var(--plum);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-dropdown-menu .nav-dropdown-badge:hover { background: var(--cream); }
+
+    /* ── BOUTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 36px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--mocha);
+    }
+    .btn-primary:hover {
+      background: var(--plum);
+      border-color: var(--plum);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -10px rgba(122, 74, 90, 0.4);
+    }
+    .btn-primary.large {
+      padding: 20px 48px;
+      font-size: 1.05rem;
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px 34px;
+      background: transparent;
+      color: var(--mocha);
+      border-radius: 999px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid rgba(44, 36, 32, 0.25);
+    }
+    .btn-ghost:hover {
+      border-color: var(--mocha);
+      background: rgba(44, 36, 32, 0.04);
+    }
+    .btn-champagne {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px 48px;
+      background: var(--champagne);
+      color: var(--mocha);
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      transition: all 0.3s var(--spring);
+      border: 1px solid var(--champagne);
+    }
+    .btn-champagne:hover {
+      background: var(--ivory);
+      border-color: var(--ivory);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px -12px rgba(212, 184, 150, 0.5);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 88px 24px; }
+    .section-inner { max-width: 800px; margin: 0 auto; }
+    .section-inner.wide { max-width: 1040px; }
+    .section-inner.narrow { max-width: 680px; }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--caramel);
+      margin-bottom: 18px;
+    }
+    .eyebrow.centered { display: block; text-align: center; }
+
+    h2.section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.18;
+      margin: 0 0 32px;
+    }
+    h2.section-title em { font-style: italic; color: var(--caramel); }
+    h2.section-title.centered { text-align: center; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 24px 80px;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--ivory) 100%);
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--plum);
+      margin-bottom: 28px;
+      padding: 8px 20px;
+      border: 1px solid rgba(122, 74, 90, 0.22);
+      border-radius: 999px;
+      background: rgba(122, 74, 90, 0.04);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0 0 28px;
+      color: var(--mocha);
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--caramel);
+      font-weight: 300;
+    }
+    .hero-sub {
+      font-size: 1.12rem;
+      color: var(--muted);
+      margin: 0 auto 44px;
+      line-height: 1.72;
+      max-width: 660px;
+    }
+    .hero-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .hero-mentions {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .hero-mentions li::before {
+      content: '–';
+      margin-right: 8px;
+      color: var(--caramel);
+    }
+
+    @media (max-width: 720px) {
+      .hero { padding: 120px 24px 64px; }
+      .hero h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .hero-sub { font-size: 1rem; }
+    }
+
+    /* ── RECOGNITION (vous reconnaissez-vous) ── */
+    .recognition { background: var(--cream); }
+    .recognition p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .recognition p:last-child { margin-bottom: 0; }
+    .recognition strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── EXPLANATION ── */
+    .explanation p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .explanation p:last-child { margin-bottom: 0; }
+    .explanation strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── KEY SECTION (8 semaines) ── */
+    .key-section {
+      background: var(--cream);
+    }
+    .key-section p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .key-section p:last-child { margin-bottom: 0; }
+    .key-section strong { color: var(--mocha); font-weight: 600; }
+    .key-section .highlight-numbers {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      color: var(--caramel);
+      font-style: italic;
+      margin: 32px 0;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .key-section .key-callout {
+      background: var(--ivory);
+      border-left: 4px solid var(--caramel);
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--mocha);
+    }
+    .key-section .key-callout strong { font-weight: 600; }
+
+    /* ── MID CTA ── */
+    .mid-cta {
+      background: var(--mocha);
+      text-align: center;
+      padding: 72px 24px;
+    }
+    .mid-cta .eyebrow { color: var(--champagne); }
+    .mid-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--ivory);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .mid-cta h2 em { font-style: italic; color: var(--champagne); }
+    .mid-cta p {
+      font-size: 1rem;
+      color: rgba(250, 246, 241, 0.65);
+      margin: 0 0 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .mid-cta .mentions-dark {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: rgba(250, 246, 241, 0.45);
+    }
+
+    /* ── PROGRAMME (8 semaines) ── */
+    .programme { background: var(--ivory); }
+    .programme-subtitle {
+      text-align: center;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin: -16px 0 48px;
+      font-style: italic;
+    }
+    .programme-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .week-card {
+      padding: 28px 28px 32px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--caramel);
+      border-radius: 0 0 20px 20px;
+      background: var(--cream);
+      box-shadow: 0 8px 32px -12px rgba(44, 36, 32, 0.1);
+      transition: transform 0.3s var(--spring), box-shadow 0.3s var(--spring);
+    }
+    .week-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px -16px rgba(44, 36, 32, 0.15);
+    }
+    .week-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .week-number {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: var(--caramel);
+      line-height: 1;
+      flex-shrink: 0;
+      font-style: italic;
+    }
+    .week-card h3 {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin: 0;
+      color: var(--mocha);
+      line-height: 1.3;
+    }
+    .week-card p {
+      font-size: 0.92rem;
+      line-height: 1.68;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    @media (max-width: 720px) {
+      .programme-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ENGAGEMENT ── */
+    .engagement {
+      background: var(--mocha);
+      color: var(--ivory);
+    }
+    .engagement .eyebrow { color: var(--champagne); }
+    .engagement h2.section-title { color: var(--ivory); }
+    .engagement h2.section-title em { color: var(--champagne); }
+    .engagement p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: rgba(250, 246, 241, 0.72);
+      margin: 0 0 22px;
+    }
+    .engagement p:last-child { margin-bottom: 0; }
+    .engagement strong { color: var(--ivory); }
+    .engagement h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--champagne);
+      margin: 36px 0 16px;
+      line-height: 1.3;
+    }
+    .engagement-callout {
+      background: rgba(212, 184, 150, 0.1);
+      border: 1px solid rgba(212, 184, 150, 0.2);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 28px 0;
+    }
+    .engagement-callout p {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+    .engagement-callout p:last-child { margin: 0; }
+    .engagement-bottom {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(250, 246, 241, 0.12);
+      font-size: 1.05rem;
+      color: var(--champagne);
+      font-style: italic;
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      line-height: 1.5;
+    }
+
+    /* ── INCLUS ── */
+    .includes { background: var(--cream); }
+    .includes-list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .includes-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 22px 26px;
+      background: var(--ivory);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--caramel);
+      font-size: 0.97rem;
+      line-height: 1.6;
+      color: var(--mocha);
+      box-shadow: 0 4px 18px -8px rgba(44, 36, 32, 0.08);
+    }
+    .includes-list li strong { font-weight: 600; }
+    .includes-icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--caramel);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      color: var(--ivory);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    /* ── RÉSULTATS ── */
+    .results { background: var(--ivory); }
+    .results-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin: 0 0 48px;
+      line-height: 1.7;
+      text-align: center;
+    }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .result-card {
+      padding: 32px 24px;
+      background: var(--cream);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--caramel);
+      text-align: center;
+      transition: transform 0.3s var(--spring);
+    }
+    .result-card:hover { transform: translateY(-4px); }
+    .result-stat {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--caramel);
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .result-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--mocha);
+      margin: 0 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .result-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+    .results-disclaimer {
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      line-height: 1.65;
+    }
+
+    @media (max-width: 900px) {
+      .results-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 520px) {
+      .results-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TÉMOIGNAGE ── */
+    .testimonial { background: var(--cream); }
+    .testi-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 48px 40px;
+      box-shadow: 0 16px 60px -20px rgba(44, 36, 32, 0.1);
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .testi-quote-mark {
+      font-family: var(--serif);
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--champagne);
+      opacity: 0.5;
+      position: absolute;
+      top: 20px;
+      left: 36px;
+    }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--mocha);
+      margin: 0 0 28px;
+      padding-top: 20px;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--caramel);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--mocha);
+    }
+    .testi-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .testi-card { padding: 36px 28px 30px; }
+    }
+
+    /* ── QUI SUIS-JE ── */
+    .about { background: var(--ivory); }
+    .about p {
+      font-size: 1.05rem;
+      line-height: 1.82;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .about p:last-child { margin-bottom: 0; }
+    .about strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── POUR QUI / PAS POUR QUI ── */
+    .for-who { background: var(--cream); }
+    .for-who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .for-who-col {
+      background: var(--ivory);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .for-who-col-header {
+      padding: 18px 24px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .for-who-col-header.yes {
+      background: rgba(107, 155, 111, 0.12);
+      color: #3d6e40;
+      border-bottom: 2px solid rgba(107, 155, 111, 0.3);
+    }
+    .for-who-col-header.no {
+      background: rgba(180, 80, 80, 0.08);
+      color: #8b3a3a;
+      border-bottom: 2px solid rgba(180, 80, 80, 0.2);
+    }
+    .for-who-items {
+      list-style: none;
+      margin: 0; padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .for-who-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.93rem;
+      line-height: 1.6;
+      color: var(--mocha);
+    }
+    .for-who-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .for-who-icon.yes {
+      background: rgba(107, 155, 111, 0.15);
+      color: #3d6e40;
+    }
+    .for-who-icon.no {
+      background: rgba(180, 80, 80, 0.1);
+      color: #8b3a3a;
+    }
+
+    @media (max-width: 720px) {
+      .for-who-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── TARIF ── */
+    .pricing { background: var(--ivory); }
+    .pricing-intro {
+      text-align: center;
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 40px;
+      line-height: 1.7;
+    }
+    .pricing-block {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--mocha);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 24px 70px -20px rgba(44, 36, 32, 0.35);
+      margin-bottom: 24px;
+    }
+    .pricing-card-top {
+      padding: 36px 40px 28px;
+      text-align: center;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.1);
+    }
+    .pricing-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 8px;
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: rgba(212, 184, 150, 0.15);
+      border: 1px solid rgba(212, 184, 150, 0.3);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      color: var(--champagne);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      margin-bottom: 20px;
+    }
+    .pricing-normal {
+      font-size: 1.2rem;
+      color: rgba(250, 246, 241, 0.35);
+      text-decoration: line-through;
+      margin-bottom: 6px;
+    }
+    .pricing-amount {
+      font-family: var(--serif);
+      font-size: 4.2rem;
+      font-weight: 400;
+      color: var(--ivory);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .pricing-note {
+      font-size: 0.85rem;
+      color: rgba(250, 246, 241, 0.5);
+    }
+    .pricing-card-bottom {
+      padding: 24px 40px 32px;
+    }
+    .pricing-options {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-options li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: rgba(250, 246, 241, 0.65);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .pricing-options li:last-child { border-bottom: none; }
+    .pricing-options .opt-label { font-weight: 400; }
+    .pricing-options .opt-value {
+      font-weight: 600;
+      color: rgba(250, 246, 241, 0.9);
+    }
+    .pricing-comparison {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 26px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .pricing-comparison strong { color: var(--mocha); }
+    .pricing-per-day {
+      text-align: center;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--caramel);
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
+    .pricing-per-day strong {
+      font-style: normal;
+      font-weight: 600;
+    }
+    .pricing-cta-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .pricing-cta-wrap .btn-primary {
+      width: 100%;
+      padding: 20px 36px;
+      font-size: 1rem;
+    }
+
+    /* ── RARETÉ ── */
+    .scarcity { background: var(--cream); padding: 60px 24px; }
+    .scarcity h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      margin: 0 0 20px;
+    }
+    .scarcity h3 em { font-style: italic; color: var(--caramel); }
+    .scarcity p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+    .scarcity p:last-child { margin: 0; }
+
+    /* ── FAQ ── */
+    .faq { background: var(--ivory); }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    details.faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    details.faq-item:first-child { border-top: 1px solid var(--border); }
+    details.faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 22px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: var(--serif);
+      font-size: 1.22rem;
+      font-weight: 400;
+      color: var(--mocha);
+      line-height: 1.35;
+      transition: color 0.2s;
+    }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::after {
+      content: '+';
+      flex-shrink: 0;
+      font-family: var(--sans);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--caramel);
+      transition: transform 0.25s var(--spring);
+      line-height: 1;
+    }
+    details.faq-item[open] summary::after { transform: rotate(45deg); }
+    details.faq-item summary:hover { color: var(--caramel); }
+    .faq-answer {
+      padding: 0 8px 28px;
+      font-size: 1rem;
+      line-height: 1.78;
+      color: var(--muted);
+    }
+    .faq-answer strong { color: var(--mocha); font-weight: 600; }
+
+    /* ── DERNIER CTA ── */
+    .final-cta { background: var(--cream); text-align: center; }
+    .final-cta p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0 0 22px;
+    }
+    .final-cta p:last-of-type { margin-bottom: 40px; }
+    .final-cta strong { color: var(--mocha); font-weight: 600; }
+    .final-cta .final-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-style: italic;
+      color: var(--caramel);
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+    .final-cta .final-details {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── RASSURANCE (3 colonnes) ── */
+    .reassurance { background: var(--mocha); }
+    .reassurance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .reassurance-col {
+      text-align: center;
+    }
+    .reassurance-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      background: rgba(212, 184, 150, 0.12);
+      border: 1px solid rgba(212, 184, 150, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .reassurance-icon svg { display: block; }
+    .reassurance-col h3 {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--champagne);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0 0 10px;
+    }
+    .reassurance-col p {
+      font-size: 0.88rem;
+      color: rgba(250, 246, 241, 0.55);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .reassurance-col a {
+      color: var(--champagne);
+      transition: color 0.2s;
+    }
+    .reassurance-col a:hover { color: var(--ivory); }
+
+    @media (max-width: 720px) {
+      .reassurance-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 60px 0 0;
+      background: #1f1814;
+      color: rgba(250, 246, 241, 0.55);
+      font-size: 0.85rem;
+    }
+    .footer-inner {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: min(calc(100% - 40px), 1240px);
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(250, 246, 241, 0.08);
+    }
+    .footer-brand { flex: 1; min-width: 180px; }
+    .footer-inner .brand { color: var(--ivory); }
+    .footer-inner .brand span { color: var(--champagne); }
+    .footer-col { min-width: 140px; }
+    .footer-col-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--champagne);
+      margin-bottom: 14px;
+    }
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col-links a { transition: color 0.2s; }
+    .footer-col-links a:hover { color: var(--champagne); }
+    .footer-bottom {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: rgba(250, 246, 241, 0.35);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      background: var(--mocha);
+      color: var(--ivory);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s;
+      z-index: 90;
+      box-shadow: 0 4px 20px -8px rgba(44, 36, 32, 0.4);
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .back-to-top:hover { background: var(--plum); transform: translateY(-2px); }
+
+    @media (max-width: 720px) {
+      section { padding: 64px 24px; }
+      .mid-cta { padding: 60px 24px; }
+      .scarcity { padding: 48px 24px; }
+      .reassurance { padding: 60px 24px; }
+    }
+  </style>
+
+  <script>
+    window.axeptioSettings = {
+      clientId: "69dfcd0ace933f06ca9126ab",
+      cookiesVersion: "649b1a67-d7f2-4a5b-b816-d17d63198e9c",
+      googleConsentMode: {
+        default: {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          wait_for_update: 500
+        }
+      }
+    };
+    (function(d, s) {
+      var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+      e.async = true; e.src = "//static.axept.io/sdk.js";
+      t.parentNode.insertBefore(e, t);
+    })(document, "script");
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/">
+        Au-delà des kilos
+        <span>Hypnose · Poids & Compulsions</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/" class="nav-home" aria-label="Accueil"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="javascript:void(0)">Accompagnements <span class="nav-chevron">▾</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="/accompagnements/liberation.html">Libération</a>
+            <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+            <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/accompagnements/groupe-pilote.html" class="nav-dropdown-badge">✦ Groupe Pilote · Mai 2026</a>
+          </div>
+        </div>
+        <a href="/approche.html">Mon approche</a>
+        <a href="/blog/">Lectures</a>
+      </nav>
+      <a class="nav-cta" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">Réserver mon appel offert</a>
+      <button class="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobileMenu()">Accueil</a>
+    <a href="/accompagnements/liberation.html" onclick="closeMobileMenu()">Libération</a>
+    <a href="/accompagnements/silhouette-revelee.html" onclick="closeMobileMenu()">Silhouette Révélée</a>
+    <a href="/accompagnements/nouveau-moi.html" onclick="closeMobileMenu()">Nouveau Moi</a>
+    <a href="/accompagnements/groupe-pilote.html" onclick="closeMobileMenu()">Groupe Pilote · Mai 2026</a>
+    <a href="/approche.html" onclick="closeMobileMenu()">Mon approche</a>
+    <a href="/blog/" onclick="closeMobileMenu()">Lectures</a>
+    <a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" onclick="closeMobileMenu()" class="mobile-cta">Réserver mon appel offert</a>
+  </nav>
+
+  <main>
+
+    <!-- ══ SECTION 1 — HÉRO ══ -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">Programme Pilote · Printemps 2026 · 8 semaines en visio</div>
+        <h1>8 semaines pour transformer<br>ce que vous portez<br><em>depuis toute une vie</em></h1>
+        <p class="hero-sub">Un accompagnement collectif en visio pour les femmes de 45 ans et plus qui ont tout essayé. Libérez-vous des compulsions, réconciliez-vous avec votre corps, retrouvez votre poids de forme — sans régime, sans privation, depuis chez vous.</p>
+        <div class="hero-cta-wrap">
+          <a class="btn-champagne" href="#reserver">Réserver ma place — 247€</a>
+          <ul class="hero-mentions">
+            <li>Démarrage jeudi 14 mai 2026</li>
+            <li>5 places early bird à 247€ (au lieu de 297€)</li>
+            <li>Inscriptions ouvertes jusqu'au 11 mai</li>
+            <li>Paiement en 2 ou 3 fois disponible</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 2 — VOUS RECONNAISSEZ-VOUS ? ══ -->
+    <section class="recognition">
+      <div class="section-inner">
+        <span class="eyebrow">Vous reconnaissez-vous ?</span>
+        <h2 class="section-title">Et si vous étiez <em>exactement</em> là où vous devez être ?</h2>
+        <p>Vous avez plus de 45 ans. Vous avez fait des régimes. Beaucoup de régimes. Certains ont marché — un temps. D'autres pas du tout. À chaque fois, les kilos sont revenus — et souvent, plus nombreux qu'avant.</p>
+        <p>Vous savez exactement ce qu'il faudrait manger. Vous avez lu les livres, suivi les coachs, essayé le jeûne, le sans gluten, le low-carb, le rééquilibrage alimentaire. Vous n'avez pas un problème d'information. Vous avez un problème de <strong>comportement</strong>, et vous le savez.</p>
+        <p>Le soir, après une journée sous tension, vous ouvrez le placard sans même y penser. Vous mangez debout, vite, comme pour vous remplir d'autre chose que de nourriture. Et après, vous vous en voulez.</p>
+        <p>Votre corps a changé. La ménopause, peut-être. Les épreuves de la vie, sans doute. Un deuil, une rupture, un burn-out, des enfants partis, des parents à charge. Et vous ne vous reconnaissez plus dans le miroir.</p>
+        <p><strong>Vous n'êtes pas faible. Vous n'êtes pas paresseuse. Vous êtes épuisée d'avoir tout porté seule pendant si longtemps.</strong></p>
+        <p>Et si, cette fois, on essayait autre chose ?</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 3 — POURQUOI ÇA NE MARCHE PLUS ══ -->
+    <section class="explanation">
+      <div class="section-inner">
+        <span class="eyebrow">Ce qui se passe vraiment</span>
+        <h2 class="section-title">Pourquoi les régimes ne marchent plus <em>après 45 ans</em></h2>
+        <p>Les régimes sont conçus pour des corps de 25 ans. Pas pour le vôtre.</p>
+        <p>Après 45 ans, votre corps n'est plus le même. Les hormones changent, le métabolisme ralentit, le sommeil se dérègle, le stress s'accumule sur des années. Et surtout, votre rapport à la nourriture s'est construit sur des décennies — il ne se déconstruit pas avec une application qui compte les calories.</p>
+        <p>Le problème n'est pas dans votre assiette. <strong>Le problème est dans votre cerveau.</strong></p>
+        <p>Tant que les automatismes inconscients qui vous font ouvrir le placard à 22h n'auront pas changé, aucune méthode ne tiendra dans le temps. Tant que la voix intérieure qui vous parle de privation, de honte, de "demain je m'y remets" sera là, vous serez en lutte permanente.</p>
+        <p>L'hypnose travaille exactement à cet endroit. Là où aucune diététicienne, aucun coach sportif, aucun nutritionniste ne peut aller. Dans l'inconscient, là où les comportements alimentaires se sont installés, parfois depuis l'enfance.</p>
+        <p>Et c'est là, et seulement là, que le changement devient durable.</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 4 — 8 SEMAINES, UNE VIE ENTIÈRE ══ -->
+    <section class="key-section">
+      <div class="section-inner">
+        <span class="eyebrow">La proposition</span>
+        <h2 class="section-title">8 semaines. Ce n'est <em>rien</em> comparé à une vie entière.</h2>
+        <p>Arrêtez-vous un instant.</p>
+        <p>Combien d'années avez-vous passées à vous battre avec la nourriture ? Combien de régimes entamés le lundi ? Combien de "demain je m'y remets" ? Combien de matins à détester votre reflet dans le miroir ?</p>
+        <div class="highlight-numbers">10 ans ? 20 ans ? 30 ans ?</div>
+        <p>Ce que je vous propose, c'est 8 semaines. Huit jeudis soirs. Du 14 mai au 2 juillet.</p>
+        <div class="key-callout">
+          Ce n'est <strong>rien</strong> comparé à ce que vous portez depuis toutes ces années. Rien comparé aux décennies de lutte, de culpabilité, de découragement. Rien comparé au temps que vous avez déjà donné à ce combat sans en voir le bout.
+        </div>
+        <p>Mais ces 8 semaines peuvent tout changer. <strong>Parce qu'on ne va pas traiter les symptômes — on va aller à la racine.</strong> On va travailler là où vos comportements se sont installés, parfois dès l'enfance. On va désactiver les automatismes. On va réconcilier votre corps et votre esprit. On va installer des nouveaux réflexes qui tiendront, non pas pour 3 mois, mais pour le reste de votre vie.</p>
+        <p><strong>C'est un investissement de temps minuscule. Pour un retour qui peut durer 30 ans.</strong></p>
+        <p>La seule condition : être vraiment là. Huit jeudis. De 20h à 21h30. Totalement.</p>
+      </div>
+    </section>
+
+    <!-- ══ CTA #1 — MID SECTION ══ -->
+    <div class="mid-cta" id="reserver-top">
+      <div class="section-inner narrow" style="padding: 0;">
+        <span class="eyebrow centered">Programme Pilote · Mai 2026</span>
+        <h2>Prête à <em>essayer autre chose</em> ?</h2>
+        <p>5 places early bird disponibles. Démarrage le 14 mai.</p>
+        <a class="btn-champagne" href="#reserver">Réserver ma place — 247€</a>
+        <p class="mentions-dark">Inscriptions ouvertes jusqu'au 11 mai · Paiement en 2 ou 3 fois disponible</p>
+      </div>
+    </div>
+
+    <!-- ══ SECTION 5 — POURQUOI UN GROUPE ══ -->
+    <section class="explanation">
+      <div class="section-inner">
+        <span class="eyebrow">La puissance du collectif</span>
+        <h2 class="section-title">Pourquoi un programme <em>en groupe</em> ?</h2>
+        <p>J'ai accompagné plus de 600 femmes en individuel depuis 10 ans. Et j'ai observé une chose : ce qui manque le plus à mes clientes, ce n'est pas la méthode. <strong>C'est le sentiment de ne pas être seule.</strong></p>
+        <p>Vous croyez que vous êtes la seule à craquer sur le chocolat à 16h. Vous croyez que vous êtes la seule à pleurer devant la balance. Vous croyez que les autres femmes y arrivent et que vous, non.</p>
+        <p>Ce n'est pas vrai. Et le découvrir, en groupe, avec d'autres femmes qui traversent exactement la même chose, <strong>change tout</strong>.</p>
+        <p>Dans ce programme pilote, vous ne serez plus seule. Vous serez 6 femmes au maximum, soigneusement sélectionnées, qui avancent ensemble pendant 8 semaines. Vous partagerez vos déclics, vos doutes, vos victoires. Vous serez portées par l'énergie du groupe les jours où la vôtre flanchera.</p>
+        <p>Et vous bénéficierez du même travail d'hypnose en profondeur qu'en séance individuelle, à un tarif accessible.</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 6 — LE PROGRAMME ══ -->
+    <section class="programme">
+      <div class="section-inner wide">
+        <span class="eyebrow centered">8 semaines pour tout changer</span>
+        <h2 class="section-title centered">Le programme — semaine <em>par semaine</em></h2>
+        <p class="programme-subtitle">Du jeudi 14 mai au jeudi 2 juillet 2026 · tous les jeudis de 20h à 21h30</p>
+        <div class="programme-grid">
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">1</span>
+              <h3>Comprendre ce qui se joue vraiment</h3>
+            </div>
+            <p>Pourquoi votre cerveau résiste au changement, et comment l'apprivoiser. Première séance d'hypnose de mise en route.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">2</span>
+              <h3>Identifier vos déclencheurs personnels</h3>
+            </div>
+            <p>Quels événements, émotions, moments de la journée déclenchent vos compulsions ? On les nomme, on les cartographie, on les désamorce.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">3</span>
+              <h3>Désactiver la compulsion</h3>
+            </div>
+            <p>Le cœur du travail. Protocole d'hypnose pour neutraliser les automatismes qui vous font manger sans faim.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">4</span>
+              <h3>Réconcilier votre corps qui change</h3>
+            </div>
+            <p>Ménopause, vieillissement, épreuves : faire la paix avec le corps que vous avez aujourd'hui pour pouvoir le transformer.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">5</span>
+              <h3>Retrouver la faim et la satiété</h3>
+            </div>
+            <p>Réapprendre à écouter les signaux que votre corps n'arrête jamais d'envoyer — mais que vous n'entendez plus.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">6</span>
+              <h3>Tenir face aux situations sociales</h3>
+            </div>
+            <p>Repas de famille, dîners entre amis, vacances, week-ends. Comment ne plus saboter vos avancées.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">7</span>
+              <h3>Ancrer durablement les nouveaux réflexes</h3>
+            </div>
+            <p>La consolidation. Pour que ce qui a changé reste changé, dans 6 mois, dans 2 ans, à vie.</p>
+          </div>
+          <div class="week-card">
+            <div class="week-header">
+              <span class="week-number">8</span>
+              <h3>Votre vie après</h3>
+            </div>
+            <p>Bilan, célébration, plan personnalisé pour la suite. Sortie en autonomie ou poursuite en accompagnement individuel si vous le souhaitez.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 7 — L'ENGAGEMENT ══ -->
+    <section class="engagement">
+      <div class="section-inner">
+        <span class="eyebrow">La vraie clé de votre réussite</span>
+        <h2 class="section-title">L'engagement — <em>ce que je vous demande</em></h2>
+        <p>Je vais être directe avec vous.</p>
+        <p>Ce programme ne fonctionnera <strong>que si vous êtes vraiment présente</strong>. Pas "je viendrai si je peux". <strong>Vraiment là.</strong> Huit jeudis soirs. De 20h à 21h30. Dans un endroit calme, seule, disponible.</p>
+        <p>Pourquoi je vous le dis aussi clairement ? Parce que j'ai vu trop de femmes s'inscrire à des programmes en se disant "je regarderai les replays". Et ne jamais les regarder. Et abandonner au bout de 3 semaines. Et s'en vouloir encore. <strong>Je ne veux pas ça pour vous.</strong></p>
+        <p>C'est pour cette raison que <strong>ce programme ne propose pas de replay vidéo</strong>. Les séances d'hypnose se vivent <strong>en direct, avec le groupe</strong>. C'est là que la transformation s'opère. Un replay d'hypnose n'a ni la même profondeur, ni la même puissance qu'une séance vécue en live, portée par l'énergie collective.</p>
+        <h3>Ce que je vous demande concrètement</h3>
+        <div class="engagement-callout">
+          <p><strong>Avant de vous inscrire, prenez votre agenda.</strong></p>
+          <p><strong>Bloquez les 8 jeudis soirs, de 20h à 21h30, du 14 mai au 2 juillet.</strong></p>
+          <p>Prévenez votre conjoint, vos enfants, vos proches. Ces 8 soirées sont à vous. <strong>Uniquement à vous.</strong></p>
+          <p>Si vous ne pouvez pas garantir cet engagement, ce programme n'est pas pour vous aujourd'hui. Et c'est OK. Vous pourrez rejoindre la prochaine session en septembre.</p>
+        </div>
+        <h3>Ce que je mets en place pour vous soutenir</h3>
+        <p><strong>Une seule absence tolérée</strong> sur les 8 séances, pour les vrais imprévus (maladie, urgence familiale). Dans ce cas, vous recevez :</p>
+        <p>– Un résumé écrit complet de la séance dans le groupe WhatsApp<br>– L'audio d'auto-hypnose de la semaine (que vous auriez eu de toute façon)</p>
+        <p>Au-delà d'une absence, l'effet groupe se perd et le programme perd de sa puissance pour vous. Ce n'est pas une punition, c'est une réalité.</p>
+        <div class="engagement-bottom">
+          « C'est cet engagement qui fait la différence entre "encore un programme qui n'a pas marché" et "cette fois, ma vie a changé." »
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 8 — CE QUI EST INCLUS ══ -->
+    <section class="includes">
+      <div class="section-inner">
+        <span class="eyebrow">Le contenu du programme</span>
+        <h2 class="section-title">Tout ce qui est <em>inclus</em></h2>
+        <ul class="includes-list">
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>8 séances live en visio</strong> d'1h30 chacune, tous les jeudis à 20h — le cœur de la transformation</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>8 audios d'auto-hypnose personnalisés</strong> à écouter entre les séances pour ancrer le travail en profondeur</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>Un résumé écrit</strong> de chaque séance dans le groupe WhatsApp, pour revenir sur les points clés quand vous en avez besoin</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>Un groupe WhatsApp privé</strong> pour le soutien entre les séances et le partage avec les autres participantes</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>Mon accompagnement personnel</strong> dans le groupe WhatsApp, du lundi au vendredi</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>Un livret PDF</strong> récapitulatif des protocoles travaillés, à conserver à vie</span>
+          </li>
+          <li>
+            <span class="includes-icon">✓</span>
+            <span><strong>Un appel bilan individuel de 30 minutes</strong> en fin de programme pour faire le point et préparer la suite</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 9 — RÉSULTATS ATTENDUS ══ -->
+    <section class="results">
+      <div class="section-inner wide">
+        <span class="eyebrow centered">Ce que vous pouvez espérer</span>
+        <h2 class="section-title centered">Les résultats <em>observés</em></h2>
+        <p class="results-intro">Sur les 600+ femmes accompagnées en individuel sur des programmes équivalents, voici les résultats les plus fréquemment observés :</p>
+        <div class="results-grid">
+          <div class="result-card">
+            <div class="result-stat">5 à 8 kg</div>
+            <h3>Poids perdu</h3>
+            <p>Sur la durée du programme, durablement et sans privation</p>
+          </div>
+          <div class="result-card">
+            <div class="result-stat">÷ 3 à 5</div>
+            <h3>Compulsions</h3>
+            <p>Moins de craquages, moins de culpabilité, plus de paix intérieure</p>
+          </div>
+          <div class="result-card">
+            <div class="result-stat">↑</div>
+            <h3>Énergie retrouvée</h3>
+            <p>Meilleur sommeil, sensation de légèreté, envie de bouger</p>
+          </div>
+          <div class="result-card">
+            <div class="result-stat">♡</div>
+            <h3>Estime de soi</h3>
+            <p>Réconciliation avec le corps, fin du dialogue intérieur destructeur</p>
+          </div>
+        </div>
+        <p class="results-disclaimer">Ces résultats ne constituent pas une garantie. Ils dépendent de votre engagement, de votre situation personnelle et de votre histoire. L'hypnose n'est pas une baguette magique — c'est un travail. Mais c'est un travail qui marche, quand on s'y engage.</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 10 — TÉMOIGNAGE ══ -->
+    <section class="testimonial">
+      <div class="section-inner narrow">
+        <span class="eyebrow centered">Ce qu'elles en disent</span>
+        <h2 class="section-title centered" style="margin-bottom: 40px;">Un parcours <em>qui parle</em></h2>
+        <div class="testi-card">
+          <div class="testi-quote-mark">"</div>
+          <p class="testi-text">Laetitia est venue me consulter en situation d'obésité morbide, avec un objectif de vie derrière&nbsp;: perdre du poids pour pouvoir entamer un parcours de PMA. En trois mois, elle a perdu 20 kilos. Son parcours de PMA s'est parfaitement déroulé et elle a aujourd'hui un beau bébé de 18 mois. Elle n'a pas repris ses 20 kilos.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">L</div>
+            <div>
+              <div class="testi-name">Laetitia</div>
+              <div class="testi-meta">Cliente accompagnée en 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 11 — QUI SUIS-JE ══ -->
+    <section class="about">
+      <div class="section-inner">
+        <span class="eyebrow">Votre accompagnatrice</span>
+        <h2 class="section-title">Pourquoi je vous parle, moi, <em>en particulier</em></h2>
+        <p>Je m'appelle Sandrine Bartoli. J'ai 60 ans. Je suis hypnothérapeute spécialisée dans la perte de poids et les troubles du comportement alimentaire depuis 2016. Formée à Psynapse en hypnose ericksonienne, j'ai accompagné plus de 600 femmes en 10 ans.</p>
+        <p>Mais ce n'est pas pour ça que je vous parle aujourd'hui.</p>
+        <p><strong>Je vous parle parce que je sais.</strong></p>
+        <p>En 2019, j'ai perdu 18 kilos en 8 mois. J'ai utilisé sur moi-même les outils que je donne à mes clientes. Ça a marché. Je suis arrivée à 60 kilos et je m'y suis tenue.</p>
+        <p>En 2022, ma mère est décédée. Je suis tombée. Très loin. Pendant quatre ans, je n'ai pas réussi à me reprendre. J'ai repris les 20 kilos. Et au-delà du poids, j'ai perdu pendant un temps mon élan, ma confiance, mon métier. J'ai dû fermer mon cabinet.</p>
+        <p><strong>J'ai mis quatre ans à faire le deuil et à me reprendre en charge.</strong></p>
+        <p>Aujourd'hui, je vais mieux. Je suis à nouveau dans le travail de perte de poids — sur moi, et avec mes clientes. Et je suis exactement la personne dont j'aurais eu besoin il y a quatre ans&nbsp;: quelqu'un qui sait ce que c'est de tomber après avoir réussi. Quelqu'un qui ne juge pas. Quelqu'un qui vous dit la vérité&nbsp;: c'est long, c'est dur par moments, et c'est possible.</p>
+        <p>Je ne suis pas une coach minceur parfaite qui n'a jamais douté. Je suis une femme de 60 ans, hypnothérapeute, qui traverse exactement ce que vous traversez, et qui a 10 ans d'expertise pour vous accompagner dignement.</p>
+        <p>C'est ce que je vous offre dans ce programme.</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 12 — POUR QUI / PAS POUR QUI ══ -->
+    <section class="for-who">
+      <div class="section-inner wide">
+        <span class="eyebrow centered">Est-ce fait pour vous ?</span>
+        <h2 class="section-title centered" style="margin-bottom: 40px;">Ce programme <em>est-il pour vous</em>&nbsp;?</h2>
+        <div class="for-who-grid">
+          <div class="for-who-col">
+            <div class="for-who-col-header yes">✓ Pour vous si…</div>
+            <ul class="for-who-items">
+              <li><span class="for-who-icon yes">✓</span>Vous avez plus de 45 ans</li>
+              <li><span class="for-who-icon yes">✓</span>Vous avez essayé plusieurs méthodes sans résultat durable</li>
+              <li><span class="for-who-icon yes">✓</span>Vous savez que votre rapport à la nourriture est devenu compulsif ou émotionnel</li>
+              <li><span class="for-who-icon yes">✓</span>Vous êtes prête à bloquer 8 jeudis soirs dans votre agenda, sans négociation</li>
+              <li><span class="for-who-icon yes">✓</span>Vous voulez travailler en profondeur, pas chercher un raccourci</li>
+              <li><span class="for-who-icon yes">✓</span>Vous êtes ouverte à l'expérience du groupe et au partage avec d'autres femmes</li>
+            </ul>
+          </div>
+          <div class="for-who-col">
+            <div class="for-who-col-header no">✗ Pas pour vous si…</div>
+            <ul class="for-who-items">
+              <li><span class="for-who-icon no">✗</span>Vous cherchez un régime ou un plan alimentaire — je n'en propose pas</li>
+              <li><span class="for-who-icon no">✗</span>Vous voulez perdre 30 kilos en 2 mois — ce n'est ni réaliste ni sain</li>
+              <li><span class="for-who-icon no">✗</span>Vous souffrez de troubles alimentaires sévères nécessitant un suivi médical — je vous orienterai</li>
+              <li><span class="for-who-icon no">✗</span>Vous ne pouvez pas garantir votre présence les jeudis soirs — attendez la prochaine session</li>
+              <li><span class="for-who-icon no">✗</span>Vous attendez que ça marche tout seul, sans engagement de votre part</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 13 — TARIF ══ -->
+    <section class="pricing" id="reserver">
+      <div class="section-inner narrow">
+        <span class="eyebrow centered">Investissement</span>
+        <h2 class="section-title centered" style="margin-bottom: 12px;">Votre place dans <em>le programme</em></h2>
+        <p class="pricing-intro">Ce programme est lancé en formule pilote, à un tarif volontairement accessible.</p>
+
+        <div class="pricing-block">
+          <div class="pricing-card">
+            <div class="pricing-card-top">
+              <div class="pricing-label">Programme Groupe Pilote · Printemps 2026</div>
+              <div class="pricing-badge">✦ 5 places early bird uniquement</div>
+              <div class="pricing-normal">297€</div>
+              <div class="pricing-amount">247€</div>
+              <div class="pricing-note">8 semaines · 8 séances live · du 14 mai au 2 juillet</div>
+            </div>
+            <div class="pricing-card-bottom">
+              <ul class="pricing-options">
+                <li>
+                  <span class="opt-label">Paiement en 2 fois (+ 8% de frais)</span>
+                  <span class="opt-value">2 × 134€</span>
+                </li>
+                <li>
+                  <span class="opt-label">Paiement en 3 fois (+ frais de fractionnement)</span>
+                  <span class="opt-value">3 × 90€</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-comparison">
+            À titre de comparaison, mon accompagnement individuel <strong>Silhouette Révélée</strong> est à 447€. Vous bénéficiez ici d'un travail d'une qualité équivalente, dans un format groupe, à un tarif réduit de moitié — parce que c'est la première promotion de ce programme et que je veux qu'il soit accessible.
+          </div>
+
+          <p class="pricing-per-day">247€ pour 8 semaines, c'est environ <strong>4€ par jour</strong>.<br>Moins qu'un café et un croissant. Pour un travail qui peut transformer<br>votre rapport à la nourriture pour les <strong>30 prochaines années</strong>.</p>
+
+          <div class="pricing-cta-wrap">
+            <a class="btn-primary" href="/questionnaire-pilote.html">Réserver ma place maintenant →</a>
+            <a class="btn-ghost" href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">Une question d'abord ? Appel découverte offert</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 14 — RARETÉ ══ -->
+    <section class="scarcity">
+      <div class="section-inner narrow">
+        <h3>Pourquoi seulement <em>6 places</em>&nbsp;?</h3>
+        <p>Parce qu'au-delà de 6, le lien individuel se perd. Vous ne seriez plus suivie personnellement, vous deviendriez un numéro dans un groupe.</p>
+        <p>Je veux que chacune d'entre vous soit vue, entendue, accompagnée. Pour ça, 6 est le maximum. Si toutes les places ne sont pas pourvues, je préférerai démarrer à 4 plutôt que d'ouvrir au-delà.</p>
+        <p>Si ce programme vous parle, ne tardez pas. Les 5 places early bird à 247€ partiront en premier.</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 15 — FAQ ══ -->
+    <section class="faq">
+      <div class="section-inner">
+        <span class="eyebrow centered">Vos questions</span>
+        <h2 class="section-title centered" style="margin-bottom: 48px;">Tout ce que vous voulez <em>savoir</em></h2>
+        <div class="faq-list">
+
+          <details class="faq-item">
+            <summary>Je n'ai jamais fait d'hypnose. Est-ce que ça va marcher pour moi ?</summary>
+            <div class="faq-answer">
+              Oui. L'hypnose ne dépend pas de votre "réceptivité" comme on le croit souvent. Tout le monde entre en hypnose tous les jours, sans s'en rendre compte (en lisant un livre passionnant, en conduisant en pilote automatique, en regardant un film). Le travail que je propose s'adapte à chacune. La seule condition, c'est d'être ouverte à l'expérience.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Je suis très occupée. Vais-je tenir le rythme ?</summary>
+            <div class="faq-answer">
+              Le programme demande 1h30 par semaine en live (le jeudi soir 20h) + environ 30 minutes par jour pour écouter l'audio personnalisé. C'est conçu pour des femmes actives. Mais ce n'est pas négociable : ces 90 minutes hebdomadaires doivent être bloquées dans votre agenda. <strong>Si vous ne pouvez pas, ne vous inscrivez pas maintenant — attendez la session de septembre.</strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Et si je ne peux pas être présente à une séance ?</summary>
+            <div class="faq-answer">
+              Chaque participante peut manquer <strong>1 séance sur les 8</strong> sans problème : je vous envoie un résumé écrit détaillé dans le groupe WhatsApp ainsi que l'audio d'auto-hypnose de la semaine. Au-delà, l'effet groupe se perd. Ce programme est conçu pour être vécu en direct, parce que c'est là que la transformation se passe vraiment. <strong>Bloquez les 8 jeudis soirs dans votre agenda avant de vous inscrire.</strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Pourquoi pas de replay vidéo ?</summary>
+            <div class="faq-answer">
+              C'est un choix assumé. Une séance d'hypnose en replay n'a pas la même profondeur qu'en live — la voix qui s'adapte à vos réactions, l'énergie du groupe, la co-présence, tout cela disparaît. Et surtout, savoir qu'il y a un replay diminue considérablement l'engagement. Je veux que vous soyez vraiment là, parce que c'est ce qui fera la différence.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Est-ce que je vais devoir parler de moi devant les autres ?</summary>
+            <div class="faq-answer">
+              Vous parlerez si vous le souhaitez. Personne n'est forcé à se livrer. Mais l'expérience montre que la parole partagée est libératrice — la plupart des participantes finissent par parler bien plus qu'elles ne pensaient au départ.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Est-ce que je vais vraiment perdre du poids ?</summary>
+            <div class="faq-answer">
+              C'est ce que je vise pour vous, et c'est ce qu'observent la majorité de mes clientes. Mais je ne peux pas vous le garantir : votre engagement, votre histoire et votre corps sont uniques. Ce que je vous garantis, en revanche, c'est un travail sérieux, des outils qui ont fait leurs preuves sur 600 femmes, et mon accompagnement personnel pendant 8 semaines.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Est-ce remboursé par la Sécurité sociale ou la mutuelle ?</summary>
+            <div class="faq-answer">
+              Non. L'hypnose n'est pas remboursée par la Sécurité sociale. Certaines mutuelles proposent un forfait "médecines douces" qui peut prendre en charge une partie — renseignez-vous auprès de la vôtre, je peux vous fournir une facture détaillée.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Et si ça ne me convient pas ?</summary>
+            <div class="faq-answer">
+              Si après la première séance vous estimez que ce programme n'est pas pour vous, je vous rembourse intégralement. <strong>Au-delà de la première séance, le programme n'est plus remboursable.</strong>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Comment se déroule l'inscription ?</summary>
+            <div class="faq-answer">
+              Vous cliquez sur le bouton, vous remplissez un court questionnaire (pour que je m'assure que le programme est bien adapté à votre situation), vous payez en ligne, et vous recevez immédiatement votre lien de connexion pour le 14 mai ainsi que les premières informations.
+            </div>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 16 — DERNIER CTA ══ -->
+    <section class="final-cta">
+      <div class="section-inner narrow">
+        <span class="eyebrow centered">Votre décision</span>
+        <h2 class="section-title centered">Le 14 mai, <em>vous êtes là</em>&nbsp;?</h2>
+        <p>Vous avez deux options.</p>
+        <p>Continuer à essayer seule, comme vous le faites depuis des années. Espérer que ça finisse par marcher. Recommencer un nouveau régime lundi prochain. Et dans 1 an, dans 5 ans, porter encore le même poids — dans votre corps et dans votre tête.</p>
+        <p>Ou décider, aujourd'hui, que vous méritez 8 semaines. <strong>Seulement 8 semaines.</strong> Pour transformer ce que vous portez depuis toute une vie. Avec quelqu'un qui sait. Avec d'autres femmes qui vivent la même chose.</p>
+        <p class="final-tagline">8 semaines. 8 jeudis soirs. 247€.<br>Pour les 30 prochaines années de votre vie.</p>
+        <a class="btn-champagne large" href="/questionnaire-pilote.html">Je réserve ma place</a>
+        <p class="final-details">Inscriptions ouvertes jusqu'au 11 mai · Démarrage le 14 mai à 20h · 5 places early bird</p>
+      </div>
+    </section>
+
+    <!-- ══ SECTION 17 — RASSURANCE ══ -->
+    <section class="reassurance">
+      <div class="section-inner wide">
+        <div class="reassurance-grid">
+          <div class="reassurance-col">
+            <div class="reassurance-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4B896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3>Sandrine Bartoli</h3>
+            <p>Hypnothérapeute certifiée Psynapse · 10 ans d'expérience · 600+ femmes accompagnées</p>
+          </div>
+          <div class="reassurance-col">
+            <div class="reassurance-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4B896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>100% en visio</h3>
+            <p>Depuis chez vous, partout en France · Pas de déplacement · Confidentialité garantie</p>
+          </div>
+          <div class="reassurance-col">
+            <div class="reassurance-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4B896" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3>Une question avant de réserver ?</h3>
+            <p>Réservez un appel offert de 20 minutes — gratuit, sans engagement.<br><a href="https://cal.eu/sandrine-bartoli-adk/appel-decouverte" data-cal-url="https://cal.eu/sandrine-bartoli-adk/appel-decouverte">→ Réserver l'appel découverte</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          Au-delà des kilos
+          <span>Hypnose · Perte de poids & TCA</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Accompagnements</div>
+        <nav class="footer-col-links">
+          <a href="/accompagnements/liberation.html">Libération</a>
+          <a href="/accompagnements/silhouette-revelee.html">Silhouette Révélée</a>
+          <a href="/accompagnements/nouveau-moi.html">Nouveau Moi</a>
+          <a href="/accompagnements/groupe-pilote.html">Groupe Pilote · Mai 2026</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Navigation</div>
+        <nav class="footer-col-links">
+          <a href="/">Accueil</a>
+          <a href="/approche.html">Mon approche</a>
+          <a href="/blog/">Lectures</a>
+          <a href="/#reservation">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Légal</div>
+        <nav class="footer-col-links">
+          <a href="/mentions-legales.html">Mentions légales</a>
+          <a href="/cgv.html">CGV</a>
+          <a href="/politique-confidentialite.html">Confidentialité</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Au-delà des kilos
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
+
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.hamburger');
+      const isOpen = menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.querySelector('.hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 400);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+
+  <script src="/cal-embed.js"></script>
+</body>
+</html>
