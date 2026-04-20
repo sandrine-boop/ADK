@@ -23,7 +23,7 @@ Sandrine Bartoli, 60 ans, hypnothérapeute spécialisée perte de poids et TCA d
 **Promesse** : perdre du poids durablement par l’hypnose, sans régime, sans privation.
 
 **Les 4 offres** :
-- **Programme Pilote** — 247 € early bird (5 places) · 297 € (6ᵉ place) — 8 semaines de groupe visio, jeudis 20h-21h30, du 14 mai au 2 juillet 2026.
+- **Programme Pilote** — 247 € early bird (5 places) · 297 € (6ᵉ place) — 8 semaines de groupe visio, jeudis 20h-21h30, du 21 mai au 9 juillet 2026.
 - **Libération** — 347 € — accompagnement individuel TCA / compulsions légères.
 - **Silhouette Révélée** — 447 € — perte de poids < 10 kg.
 - **Nouveau Moi** — 647 € — perte > 10 kg avec pose de l’anneau gastrique virtuel.
@@ -173,7 +173,7 @@ Par défaut : pas de commentaires. N’en écrire que si le **pourquoi** est non
 - **Pas de majuscule après virgule.**
 - **Verbe « on » toujours sans s** (« on travaille », pas « on travailles »).
 - **Ligature `œ` obligatoire** (œstrogènes, œuf, cœur).
-- **Nombres en lettres** dans la narration jusqu’à dix · **en chiffres** dans les CTA commerciaux (5 places, 14 mai, 247 €).
+- **Nombres en lettres** dans la narration jusqu’à dix · **en chiffres** dans les CTA commerciaux (5 places, 21 mai, 247 €).
 - **Jamais « venir me voir »** → visio uniquement (« m’a consultée », ou attaquer direct).
 - **Ton** : intimiste, mature, émotionnel sans misérabilisme. Pas de jargon coach anglo-saxon. Phrases courtes. Paragraphes courts.
 
@@ -203,14 +203,14 @@ Utilisée sur audeladeskilos.com :
 
 ### Programme Pilote — formulations exactes
 
-Configuration réelle : **6 places · 5 early bird à 247 € jusqu’au 11 mai · 6ᵉ place à 297 €**.
+Configuration réelle : **6 places · 5 early bird à 247 € jusqu’au 18 mai · 6ᵉ place à 297 €**.
 
 - **Courte** (bio, slide) : « 5 places early bird à 247 € »
-- **Moyenne** (légende, CTA) : « 5 places early bird à 247 € jusqu’au 11 mai »
-- **Longue** (page de vente) : « 6 places · 5 early bird à 247 € jusqu’au 11 mai · puis 297 € »
+- **Moyenne** (légende, CTA) : « 5 places early bird à 247 € jusqu’au 18 mai »
+- **Longue** (page de vente) : « 6 places · 5 early bird à 247 € jusqu’au 18 mai · puis 297 € »
 - **Jamais « 5 places » seul** (faux).
 - **Jamais « 6 places early bird »** (faux).
-- **Démarrage** : jeudi 14 mai 2026, 20h. **Fin** : jeudi 2 juillet 2026. **8 séances** de 20h à 21h30.
+- **Démarrage** : jeudi 21 mai 2026, 20h. **Fin** : jeudi 9 juillet 2026. **8 séances** de 20h à 21h30.
 
 ### CTA
 
@@ -230,7 +230,7 @@ Référence visuelle canonique : [docs/parcours-client-pilote.svg](docs/parcours
 4. **Filtre 1 · TCA sévère** (case à cocher obligatoire : suivi médical anorexie / boulimie sévère).
    - OUI → sortie TCA.
    - NON → suite.
-5. **Filtre 2 · Engagement 8 jeudis** (case à cocher : disponible jeudis 20h-21h30 du 14 mai au 2 juillet).
+5. **Filtre 2 · Engagement 8 jeudis** (case à cocher : disponible jeudis 20h-21h30 du 21 mai au 9 juillet).
    - NON → sortie engagement.
    - OUI → passage paiement.
 6. **Page paiement Stripe** · 1x 247 € · 2x · 3x (fractionné Stripe en production).
@@ -243,9 +243,9 @@ Référence visuelle canonique : [docs/parcours-client-pilote.svg](docs/parcours
 9. **Ajout automatique Google Sheet inscrites** · base de suivi Sandrine.
 10. **Séquence Brevo pré-démarrage** : J+1 bienvenue · J-7 rappel · J-3 prépa séance 1 · J-1 récap · J-0 (2h avant) rappel final avec lien Meet.
 11. **Invitation WhatsApp manuelle J-2** · Sandrine crée le groupe et invite les 6 inscrites (échanges libres pendant les 8 semaines).
-12. **Démarrage** · jeudi 14 mai, 20h, Google Meet.
+12. **Démarrage** · jeudi 21 mai, 20h, Google Meet.
 
-**Post-programme** (après le 2 juillet) — 2 emails espacés pour ne pas mélanger émotion et commercial :
+**Post-programme** (après le 9 juillet) — 2 emails espacés pour ne pas mélanger émotion et commercial :
 - **J+2** après le dernier jeudi · email de clôture émotionnelle + demande de témoignage (pas d'upsell).
 - **J+10** · proposition d'accompagnement individuel (Libération / Silhouette Révélée / Nouveau Moi).
 

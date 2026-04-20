@@ -79,7 +79,7 @@
       '<button class="adk-banner-close" aria-label="Fermer">✕</button>' +
       '<div class="adk-banner-accent"></div>' +
       '<p class="adk-banner-title">Et si cet été, vous vous sentiez <em>enfin bien</em> dans votre corps&nbsp;?</p>' +
-      '<p class="adk-banner-sub">Programme pilote · 14 mai – 2 juillet · En visio · <strong>5 places à 247€</strong></p>' +
+      '<p class="adk-banner-sub">Programme pilote · 21 mai – 9 juillet · En visio · <strong>5 places à 247€</strong></p>' +
       '<div class="adk-banner-row">' +
         '<a class="adk-banner-btn" href="/accompagnements/groupe-pilote.html">Je découvre →</a>' +
         '<button class="adk-banner-dismiss">Non merci</button>' +
@@ -94,7 +94,7 @@
           '<p class="adk-eyebrow">Programme Groupe Pilote · Printemps 2026</p>' +
           '<h2 class="adk-title">Et si cet été, vous vous sentiez <em>enfin bien</em> dans votre corps&nbsp;?</h2>' +
           '<p class="adk-sub">' +
-            'Du 14 mai au 2 juillet · En visio · 8 séances en groupe<br>' +
+            'Du 21 mai au 9 juillet · En visio · 8 séances en groupe<br>' +
             '<strong>5 places early bird à 247€</strong> <s>297€</s>' +
           '</p>' +
           '<a class="adk-btn" href="/accompagnements/groupe-pilote.html">Je découvre le programme →</a>' +

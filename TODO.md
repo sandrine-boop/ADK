@@ -6,7 +6,7 @@
 
 ---
 
-## 🔥 Urgent — avant le 14 mai (démarrage Pilote)
+## 🔥 Urgent — avant le 21 mai (démarrage Pilote)
 
 Référence du parcours client complet : [CLAUDE.md section 7](CLAUDE.md) + [docs/parcours-client-pilote.svg](docs/parcours-client-pilote.svg).
 
@@ -18,7 +18,7 @@ Référence du parcours client complet : [CLAUDE.md section 7](CLAUDE.md) + [doc
 
 ### Actifs à préparer (par Sandrine, hors code)
 
-- [ ] Générer le **lien Google Meet permanent** pour les 8 jeudis (20h-21h30, 14 mai → 2 juillet).
+- [ ] Générer le **lien Google Meet permanent** pour les 8 jeudis (20h-21h30, 21 mai → 9 juillet).
 - [ ] Créer le **fichier ICS** des 8 séances (format calendrier universel, ajout en 1 clic).
 - [ ] Enregistrer / finaliser l'**audio cadeau de bienvenue** (format mp3, hébergé où ? Cloudflare R2 ou site ?).
 - [ ] Rédiger les **6 emails de la séquence pré-démarrage** (J+1 bienvenue, J-7 rappel, J-3 prépa, J-1 récap, J-0 rappel final) + les **2 emails post-programme** (J+2 clôture, J+10 upsell).
@@ -71,8 +71,8 @@ Les 4 fichiers du dossier `blog/` sont modifiés non committés et prêts à pub
 
 - [x] 19 avril — Post 1 publié
 - [ ] 20-27 avril — 9 posts fondateurs, 1/jour à 19h30 (les 9 sont prêts et planifiés dans Meta Business Suite, **3 reels restent à tourner** : Posts 2, 5, 8)
-- [ ] 28 avril - 11 mai — stories de vente quotidiennes (3-5/jour)
-- [ ] 11 mai minuit — clôture early bird
+- [ ] 28 avril - 18 mai — stories de vente quotidiennes (3-5/jour)
+- [ ] 18 mai minuit — clôture early bird
 
 ---
 
