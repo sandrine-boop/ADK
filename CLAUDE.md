@@ -220,9 +220,44 @@ Configuration réelle : **6 places · 5 early bird à 247 € jusqu’au 11 mai 
 
 ### Parcours client Programme Pilote (validé 20 avril 2026)
 
-Page de vente → questionnaire (sauvegarde progressive) → filtre TCA (sortie bienveillante si oui) → filtre 8 jeudis (sortie septembre si non) → Stripe → webhook → email Brevo (Meet permanent + ICS + audio cadeau) → ajout Google Sheet → séquence Brevo J+1 / J-7 / J-3 / J-1 / J-0 → WhatsApp manuel J-2 → démarrage 14 mai.
+Référence visuelle canonique : [docs/parcours-client-pilote.svg](docs/parcours-client-pilote.svg).
 
-Post-programme : J+2 email clôture émotionnelle + demande témoignage · J+10 proposition accompagnement individuel.
+**Tunnel de conversion — 12 étapes :**
+
+1. **Arrivée page de vente** · `audeladeskilos.com/accompagnements/groupe-pilote` (trafic Instagram bio, stories, posts, DM).
+2. **CTA cliqué** · « Réserver ma place — 247 € ».
+3. **Questionnaire custom** · champs 1-2 = prénom + email (sauvegarde progressive : les réponses partielles sont stockées avec consentement explicite, pour pouvoir relancer les abandons à mi-parcours).
+4. **Filtre 1 · TCA sévère** (case à cocher obligatoire : suivi médical anorexie / boulimie sévère).
+   - OUI → sortie TCA.
+   - NON → suite.
+5. **Filtre 2 · Engagement 8 jeudis** (case à cocher : disponible jeudis 20h-21h30 du 14 mai au 2 juillet).
+   - NON → sortie engagement.
+   - OUI → passage paiement.
+6. **Page paiement Stripe** · 1x 247 € · 2x · 3x (fractionné Stripe en production).
+7. **Webhook Stripe → tunnel activé** (déclenche les étapes 8-10 automatiquement).
+8. **Email de confirmation Brevo** (immédiat) :
+   - Lien Google Meet permanent (valable les 8 jeudis).
+   - Fichier ICS des 8 séances (ajout calendrier en 1 clic).
+   - Audio cadeau de bienvenue.
+   - Coordonnées Sandrine.
+9. **Ajout automatique Google Sheet inscrites** · base de suivi Sandrine.
+10. **Séquence Brevo pré-démarrage** : J+1 bienvenue · J-7 rappel · J-3 prépa séance 1 · J-1 récap · J-0 (2h avant) rappel final avec lien Meet.
+11. **Invitation WhatsApp manuelle J-2** · Sandrine crée le groupe et invite les 6 inscrites (échanges libres pendant les 8 semaines).
+12. **Démarrage** · jeudi 14 mai, 20h, Google Meet.
+
+**Post-programme** (après le 2 juillet) — 2 emails espacés pour ne pas mélanger émotion et commercial :
+- **J+2** après le dernier jeudi · email de clôture émotionnelle + demande de témoignage (pas d'upsell).
+- **J+10** · proposition d'accompagnement individuel (Libération / Silhouette Révélée / Nouveau Moi).
+
+Le **bilan individuel de 30 min** (déjà annoncé sur la page de vente) se tient en parallèle — c'est le canal chaud pour l'upsell oral, plus naturel que l'email.
+
+### Sorties bienveillantes du tunnel (3 points)
+
+Designer avec soin — aucune relance commerciale agressive sur aucun des trois :
+
+- **Sortie TCA sévère** (étape 4) · page dédiée · message empathique, orientation suivi médical, **pas d'opt-in Brevo**.
+- **Sortie engagement** (étape 5) · page dédiée · message compréhensif, capture email dans la liste « session septembre 2026 » avec accord explicite.
+- **Abandon avant paiement** · email Brevo de relance à J+1 (« vous étiez intéressée, une question ? »), puis laisser faire.
 
 ---
 

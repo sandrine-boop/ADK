@@ -1,0 +1,200 @@
+<svg width="100%" viewBox="0 0 680 1540" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Parcours client Programme Pilote — version 2</title>
+<desc>Tunnel de conversion complet depuis l'arrivée sur la page de vente jusqu'au post-programme, avec les trois sorties bienveillantes, le paiement Stripe, la séquence Brevo de pré-démarrage (J+1 à J-0), le groupe WhatsApp, le démarrage du 14 mai, et la séquence post-programme en deux emails espacés.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<style>
+.t { font-family: sans-serif; font-size: 14px; fill: #1F1915; }
+.ts { font-family: sans-serif; font-size: 12px; fill: #3D332B; }
+.th { font-family: sans-serif; font-size: 14px; font-weight: 500; fill: #1F1915; }
+.arr { stroke: #3D332B; stroke-width: 1.5; fill: none; }
+.c-gray rect { fill: #F1EFE8; stroke: #5F5E5A; }
+.c-gray text { fill: #2C2C2A; }
+.c-blue rect { fill: #E6F1FB; stroke: #185FA5; }
+.c-blue text { fill: #0C447C; }
+.c-blue .ts { fill: #185FA5; }
+.c-purple rect { fill: #EEEDFE; stroke: #534AB7; }
+.c-purple text { fill: #3C3489; }
+.c-purple .ts { fill: #534AB7; }
+.c-amber rect { fill: #FAEEDA; stroke: #854F0B; }
+.c-amber text { fill: #633806; }
+.c-amber .ts { fill: #854F0B; }
+.c-red rect { fill: #FCEBEB; stroke: #A32D2D; }
+.c-red text { fill: #791F1F; }
+.c-red .ts { fill: #A32D2D; }
+.c-teal rect { fill: #E1F5EE; stroke: #0F6E56; }
+.c-teal text { fill: #085041; }
+.c-teal .ts { fill: #0F6E56; }
+.c-green rect { fill: #EAF3DE; stroke: #3B6D11; }
+.c-green text { fill: #27500A; }
+.c-green .ts { fill: #3B6D11; }
+.c-coral rect { fill: #FAECE7; stroke: #993C1D; }
+.c-coral text { fill: #712B13; }
+.c-coral .ts { fill: #993C1D; }
+</style>
+</defs>
+
+<g class="c-gray">
+<rect x="240" y="30" width="200" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="52" text-anchor="middle" dominant-baseline="central">Arrivée page de vente</text>
+</g>
+<line x1="340" y1="74" x2="340" y2="100" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-blue">
+<rect x="220" y="100" width="240" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="120" text-anchor="middle" dominant-baseline="central">Lecture + CTA cliqué</text>
+<text class="ts" x="340" y="140" text-anchor="middle" dominant-baseline="central">Réserver ma place — 247 €</text>
+</g>
+<line x1="340" y1="156" x2="340" y2="182" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple">
+<rect x="200" y="182" width="280" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="202" text-anchor="middle" dominant-baseline="central">Questionnaire custom</text>
+<text class="ts" x="340" y="220" text-anchor="middle" dominant-baseline="central">Champs 1-2 : prénom + email</text>
+<text class="ts" x="340" y="238" text-anchor="middle" dominant-baseline="central">Sauvegarde progressive</text>
+</g>
+<line x1="340" y1="252" x2="340" y2="280" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-amber">
+<rect x="200" y="280" width="280" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="340" y="300" text-anchor="middle" dominant-baseline="central">Filtre 1 · TCA sévère coché ?</text>
+<text class="ts" x="340" y="320" text-anchor="middle" dominant-baseline="central">Anorexie · boulimie sévère</text>
+</g>
+
+<line x1="200" y1="308" x2="110" y2="308" class="arr"/>
+<line x1="110" y1="308" x2="110" y2="380" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="150" y="300" text-anchor="middle">oui</text>
+
+<line x1="480" y1="308" x2="560" y2="308" class="arr"/>
+<line x1="560" y1="308" x2="560" y2="380" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="520" y="300" text-anchor="middle">non</text>
+
+<g class="c-red">
+<rect x="20" y="380" width="200" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="120" y="400" text-anchor="middle" dominant-baseline="central">SORTIE TCA</text>
+<text class="ts" x="120" y="418" text-anchor="middle" dominant-baseline="central">Message bienveillant</text>
+<text class="ts" x="120" y="434" text-anchor="middle" dominant-baseline="central">Orientation suivi adapté</text>
+</g>
+
+<g class="c-amber">
+<rect x="440" y="380" width="240" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="560" y="400" text-anchor="middle" dominant-baseline="central">Filtre 2 · 8 jeudis validés ?</text>
+<text class="ts" x="560" y="420" text-anchor="middle" dominant-baseline="central">Case à cocher obligatoire</text>
+</g>
+
+<line x1="440" y1="408" x2="400" y2="408" class="arr"/>
+<line x1="400" y1="408" x2="400" y2="480" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="420" y="400" text-anchor="middle">non</text>
+
+<g class="c-red">
+<rect x="280" y="480" width="240" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="400" y="500" text-anchor="middle" dominant-baseline="central">SORTIE ENGAGEMENT</text>
+<text class="ts" x="400" y="518" text-anchor="middle" dominant-baseline="central">Invitation session</text>
+<text class="ts" x="400" y="534" text-anchor="middle" dominant-baseline="central">septembre 2026</text>
+</g>
+
+<line x1="560" y1="436" x2="560" y2="520" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="590" y="480" text-anchor="start">oui</text>
+
+<g class="c-blue">
+<rect x="440" y="520" width="240" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="560" y="542" text-anchor="middle" dominant-baseline="central">Page paiement Stripe</text>
+</g>
+<line x1="560" y1="564" x2="560" y2="600" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-amber">
+<rect x="440" y="600" width="240" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="560" y="620" text-anchor="middle" dominant-baseline="central">Choix paiement</text>
+<text class="ts" x="560" y="640" text-anchor="middle" dominant-baseline="central">Unique · 2x · 3x</text>
+</g>
+
+<line x1="440" y1="628" x2="300" y2="628" class="arr"/>
+<line x1="300" y1="628" x2="300" y2="700" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="370" y="620" text-anchor="middle">unique</text>
+
+<line x1="620" y1="656" x2="620" y2="700" class="arr" marker-end="url(#arrow)"/>
+<text class="ts" x="650" y="680" text-anchor="start">2x ou 3x</text>
+
+<g class="c-teal">
+<rect x="200" y="700" width="200" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="300" y="720" text-anchor="middle" dominant-baseline="central">Paiement 247 €</text>
+<text class="ts" x="300" y="740" text-anchor="middle" dominant-baseline="central">Stripe · carte</text>
+</g>
+
+<g class="c-teal">
+<rect x="480" y="700" width="200" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="580" y="720" text-anchor="middle" dominant-baseline="central">1re échéance Stripe</text>
+<text class="ts" x="580" y="740" text-anchor="middle" dominant-baseline="central">Planification auto</text>
+</g>
+
+<line x1="300" y1="756" x2="300" y2="800" class="arr" marker-end="url(#arrow)"/>
+<line x1="580" y1="756" x2="580" y2="800" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+<rect x="200" y="800" width="440" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="822" text-anchor="middle" dominant-baseline="central">Webhook Stripe → tunnel activé</text>
+</g>
+<line x1="420" y1="844" x2="420" y2="880" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-teal">
+<rect x="180" y="880" width="480" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="900" text-anchor="middle" dominant-baseline="central">Email confirmation Brevo (auto)</text>
+<text class="ts" x="420" y="918" text-anchor="middle" dominant-baseline="central">Lien Meet permanent · calendrier ICS</text>
+<text class="ts" x="420" y="934" text-anchor="middle" dominant-baseline="central">Audio cadeau · coordonnées</text>
+</g>
+<line x1="420" y1="950" x2="420" y2="980" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple">
+<rect x="200" y="980" width="440" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="1002" text-anchor="middle" dominant-baseline="central">Ajout Google Sheet inscrites</text>
+</g>
+<line x1="420" y1="1024" x2="420" y2="1060" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-blue">
+<rect x="120" y="1060" width="600" height="100" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="1080" text-anchor="middle" dominant-baseline="central">Séquence Brevo pré-démarrage (auto)</text>
+<text class="ts" x="420" y="1102" text-anchor="middle" dominant-baseline="central">J+1 bienvenue · J-7 rappel · J-3 préparation</text>
+<text class="ts" x="420" y="1120" text-anchor="middle" dominant-baseline="central">J-1 récapitulatif · J-0 2h avant lien Meet</text>
+<text class="ts" x="420" y="1140" text-anchor="middle" dominant-baseline="central">5 emails séquencés</text>
+</g>
+<line x1="420" y1="1160" x2="420" y2="1186" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-purple">
+<rect x="180" y="1186" width="480" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="1206" text-anchor="middle" dominant-baseline="central">Invitation WhatsApp (J-2, manuelle)</text>
+<text class="ts" x="420" y="1226" text-anchor="middle" dominant-baseline="central">Groupe actif pendant les 8 semaines</text>
+</g>
+<line x1="420" y1="1242" x2="420" y2="1268" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-green">
+<rect x="220" y="1268" width="400" height="56" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="1288" text-anchor="middle" dominant-baseline="central">Démarrage Programme</text>
+<text class="ts" x="420" y="1308" text-anchor="middle" dominant-baseline="central">Jeudi 14 mai · 20h · Google Meet</text>
+</g>
+<line x1="420" y1="1324" x2="420" y2="1350" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-gray">
+<rect x="240" y="1350" width="360" height="44" rx="8" stroke-width="0.5"/>
+<text class="th" x="420" y="1372" text-anchor="middle" dominant-baseline="central">8 séances jusqu'au 2 juillet</text>
+</g>
+<line x1="420" y1="1394" x2="420" y2="1420" class="arr" marker-end="url(#arrow)"/>
+
+<g class="c-coral">
+<rect x="40" y="1420" width="280" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="180" y="1440" text-anchor="middle" dominant-baseline="central">J+2 · Email clôture Brevo</text>
+<text class="ts" x="180" y="1458" text-anchor="middle" dominant-baseline="central">Émotion + demande témoignage</text>
+<text class="ts" x="180" y="1474" text-anchor="middle" dominant-baseline="central">Pas d'upsell</text>
+</g>
+
+<g class="c-coral">
+<rect x="360" y="1420" width="280" height="70" rx="8" stroke-width="0.5"/>
+<text class="th" x="500" y="1440" text-anchor="middle" dominant-baseline="central">J+10 · Email upsell Brevo</text>
+<text class="ts" x="500" y="1458" text-anchor="middle" dominant-baseline="central">Libération · Silhouette · Nouveau Moi</text>
+<text class="ts" x="500" y="1474" text-anchor="middle" dominant-baseline="central">Bilan 30 min en parallèle</text>
+</g>
+
+<line x1="340" y1="1394" x2="180" y2="1394" class="arr"/>
+<line x1="180" y1="1394" x2="180" y2="1420" class="arr" marker-end="url(#arrow)"/>
+<line x1="500" y1="1394" x2="500" y2="1420" class="arr" marker-end="url(#arrow)"/>
+
+</svg>
