@@ -496,6 +496,114 @@
       font-weight: 700;
     }
 
+    /* ── TEMOIGNAGES ── */
+    .testimonials-sr {
+      background: var(--mocha);
+      padding: 80px 24px;
+    }
+    .testimonials-sr-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .testimonials-sr .section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .testimonials-sr .eyebrow { color: var(--champagne); }
+    .testimonials-sr h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 14px 0 0;
+      color: var(--ivory);
+    }
+    .testimonials-sr h2 em { font-style: italic; color: var(--champagne); }
+    .testi-grid-sr {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .testi-grid-sr { grid-template-columns: 1fr; }
+    }
+    .testi-card {
+      background: var(--ivory);
+      border-radius: 24px;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px -12px rgba(44, 36, 32, 0.04), 0 24px 60px -20px rgba(44, 36, 32, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s var(--spring);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px -16px rgba(44, 36, 32, 0.06), 0 48px 100px -40px rgba(44, 36, 32, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .testi-card::before {
+      content: "“";
+      position: absolute;
+      top: 14px;
+      right: 34px;
+      font-family: var(--serif);
+      font-size: 6rem;
+      color: var(--champagne);
+      line-height: 1;
+      opacity: 0.5;
+    }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--mocha);
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .testi-avatar--champagne { background: var(--champagne); color: var(--mocha); }
+    .testi-avatar--caramel   { background: var(--caramel);   color: var(--ivory); }
+    .testi-avatar--plum      { background: var(--plum);      color: var(--ivory); }
+    .testi-author strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .testi-author span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+    }
+    .testi-author .testi-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
     /* ── DÉTAILS & PRIX ── */
     .details { padding: 80px 24px; }
     .details-inner {
@@ -934,6 +1042,53 @@
           <li><span class="check">✓</span> Vous voulez retrouver une relation apaisée avec votre corps et la nourriture</li>
           <li><span class="check">✓</span> Vous cherchez un accompagnement humain, bienveillant, sans jugement</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- TEMOIGNAGES -->
+    <section class="testimonials-sr">
+      <div class="testimonials-sr-inner">
+        <div class="section-head">
+          <span class="eyebrow" style="display:block;text-align:center;">Elles témoignent</span>
+          <h2>Elles ont retrouvé <em>leur silhouette</em>.</h2>
+        </div>
+        <div class="testi-grid-sr">
+          <div class="testi-card">
+            <p class="testi-text">Cette séance était pour moi une découverte, Sandrine Bartoli est très professionnelle, à l’écoute. J’ai beaucoup aimé mon expérience. 2e séance aujourd’hui, génial comme la première. J’ai déjà perdu 2 kg en 10 jours.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--champagne" aria-hidden="true">L</div>
+              <div>
+                <strong>Laetitia W., 48 ans</strong>
+                <span>Découverte · 2 kg en 10 jours</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">Une merveilleuse expérience, et surtout très bénéfique : 5 kg en 1 mois, sans aucune difficulté. Personne très à l’écoute et très professionnelle.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--caramel" aria-hidden="true">I</div>
+              <div>
+                <strong>Isabelle, 58 ans</strong>
+                <span>Sans difficulté · 5 kg en 1 mois</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">Sandrine Bartoli est très professionnelle, à l’écoute. J’ai beaucoup aimé mon expérience. J’ai déjà perdu 2 kg en 10 jours.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--plum" aria-hidden="true">A</div>
+              <div>
+                <strong>Annie, 62 ans</strong>
+                <span>Début de parcours · 2 kg en 10 jours</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
