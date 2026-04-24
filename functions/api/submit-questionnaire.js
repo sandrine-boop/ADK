@@ -61,6 +61,7 @@ export async function onRequestPost({ request, env }) {
 
     // ── Envoi vers Google Apps Script ──
     const payload = {
+      action:            'submit_questionnaire',
       prenom:            String(body.prenom).trim(),
       nom:               String(body.nom).trim(),
       email:             String(body.email).trim().toLowerCase(),

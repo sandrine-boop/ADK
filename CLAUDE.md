@@ -53,7 +53,20 @@ Configurées dans le dashboard Cloudflare (Settings → Environment variables) :
 - `STRIPE_SECRET_KEY` — clé secrète (sk_live_…).
 - `STRIPE_WEBHOOK_SECRET` — signature webhook.
 - `BASE_URL` — `https://audeladeskilos.com`.
-- `GOOGLE_SCRIPT_URL` — Apps Script déployé en web app (questionnaire).
+- `GOOGLE_SCRIPT_URL` — Apps Script déployé en web app (questionnaire + update paiement).
+- `BREVO_API_KEY` — clé API Brevo (xkeysib-…), utilisée par le webhook Stripe pour upsert contact + envoi email transactionnel.
+
+### Adresses email
+
+- **Admin / expéditeur de marque** : `sandrine@audeladeskilos.com` (adresse vérifiée dans Brevo avec DKIM + DMARC configurés, et destinataire des notifs internes Gmail depuis l'Apps Script).
+- **Perso / compte Anthropic** : `sandrine.yzenaia@gmail.com` (ne jamais utiliser comme expéditeur ou adresse de contact client).
+
+### IDs Brevo utilisés dans le code
+
+- **Liste #4** — `pilote-inscrites-mai-2026` (ajout après paiement Pilote confirmé, déclenche l'automation pré-démarrage).
+- **Liste #5** — `pilote-session-septembre-2026` (capture sortie engagement, opt-in explicite).
+- **Liste #6** — `abandon-questionnaire` (relance J+1, à brancher plus tard).
+- **Template #2** — `ADK-Pilote-01-Bienvenue` (email transactionnel post-paiement : Meet + ICS + audio + coordonnées).
 
 ---
 

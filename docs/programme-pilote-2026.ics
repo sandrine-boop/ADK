@@ -1,0 +1,87 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Au-delà des kilos//Programme Pilote//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-01@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260521T200000
+DTEND;TZID=Europe/Paris:20260521T213000
+SUMMARY:Programme Pilote · Séance 1 · Comprendre ce qui se joue
+DESCRIPTION:Séance 1 du Programme Pilote Au-delà des kilos. Lien Google Meet à venir dans votre email de rappel.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-02@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260528T200000
+DTEND;TZID=Europe/Paris:20260528T213000
+SUMMARY:Programme Pilote · Séance 2 · Identifier vos déclencheurs
+DESCRIPTION:Séance 2 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-03@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260604T200000
+DTEND;TZID=Europe/Paris:20260604T213000
+SUMMARY:Programme Pilote · Séance 3 · Désactiver la compulsion
+DESCRIPTION:Séance 3 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-04@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260611T200000
+DTEND;TZID=Europe/Paris:20260611T213000
+SUMMARY:Programme Pilote · Séance 4 · Réconcilier votre corps qui change
+DESCRIPTION:Séance 4 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-05@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260618T200000
+DTEND;TZID=Europe/Paris:20260618T213000
+SUMMARY:Programme Pilote · Séance 5 · Retrouver la faim et la satiété
+DESCRIPTION:Séance 5 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-06@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260625T200000
+DTEND;TZID=Europe/Paris:20260625T213000
+SUMMARY:Programme Pilote · Séance 6 · Tenir face aux situations sociales
+DESCRIPTION:Séance 6 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-07@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260702T200000
+DTEND;TZID=Europe/Paris:20260702T213000
+SUMMARY:Programme Pilote · Séance 7 · Ancrer durablement
+DESCRIPTION:Séance 7 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:pilote-adk-2026-08@audeladeskilos.com
+DTSTAMP:20260420T120000Z
+DTSTART;TZID=Europe/Paris:20260709T200000
+DTEND;TZID=Europe/Paris:20260709T213000
+SUMMARY:Programme Pilote · Séance 8 · Votre vie après
+DESCRIPTION:Séance 8 du Programme Pilote Au-delà des kilos.
+LOCATION:Google Meet (visio)
+END:VEVENT
+
+END:VCALENDAR

@@ -64,7 +64,7 @@ export async function onRequestPost({ request, env }) {
       return jsonError(400, 'Corps de la requête invalide (JSON attendu).');
     }
 
-    const { product, plan } = body;
+    const { product, plan, email, prenom, nom } = body;
 
     // Validation du produit
     if (!product || !PRIX[product]) {
@@ -86,11 +86,28 @@ export async function onRequestPost({ request, env }) {
       httpClient: Stripe.createFetchHttpClient(),
     });
 
+    // ── Pré-création Customer Stripe si un email est fourni ──
+    // Verrouille le champ email sur l'Embedded Checkout (non modifiable par la cliente)
+    // et garantit la correspondance 1-pour-1 entre la ligne Sheet et le paiement Stripe.
+    let customerId = null;
+    const cleanEmail = typeof email === 'string' ? email.trim().toLowerCase() : '';
+    if (cleanEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
+      const fullName = [prenom, nom].map(s => (typeof s === 'string' ? s.trim() : '')).filter(Boolean).join(' ');
+      const customer = await stripe.customers.create({
+        email: cleanEmail,
+        ...(fullName ? { name: fullName } : {}),
+      });
+      customerId = customer.id;
+    }
+
     // ── Construction de la session Checkout (mode embedded) ──
     let sessionParams = {
       locale: 'fr',
       ui_mode: 'embedded',
       return_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&product=${product}&plan=${plan}`,
+      // Adresse de facturation obligatoire (obligation légale française > 25 €)
+      billing_address_collection: 'required',
+      ...(customerId ? { customer: customerId } : {}),
     };
 
     if (mode === 'payment') {
@@ -111,6 +128,11 @@ export async function onRequestPost({ request, env }) {
             },
           },
         ],
+        // Metadata indispensable pour le webhook (routage produit, envoi Brevo, Sheet update)
+        metadata: {
+          product,
+          plan,
+        },
       };
     } else {
       // ── Abonnement (2x ou 3x) ──

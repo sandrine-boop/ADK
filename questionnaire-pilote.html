@@ -929,6 +929,15 @@
 
         // Succès — afficher écran de transition
         gtag('event', 'questionnaire_submitted', { event_category: 'groupe_pilote' });
+
+        // Mémoriser l'identité pour verrouiller l'email côté Stripe Checkout
+        // (évite qu'une cliente change d'email au paiement et casse le lien avec sa ligne Sheet)
+        try {
+          sessionStorage.setItem('pilote_email',  payload.email);
+          sessionStorage.setItem('pilote_prenom', payload.prenom);
+          sessionStorage.setItem('pilote_nom',    payload.nom);
+        } catch (_) { /* sessionStorage peut être désactivé — on laisse passer */ }
+
         document.getElementById('formSection').style.display = 'none';
         document.getElementById('successScreen').classList.add('visible');
 

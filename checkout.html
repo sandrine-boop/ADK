@@ -1013,13 +1013,27 @@
       btn.disabled = true;
 
       try {
+        // Récupérer l'identité mémorisée au questionnaire (pour verrouiller l'email sur Stripe)
+        let piloteEmail = null, pilotePrenom = null, piloteNom = null;
+        try {
+          piloteEmail  = sessionStorage.getItem('pilote_email');
+          pilotePrenom = sessionStorage.getItem('pilote_prenom');
+          piloteNom    = sessionStorage.getItem('pilote_nom');
+        } catch (_) { /* sessionStorage peut être désactivé */ }
+
         // 1. Récupérer la clé publique Stripe et le clientSecret en parallèle
         const [configRes, sessionRes] = await Promise.all([
           fetch('/api/config'),
           fetch('/api/create-checkout', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ product: currentProduct, plan: selectedPlan }),
+            body: JSON.stringify({
+              product: currentProduct,
+              plan:    selectedPlan,
+              email:   piloteEmail  || undefined,
+              prenom:  pilotePrenom || undefined,
+              nom:     piloteNom    || undefined,
+            }),
           }),
         ]);
 

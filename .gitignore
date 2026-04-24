@@ -1,0 +1,34 @@
+# ── Secrets & variables d'environnement locales ──
+.dev.vars
+.env
+.env.*
+*.key
+
+# ── Dossiers de travail personnels (non distribués) ──
+Marketing ADK/
+Programme Pilote Mai 26/
+
+# ── Artefacts système macOS ──
+.DS_Store
+**/.DS_Store
+
+# ── Dépendances Node ──
+node_modules/
+
+# ── Build / cache Wrangler & Cloudflare ──
+.wrangler/
+.mf/
+dist/
+
+# ── Captures d'écran et brouillons à la racine ──
+*.png
+*.jpg
+*.jpeg
+!AP ADK/**/*.png
+!AP ADK/**/*.jpg
+!AP ADK/**/*.jpeg
+!Blog/**/*.png
+!Blog/**/*.jpg
+!Blog/**/*.jpeg
+!accompagnements/**/*.png
+!accompagnements/**/*.jpg
