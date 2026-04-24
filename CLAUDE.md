@@ -270,7 +270,6 @@ Designer avec soin — aucune relance commerciale agressive sur aucun des trois 
 - Ne jamais promettre de résultat magique (« perdez 10 kg en 2 mois »).
 - Ne jamais utiliser de ton coach anglo-saxon (« ta best life », « boss your goals »).
 - Ne jamais parler de présentiel / cabinet — visio uniquement.
-- Ne jamais republier le témoignage Laetitia Campos version 2023 (réservé version automne 2026).
 - Ne jamais utiliser `git add .` ou `-A` dans ce repo (risque `Marketing ADK/`, `.DS_Store`, captures).
 - Ne jamais commit ni push sans le mot « Publie » de Sandrine (ou équivalent explicite).
 - Ne jamais supposer qu’une intégration tierce est branchée sans vérifier (Brevo en particulier → compte existe, code pas écrit).

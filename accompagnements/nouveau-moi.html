@@ -549,6 +549,114 @@
       line-height: 1.6;
     }
 
+    /* ── TEMOIGNAGES ── */
+    .testimonials-nm {
+      background: var(--mocha);
+      padding: 80px 24px;
+    }
+    .testimonials-nm-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .testimonials-nm .section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .testimonials-nm .eyebrow { color: var(--champagne); }
+    .testimonials-nm h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 14px 0 0;
+      color: var(--ivory);
+    }
+    .testimonials-nm h2 em { font-style: italic; color: var(--champagne); }
+    .testi-grid-nm {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .testi-grid-nm { grid-template-columns: 1fr; }
+    }
+    .testi-card {
+      background: var(--ivory);
+      border-radius: 24px;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px -12px rgba(44, 36, 32, 0.04), 0 24px 60px -20px rgba(44, 36, 32, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s var(--spring);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px -16px rgba(44, 36, 32, 0.06), 0 48px 100px -40px rgba(44, 36, 32, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .testi-card::before {
+      content: "“";
+      position: absolute;
+      top: 14px;
+      right: 34px;
+      font-family: var(--serif);
+      font-size: 6rem;
+      color: var(--champagne);
+      line-height: 1;
+      opacity: 0.5;
+    }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--mocha);
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .testi-avatar--champagne { background: var(--champagne); color: var(--mocha); }
+    .testi-avatar--caramel   { background: var(--caramel);   color: var(--ivory); }
+    .testi-avatar--plum      { background: var(--plum);      color: var(--ivory); }
+    .testi-author strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .testi-author span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+    }
+    .testi-author .testi-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
     /* ── DÉTAILS & PRIX ── */
     .details { padding: 80px 24px; }
     .details-inner { max-width: 680px; margin: 0 auto; text-align: center; }
@@ -679,6 +787,22 @@
     }
     .footer-col-links a { transition: color 0.2s; }
     .footer-col-links a:hover { color: var(--champagne); }
+    .footer-socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .footer-socials a {
+      display: inline-flex;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .footer-socials a:hover { transform: translateY(-2px); }
+    .footer-socials svg { width: 28px; height: 28px; display: block; }
     .footer-bottom {
       text-align: center;
       padding: 20px;
@@ -969,6 +1093,53 @@
       </div>
     </section>
 
+    <!-- TEMOIGNAGES -->
+    <section class="testimonials-nm">
+      <div class="testimonials-nm-inner">
+        <div class="section-head">
+          <span class="eyebrow" style="display:block;text-align:center;">Leur transformation</span>
+          <h2>Elles ont dépassé <em>les 10 kg</em>.</h2>
+        </div>
+        <div class="testi-grid-nm">
+          <div class="testi-card">
+            <p class="testi-text">Son approche bienveillante, son écoute et ses séances d’hypnose m’ont permis d’avoir des résultats dès la première semaine, sans privation ni frustration. Je suis enchantée par sa méthode. Je recommande vivement Sandrine pour gérer ce problème de poids. Je suis sortie de l’obésité et j’ai perdu 18 kilos en 7 mois.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--champagne" aria-hidden="true">N</div>
+              <div>
+                <strong>Nathalie, 52 ans</strong>
+                <span>Sortie d’obésité · 18 kg en 7 mois</span>
+                <span class="testi-source">Avis Resalib vérifié</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">Bonjour Madame, ce message pour vous dire que je suis ravie du résultat. J’ai atteint mon objectif de perte de poids. Je pèse maintenant 64,4 kg pour 1,75 m. Je me sens très bien, je remets tous mes vêtements, et surtout je suis réconciliée avec moi-même. Je vous en remercie beaucoup.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--caramel" aria-hidden="true">M</div>
+              <div>
+                <strong>Marie-Pierre, 45 ans</strong>
+                <span>Objectif atteint · 14 kg en 6 mois</span>
+                <span class="testi-source">Avis Resalib vérifié</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">L’hypnose une première pour moi. Mon but étant de perdre du poids. Tout s’est très bien passé, un vrai déclic a opéré sur moi dès le lendemain. Mon comportement face à la nourriture a bien changé, mon entourage et moi-même n’en revenons pas. Je n’hésiterai pas à revenir si je sens que mon mental flanche. Merci Madame Bartoli Sandrine pour votre aide.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--plum" aria-hidden="true">L</div>
+              <div>
+                <strong>Laetitia, 42 ans</strong>
+                <span>Déclic dès le lendemain · 20 kg en 3 mois</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- DÉTAILS & CTA -->
     <section class="details" id="reserver">
       <div class="details-inner">
@@ -1009,6 +1180,38 @@
         <div class="brand">
           Au-delà des kilos
           <span>Hypnose · Perte de poids & TCA</span>
+        </div>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/sandrine.audeladeskilos/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                  <stop offset="0%" stop-color="#FDF497"/>
+                  <stop offset="5%" stop-color="#FDF497"/>
+                  <stop offset="45%" stop-color="#FD5949"/>
+                  <stop offset="60%" stop-color="#D6249F"/>
+                  <stop offset="90%" stop-color="#285AEB"/>
+                </radialGradient>
+              </defs>
+              <rect x="2" y="2" width="24" height="24" rx="6" fill="url(#ig-grad)"/>
+              <circle cx="14" cy="14" r="5.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+              <circle cx="20.2" cy="7.8" r="1.3" fill="#fff"/>
+            </svg>
+          </a>
+          <a href="https://open.spotify.com/show/6LS2o0YOdDXcTLS5hSCC9I" target="_blank" rel="noopener" aria-label="Podcast sur Spotify">
+            <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="12" fill="#1DB954"/>
+              <path d="M8.4 11.6c3.6-1 8.6-.9 12 1.1" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M9 14.8c3-.8 7-.7 9.8 1" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M9.6 17.8c2.4-.7 5.6-.6 7.8.8" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61572082183577" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="14" cy="14" r="12" fill="#1877F2"/>
+              <path d="M15.6 22v-7h2.3l.35-2.8H15.6v-1.75c0-.8.22-1.35 1.37-1.35h1.46V6.6c-.25-.03-1.12-.1-2.13-.1-2.1 0-3.55 1.28-3.55 3.64v2.06H10.4V15h2.35v7h2.85z" fill="#fff"/>
+            </svg>
+          </a>
         </div>
       </div>
       <div class="footer-col">

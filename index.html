@@ -1468,10 +1468,18 @@
       width: 52px;
       height: 52px;
       border-radius: 50%;
-      overflow: hidden;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1;
     }
-    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-avatar--champagne { background: var(--champagne); color: var(--mocha); }
+    .testi-avatar--caramel   { background: var(--caramel);   color: var(--ivory); }
+    .testi-avatar--plum      { background: var(--plum);      color: var(--ivory); }
 
     .testi-author strong {
       display: block;
@@ -1481,6 +1489,13 @@
     .testi-author span {
       font-size: 0.82rem;
       color: var(--muted);
+      display: block;
+    }
+    .testi-author .testi-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+      margin-top: 2px;
     }
 
     /* ============ FAQ ============ */
@@ -2421,40 +2436,37 @@
 
         <div class="testi-grid">
           <div class="testi-card reveal">
-            <p class="testi-text">J'ai enfin arrêté de grignoter le soir. Pour la première fois depuis vingt ans, je ne pense plus à la nourriture du matin au soir. Un vrai soulagement.</p>
+            <p class="testi-text">Son approche bienveillante, son écoute et ses séances d’hypnose m’ont permis d’avoir des résultats dès la première semaine, sans privation ni frustration. Je suis enchantée par sa méthode. Je recommande vivement Sandrine pour gérer ce problème de poids. Je suis sortie de l’obésité et j’ai perdu 18 kilos en 7 mois.</p>
             <div class="testi-author">
-              <div class="testi-avatar">
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=85" alt="Catherine" />
-              </div>
+              <div class="testi-avatar testi-avatar--champagne" aria-hidden="true">N</div>
               <div>
-                <strong>Catherine, 52 ans</strong>
-                <span>Programme Silhouette Révélée</span>
+                <strong>Nathalie, 52 ans</strong>
+                <span>Sortie d’obésité · 18 kg en 7 mois</span>
+                <span class="testi-source">Avis Resalib vérifié</span>
               </div>
             </div>
           </div>
 
           <div class="testi-card reveal">
-            <p class="testi-text">L'anneau virtuel, c'est bluffant. Mon corps sait désormais quand s'arrêter. J'ai perdu 14 kilos en quelques mois, sans me priver de rien.</p>
+            <p class="testi-text">Excellente praticienne, je la recommande vivement. Douce et à l’écoute, elle met en confiance immédiatement. Je suis venue pour un problème de poids dû à des grignotages compulsifs. C’est magique, voilà 3 semaines que je ne grignote plus, libérée, je suis vraiment heureuse.</p>
             <div class="testi-author">
-              <div class="testi-avatar">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=85" alt="Isabelle" />
-              </div>
+              <div class="testi-avatar testi-avatar--caramel" aria-hidden="true">S</div>
               <div>
-                <strong>Isabelle, 48 ans</strong>
-                <span>Anneau Gastrique Virtuel</span>
+                <strong>Sarah, 50 ans</strong>
+                <span>Fin des compulsions · 3 semaines</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
               </div>
             </div>
           </div>
 
           <div class="testi-card reveal">
-            <p class="testi-text">J'étais sceptique. Dès la deuxième séance, mes compulsions au sucre ont diminué. Aujourd'hui, je suis libre — et je ne pensais pas pouvoir le dire un jour.</p>
+            <p class="testi-text">Sandrine est facile d’approche, sympathique, à l’écoute. La prise de rendez-vous se fait ultra facilement. C’était ma première fois à l’hypnose, je ne savais pas trop à quoi m’attendre, mais il y a des résultats : −5 kg en 1,5 mois. Le protocole inclut un suivi récurrent, de plus en plus espacé, et c’est utile pour bien prendre la dynamique.</p>
             <div class="testi-author">
-              <div class="testi-avatar">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=85" alt="Véronique" />
-              </div>
+              <div class="testi-avatar testi-avatar--plum" aria-hidden="true">A</div>
               <div>
-                <strong>Véronique, 44 ans</strong>
-                <span>Programme TCA</span>
+                <strong>Anne, 48 ans</strong>
+                <span>Première fois · 5 kg en 1,5 mois</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
               </div>
             </div>
           </div>
