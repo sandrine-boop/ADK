@@ -510,6 +510,114 @@
       font-weight: 700;
     }
 
+    /* ── TEMOIGNAGES ── */
+    .testimonials-lib {
+      background: var(--mocha);
+      padding: 80px 24px;
+    }
+    .testimonials-lib-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    .testimonials-lib .section-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .testimonials-lib .eyebrow { color: var(--champagne); }
+    .testimonials-lib h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin: 14px 0 0;
+      color: var(--ivory);
+    }
+    .testimonials-lib h2 em { font-style: italic; color: var(--champagne); }
+    .testi-grid-lib {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 900px) {
+      .testi-grid-lib { grid-template-columns: 1fr; }
+    }
+    .testi-card {
+      background: var(--ivory);
+      border-radius: 24px;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 32px -12px rgba(44, 36, 32, 0.04), 0 24px 60px -20px rgba(44, 36, 32, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s var(--spring);
+    }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 48px -16px rgba(44, 36, 32, 0.06), 0 48px 100px -40px rgba(44, 36, 32, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+    .testi-card::before {
+      content: "“";
+      position: absolute;
+      top: 14px;
+      right: 34px;
+      font-family: var(--serif);
+      font-size: 6rem;
+      color: var(--champagne);
+      line-height: 1;
+      opacity: 0.5;
+    }
+    .testi-text {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-style: italic;
+      color: var(--mocha);
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      line-height: 1;
+    }
+    .testi-avatar--champagne { background: var(--champagne); color: var(--mocha); }
+    .testi-avatar--caramel   { background: var(--caramel);   color: var(--ivory); }
+    .testi-avatar--plum      { background: var(--plum);      color: var(--ivory); }
+    .testi-author strong {
+      display: block;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .testi-author span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+    }
+    .testi-author .testi-source {
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
     /* ── DÉTAILS & PRIX ── */
     .details { padding: 80px 24px; }
     .details-inner {
@@ -943,6 +1051,53 @@
           <li><span class="check">✓</span> Vous voulez comprendre ce qui se passe vraiment en vous, pas juste "manger moins"</li>
           <li><span class="check">✓</span> Vous cherchez un accompagnement humain, personnalisé, sans jugement</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- TEMOIGNAGES -->
+    <section class="testimonials-lib">
+      <div class="testimonials-lib-inner">
+        <div class="section-head">
+          <span class="eyebrow" style="display:block;text-align:center;">Elles témoignent</span>
+          <h2>Elles se sont <em>libérées</em>.</h2>
+        </div>
+        <div class="testi-grid-lib">
+          <div class="testi-card">
+            <p class="testi-text">Excellente praticienne, je la recommande vivement. Douce et à l’écoute, elle met en confiance immédiatement. Je suis venue pour un problème de poids dû à des grignotages compulsifs. C’est magique, voilà 3 semaines que je ne grignote plus, libérée, suis vraiment heureuse.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--champagne" aria-hidden="true">S</div>
+              <div>
+                <strong>Sarah, 50 ans</strong>
+                <span>Fin des compulsions · 3 semaines</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">Une personne vraiment très bienveillante qui m’a redonné l’espoir qu’un avenir sans compulsion est possible. Merci beaucoup.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--caramel" aria-hidden="true">F</div>
+              <div>
+                <strong>Flora, 46 ans</strong>
+                <span>Retour de l’espoir</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <p class="testi-text">J’ai décidé de me faire suivre par cette belle personne pour la compulsion alimentaire et j’ai agréablement découvert que je ne consommais plus de sucre depuis. J’ai appris, j’ai ressenti des choses, je me suis écoutée. Ses accompagnements avec différentes spécialités vont m’apprendre à surmonter ce qui se présente à moi et à en faire quelque chose de positif qui va me rendre plus forte.</p>
+            <div class="testi-author">
+              <div class="testi-avatar testi-avatar--plum" aria-hidden="true">C</div>
+              <div>
+                <strong>Claire, 57 ans</strong>
+                <span>Plus de sucre depuis</span>
+                <span class="testi-source">Avis Google 5 étoiles</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
